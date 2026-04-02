@@ -634,6 +634,86 @@ footer{
 .cv-skill-cat{font-family:'DM Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;}
 .cv-link{display:inline-block;margin-top:6px;font-family:'DM Mono',monospace;font-size:11px;color:#1D4ED8;text-decoration:none;border-bottom:1px solid rgba(29,78,216,.25);}
 .cv-link:hover{color:#1E40AF;border-bottom-color:#1E40AF;}
+
+/* ══════════════════════════════
+   RESPONSIVE DESIGN
+══════════════════════════════ */
+@media (max-width: 1024px){
+  #s-home{ grid-template-columns:240px 1fr; }
+  .hero{ padding:28px 20px 24px; }
+  h1.ht{ font-size:clamp(32px,3.5vw,48px); }
+  .skills-grid{ grid-template-columns:repeat(2,1fr); }
+  .about-grid{ grid-template-columns:1fr; gap:32px; }
+}
+
+@media (max-width: 768px){
+  nav{ padding:12px 24px; flex-wrap:wrap; gap:8px; }
+  .logo{ font-size:20px; }
+  .navl{ gap:2px; flex-wrap:wrap; }
+  .nb{ font-size:11px; padding:6px 12px; }
+  
+  #s-home{ grid-template-columns:1fr; height:auto; }
+  .hero{ grid-column:1; padding:24px 20px; border-right:none; border-bottom:1.5px solid rgba(59,130,246,.1); }
+  #sph-area{ grid-column:1; grid-row:2; min-height:360px; }
+  
+  h1.ht{ font-size:clamp(28px,5vw,40px); }
+  .hero-sub{ font-size:13px; max-width:100%; }
+  .hero-right{ grid-template-columns:1fr 1fr; gap:6px; }
+  
+  .card{ width:100px; height:72px; }
+  .cnm{ font-size:11px; }
+  
+  .skills-grid{ grid-template-columns:1fr; }
+  .about-grid{ grid-template-columns:1fr; gap:24px; }
+  .contact-split{ grid-template-columns:1fr; gap:32px; }
+  .cv-skills-grid{ grid-template-columns:1fr; }
+  
+  #spop{ width:280px; }
+  .sp-thumb{ height:120px; }
+  
+  nav{ gap:6px; }
+  .av{ font-size:9px; padding:6px 12px; }
+}
+
+@media (max-width: 480px){
+  body{ font-size:14px; }
+  nav{ padding:10px 16px; }
+  .logo{ font-size:18px; gap:4px; }
+  .navl{ flex-direction:column; gap:4px; width:100%; }
+  .nb{ width:100%; text-align:center; font-size:10px; padding:5px 8px; }
+  
+  .hero{ padding:16px 12px; }
+  h1.ht{ font-size:clamp(24px,6vw,32px); margin-bottom:4px; }
+  .hero-tag{ font-size:9px; padding:4px 12px; margin-bottom:16px; }
+  .hero-sub{ font-size:12px; line-height:1.6; margin-bottom:12px; }
+  .hero-links{ gap:8px; flex-wrap:wrap; }
+  .hero-links a{ font-size:10px; }
+  .chips{ gap:6px; }
+  .chip{ font-size:10px; padding:5px 12px; }
+  .hero-right{ gap:4px; margin-top:12px; }
+  .stat-pill{ padding:8px 10px; gap:1px; }
+  .stat-pill-n{ font-size:20px; }
+  .stat-pill-l{ font-size:8px; }
+  
+  #filters{ gap:4px; padding:12px 12px 6px; }
+  .fb{ font-size:9px; padding:5px 10px; }
+  
+  .card{ width:90px; height:64px; }
+  .ctg{ font-size:5px; }
+  .cnm{ font-size:10px; }
+  
+  #spop{ width:240px; right:0; }
+  .sp-thumb{ height:100px; }
+  .sp-body{ padding:16px 18px 20px; }
+  .spn{ font-size:20px; }
+  .spd{ font-size:12px; }
+  .spc span{ font-size:10px; }
+  
+  .cv-entry{ padding:12px 0; }
+  .cv-role{ font-size:13px; }
+  .cv-text{ font-size:12px; }
+}
+
 @media print{nav,footer,.no-print{display:none!important;}.sec{display:none!important;}#s-cv{display:block!important;}}
 </style>
 </head>
