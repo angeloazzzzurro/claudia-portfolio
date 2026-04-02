@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+<style id="darkmode-style">
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claudia ✦ Developer & Creative</title>
@@ -67,14 +69,25 @@ nav{
 .nb{
   font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
   letter-spacing:.06em;color:rgba(28,16,23,.45);
-  background:none;border:none;padding:7px 16px;border-radius:100px;
-  cursor:none;transition:all .2s;
+  background:none;border:none;padding:7px 16px 5px 16px;border-radius:100px;
+  cursor:none;transition:all .2s;position:relative;overflow:hidden;
 }
 .nb:hover{color:var(--ink);background:rgba(59,130,246,.1);}
 .nb.on{
   color:#1D4ED8;
   background:rgba(59,130,246,.12);
   border:1.5px solid rgba(59,130,246,.3);
+}
+.nb.on::after{
+  content:'';
+  display:block;
+  position:absolute;
+  left:18px;right:18px;bottom:2px;
+  height:3px;
+  border-radius:2px;
+  background:linear-gradient(90deg,#3B82F6,#93C5FD);
+  opacity:.85;
+  transition:all .22s;
 }
 .av{
   display:flex;align-items:center;gap:7px;
@@ -143,7 +156,7 @@ h1.ht em{font-style:italic;color:#1D4ED8;}
 h1.ht .dim{color:rgba(28,16,23,.2);}
 
 .hero-sub{
-  font-size:15px;color:rgba(28,16,23,.52);
+  font-size:15px;color:rgba(28,16,23,.75);
   max-width:460px;line-height:1.75;
   margin-bottom:32px;
 }
@@ -296,7 +309,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 .sttl em{font-style:italic;color:rgba(28,16,23,.22);}
 
 .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;}
-.ab{font-size:14px;color:rgba(28,16,23,.52);line-height:1.85;margin-bottom:16px;}
+.ab{font-size:14px;color:rgba(28,16,23,.8);line-height:1.85;margin-bottom:16px;}
 .aq{
   font-family:'DM Serif Display',serif;font-style:italic;
   font-size:15px;padding:18px 22px;
@@ -376,7 +389,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 .sk5 .sk-ico{background:#EFF6FF;}
 .sk6 .sk-ico{background:#DBEAFE;}
 .sk-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;}
-.sk-desc{font-size:12px;color:rgba(28,16,23,.48);line-height:1.62;}
+.sk-desc{font-size:12px;color:rgba(28,16,23,.75);line-height:1.62;}
 
 /* ══════════════════════════════
    CONTACT
@@ -391,7 +404,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 }
 .c-big em{font-style:italic;color:#1D4ED8;}
 .c-sub{
-  font-size:14px;color:rgba(28,16,23,.42);
+  font-size:14px;color:rgba(28,16,23,.75);
   margin-bottom:36px;font-family:'DM Mono',monospace;
   letter-spacing:.02em;
 }
@@ -488,11 +501,13 @@ footer{
 
 <!-- NAV -->
 <nav>
+    <button id="darkmode-toggle" style="margin-left:12px;font-size:11px;padding:7px 16px;border-radius:100px;border:1px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;">Dark mode</button>
   <div class="logo">
     <span class="logo-dot"></span>
     Claudia
   </div>
   <div class="navl">
+    <button id="cursor-toggle" style="margin-left:24px;font-size:11px;padding:7px 16px;border-radius:100px;border:1px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;">Cursore standard</button>
     <button class="nb on" data-s="home">home</button>
     <button class="nb" data-s="about">about</button>
     <button class="nb" data-s="skills">skills</button>
@@ -515,6 +530,7 @@ footer{
         <span class="dim">Technologist</span>
       </h1>
       <p class="hero-sub">iOS, web, sistemi identitari, food e-commerce.<br>Costruisco cose con un'estetica precisa e un cuore kawaii.</p>
+      <button class="contact-btn" onclick="document.querySelector('.nb[data-s=contact]').click();" style="margin:24px 0 16px 0;padding:12px 32px;border-radius:100px;background:#3B82F6;color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;border:none;box-shadow:0 4px 16px #3B82F633;cursor:pointer;transition:background .18s;">Contattami</button>
       <div class="chips">
         <span class="chip c1">SwiftUI ✦</span>
         <span class="chip c2">Psyche/OS</span>
@@ -624,10 +640,10 @@ footer{
           <div class="avail-sub">Milano · remote · full/part-time</div>
         </div>
       </div>
-      <div class="c-row"><div class="clft"><div class="cico ci1">⌥</div><div><div class="c-name">GitHub</div><div class="c-val">angeloazzzzurro</div></div></div><span class="c-arr">→</span></div>
-      <div class="c-row"><div class="clft"><div class="cico ci2">✉</div><div><div class="c-name">Email</div><div class="c-val">claudia@claudia.dev</div></div></div><span class="c-arr">→</span></div>
+      <a class="c-row" href="https://github.com/angeloazzzzurro" target="_blank" rel="noopener"><div class="clft"><div class="cico ci1">⌥</div><div><div class="c-name">GitHub</div><div class="c-val">angeloazzzzurro</div></div></div><span class="c-arr">→</span></a>
+      <a class="c-row" href="mailto:xjiexin97@gmai.com?subject=Contatto%20dal%20portfolio&body=Ciao%20Claudia%2C%20ti%20scrivo%20dal%20tuo%20portfolio%20web." ><div class="clft"><div class="cico ci2">✉</div><div><div class="c-name">Email</div><div class="c-val">xjiexin97@gmai.com</div></div></div><span class="c-arr">→</span></a>
       <div class="c-row"><div class="clft"><div class="cico ci3">◈</div><div><div class="c-name">Milano</div><div class="c-val">disponibile in presenza</div></div></div><span class="c-arr">→</span></div>
-      <div class="c-row"><div class="clft"><div class="cico ci4">◎</div><div><div class="c-name">LinkedIn</div><div class="c-val">claudia.dev</div></div></div><span class="c-arr">→</span></div>
+      <a class="c-row" href="https://www.linkedin.com/in/claudia-dev" target="_blank" rel="noopener"><div class="clft"><div class="cico ci4">◎</div><div><div class="c-name">LinkedIn</div><div class="c-val">claudia.dev</div></div></div><span class="c-arr">→</span></a>
     </div>
     <div>
       <div class="dom">
@@ -637,6 +653,14 @@ footer{
       </div>
     </div>
   </div>
+</div>
+
+
+<!-- ══ REPORT & ANALISI ══ -->
+<div class="sec" id="s-report">
+  <div class="sec-badge">report & analisi</div>
+  <div class="sttl">Report tecnici dal progetto METIME</div>
+  <div id="report-list" style="margin-top:32px;display:grid;gap:28px;"></div>
 </div>
 
 <footer>
@@ -652,14 +676,131 @@ footer{
 </footer>
 
 <script>
+// REPORT & ANALISI — carica tutti i report dal repo METIME
+async function loadReports() {
+  const reports = [
+    {
+      title: 'Analisi del Codice',
+      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/analisi_codice.md',
+      type: 'md'
+    },
+    {
+      title: 'Audit Homepage',
+      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/audit_homepage.md',
+      type: 'md'
+    },
+    {
+      title: 'Presentazione Portfolio',
+      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/presentations/presentation_content.md',
+      type: 'md'
+    },
+    {
+      title: 'Documentazione Progetto',
+      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/index.html',
+      type: 'html'
+    },
+    {
+      title: 'README',
+      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/README.md',
+      type: 'md'
+    }
+  ];
+  const container = document.getElementById('report-list');
+  for (const rep of reports) {
+    try {
+      const res = await fetch(rep.url);
+      if (!res.ok) continue;
+      let content = await res.text();
+      let html = '';
+      if (rep.type === 'md') {
+        // Semplice conversione markdown -> html (solo titoli, paragrafi, liste)
+        html = content
+          .replace(/^# (.*)$/gm, '<h2>$1</h2>')
+          .replace(/^## (.*)$/gm, '<h3>$1</h3>')
+          .replace(/^### (.*)$/gm, '<h4>$1</h4>')
+          .replace(/^\* (.*)$/gm, '<li>$1</li>')
+          .replace(/\n\n/g, '<br>')
+          .replace(/\n/g, ' ');
+      } else if (rep.type === 'html') {
+        // Estrai solo il contenuto principale
+        const match = content.match(/<body[\s\S]*?<\/body>/i);
+        html = match ? match[0] : content;
+      }
+      const block = document.createElement('div');
+      block.style.background = '#fff';
+      block.style.borderRadius = '16px';
+      block.style.boxShadow = '0 2px 12px #3B82F633';
+      block.style.padding = '28px';
+      block.innerHTML = `<h2 style="color:#1D4ED8;margin-bottom:10px;">${rep.title}</h2>` + html.substring(0, 3000) + (html.length > 3000 ? '... <em>continua su GitHub</em>' : '');
+      container.appendChild(block);
+    } catch (e) {}
+  }
+}
+// Aggiungi tab in nav
+const navl = document.querySelector('.navl');
+const reportBtn = document.createElement('button');
+reportBtn.className = 'nb';
+reportBtn.textContent = 'report';
+reportBtn.dataset.s = 'report';
+navl.appendChild(reportBtn);
+// Mostra sezione report al click
+reportBtn.addEventListener('click',()=>{
+  document.querySelectorAll('.nb').forEach(x=>x.classList.remove('on'));
+  document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on'));
+  reportBtn.classList.add('on');
+  document.getElementById('s-report').classList.add('on');
+  if (!window._reportsLoaded) { loadReports(); window._reportsLoaded = true; }
+});
+// DARK MODE
+const darkStyles = `
+  body { background: #101624 !important; color: #F0F7FF !important; }
+  nav, footer { background: rgba(16,22,36,0.92) !important; }
+  .logo, .sttl, .c-big, .sk-name, .stack-name { color: #F0F7FF !important; }
+  .sec-badge, .hero-tag, .chip, .stat-pill, .stack-badge, .skc, .avail-card, .dom, .c-row, .sk-box { background: #1a2233 !important; color: #F0F7FF !important; border-color: #3B82F6 !important; }
+  .cico, .avail-orb { background: #222c44 !important; }
+  .c-val, .sk-desc, .ab, .hero-sub, .c-sub, .dom-note { color: #BFD7FF !important; }
+  .stat-pill-l, .sk-l, .stack-badge, .sec-badge, .ctg, .spc span { color: #7DD3FC !important; }
+`;
+const darkToggle = document.getElementById('darkmode-toggle');
+const darkStyleTag = document.getElementById('darkmode-style');
+let darkOn = false;
+darkToggle.addEventListener('click', () => {
+  darkOn = !darkOn;
+  darkStyleTag.textContent = darkOn ? darkStyles : '';
+  darkToggle.textContent = darkOn ? 'Light mode' : 'Dark mode';
+});
 // NAV
 document.querySelectorAll('.nb').forEach(b=>{b.addEventListener('click',()=>{document.querySelectorAll('.nb').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on'));b.classList.add('on');document.getElementById('s-'+b.dataset.s).classList.add('on');});});
 
 // CURSOR
 const cur=document.getElementById('cur'),crng=document.getElementById('crng');
-let cmx=0,cmy=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{cmx=e.clientX;cmy=e.clientY;cur.style.left=cmx+'px';cur.style.top=cmy+'px';const h=e.target.closest('button,.c-row,.skc,.chip,.fb,.stack-row');cur.classList.toggle('h',!!h);crng.classList.toggle('h',!!h);});
-(function ar(){rx+=(cmx-rx)*.1;ry+=(cmy-ry)*.1;crng.style.left=Math.round(rx)+'px';crng.style.top=Math.round(ry)+'px';requestAnimationFrame(ar);})();
+let cmx=0,cmy=0,rx=0,ry=0,customCursor=true;
+const cursorToggle = document.getElementById('cursor-toggle');
+
+function setCursorMode(on) {
+  customCursor = on;
+  cur.style.display = on ? 'block' : 'none';
+  crng.style.display = on ? 'block' : 'none';
+  document.body.style.cursor = on ? 'none' : 'auto';
+  cursorToggle.textContent = on ? 'Cursore standard' : 'Cursore personalizzato';
+}
+
+cursorToggle.addEventListener('click', () => setCursorMode(!customCursor));
+setCursorMode(true);
+
+document.addEventListener('mousemove',e=>{
+  if (!customCursor) return;
+  cmx=e.clientX;cmy=e.clientY;cur.style.left=cmx+'px';cur.style.top=cmy+'px';
+  const h=e.target.closest('button,.c-row,.skc,.chip,.fb,.stack-row');
+  cur.classList.toggle('h',!!h);crng.classList.toggle('h',!!h);
+});
+(function ar(){
+  if (customCursor) {
+    rx+=(cmx-rx)*.1;ry+=(cmy-ry)*.1;
+    crng.style.left=Math.round(rx)+'px';crng.style.top=Math.round(ry)+'px';
+  }
+  requestAnimationFrame(ar);
+})();
 
 // SPHERE DATA
 const M={
@@ -679,18 +820,18 @@ wip:`<svg viewBox="0 0 116 62" xmlns="http://www.w3.org/2000/svg"><rect width="1
 const FB=p=>`<svg viewBox="0 0 116 62" xmlns="http://www.w3.org/2000/svg"><rect width="116" height="62" fill="${p.face||'#F8F8F8'}"/><rect width="116" height="6" fill="${p.top}"/></svg>`;
 
 const P=[
-  {id:'metime',   n:'METIME',       cat:'ios',         tag:'iOS Game',    tBg:'#DBEAFE',tC:'#1D4ED8',top:'#60A5FA',face:'#EFF6FF',desc:'Virtual pet kawaii-cottagecore.',chips:['SwiftUI','SpriteKit'],q:'Case study completa METIME?'},
-  {id:'psycheos', n:'Psyche/OS',    cat:'experimental',tag:'Experimental',tBg:'#EFF6FF',tC:'#1E40AF',top:'#93C5FD',face:'#EFF6FF',desc:'Mappatura identitaria narrativa.',chips:['Swift','Python'],q:'Case study Psyche/OS?'},
-  {id:'mindscope',n:'MindScope',    cat:'ios',         tag:'iOS App',     tBg:'#DBEAFE',tC:'#1D4ED8',top:'#7DD3FC',face:'#EFF6FF',desc:'Test psicologici: ADHD, IQ.',chips:['SwiftUI','CoreData'],q:'Case study MindScope?'},
-  {id:'ethnicbox',n:'EthnicBox',    cat:'business',    tag:'Business',    tBg:'#DBEAFE',tC:'#1E40AF',top:'#38BDF8',face:'#EFF6FF',desc:'Subscription box cibo etnico.',chips:['Shopify','Recharge'],q:'Case study EthnicBox?'},
-  {id:'artifacts',n:'Artifacts',    cat:'web',         tag:'Web',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'AI-powered, Claude API.',chips:['Next.js','Claude API'],q:'Case study Artifacts?'},
-  {id:'wip',      n:'In progress',  cat:'ios',         tag:'WIP',         tBg:'#DBEAFE',tC:'#1E40AF',top:'#60A5FA',face:'#EFF6FF',desc:'Mood tracker, plant diary.',chips:['SwiftUI','TBD'],q:'Nuovi progetti iOS?'},
-  {id:'portfolio',n:'Portfolio',    cat:'web',         tag:'Web',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'Next.js + Vercel.',chips:['Next.js','Tailwind'],q:'Come esportare in Next.js?'},
-  {id:'qisim',    n:'QI Sim',       cat:'web',         tag:'Web App',     tBg:'#DBEAFE',tC:'#1D4ED8',top:'#7DD3FC',face:'#EFF6FF',desc:'Simulatore QI.',chips:['HTML','JS'],q:'Case study QI Sim?'},
-  {id:'checklist',n:'Checklist',    cat:'web',         tag:'Tool',        tBg:'#DBEAFE',tC:'#1E40AF',top:'#38BDF8',face:'#EFF6FF',desc:'Daily checklist.',chips:['React'],q:'Case study Checklist?'},
-  {id:'textual',  n:'TUI',          cat:'experimental',tag:'Python',      tBg:'#EFF6FF',tC:'#1E40AF',top:'#93C5FD',face:'#EFF6FF',desc:'Python TUI + tmux.',chips:['Python','Textual'],q:'Case study TUI?'},
-  {id:'aiagent',  n:'AI Agent',     cat:'web',         tag:'API',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'Claude-based agents.',chips:['Anthropic SDK'],q:'Case study AI Agent?'},
-  {id:'finance',  n:'Finance',      cat:'web',         tag:'Dataviz',     tBg:'#DBEAFE',tC:'#1E40AF',top:'#60A5FA',face:'#EFF6FF',desc:'Compound interest viz.',chips:['Chart.js'],q:'Case study Finance?'},
+  {id:'metime',   n:'METIME',       cat:'ios',         tag:'iOS Game',    tBg:'#DBEAFE',tC:'#1D4ED8',top:'#60A5FA',face:'#EFF6FF',desc:'Virtual pet kawaii-cottagecore.',chips:['SwiftUI','SpriteKit'],q:'Case study completa METIME?',       github:'https://github.com/angeloazzzzurro/METIME'},
+  {id:'psycheos', n:'Psyche/OS',    cat:'experimental',tag:'Experimental',tBg:'#EFF6FF',tC:'#1E40AF',top:'#93C5FD',face:'#EFF6FF',desc:'Mappatura identitaria narrativa.',chips:['Swift','Python'],q:'Case study Psyche/OS?',                   github:'https://github.com/angeloazzzzurro/psyche-os'},
+  {id:'mindscope',n:'MindScope',    cat:'ios',         tag:'iOS App',     tBg:'#DBEAFE',tC:'#1D4ED8',top:'#7DD3FC',face:'#EFF6FF',desc:'Test psicologici: ADHD, IQ.',chips:['SwiftUI','CoreData'],q:'Case study MindScope?',                   github:''},
+  {id:'ethnicbox',n:'EthnicBox',    cat:'business',    tag:'Business',    tBg:'#DBEAFE',tC:'#1E40AF',top:'#38BDF8',face:'#EFF6FF',desc:'Subscription box cibo etnico.',chips:['Shopify','Recharge'],q:'Case study EthnicBox?',                 github:''},
+  {id:'artifacts',n:'Artifacts',    cat:'web',         tag:'Web',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'AI-powered, Claude API.',chips:['Next.js','Claude API'],q:'Case study Artifacts?',                     github:''},
+  {id:'wip',      n:'In progress',  cat:'ios',         tag:'WIP',         tBg:'#DBEAFE',tC:'#1E40AF',top:'#60A5FA',face:'#EFF6FF',desc:'Mood tracker, plant diary.',chips:['SwiftUI','TBD'],q:'Nuovi progetti iOS?',                           github:''},
+  {id:'portfolio',n:'Portfolio',    cat:'web',         tag:'Web',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'Next.js + Vercel.',chips:['Next.js','Tailwind'],q:'Come esportare in Next.js?',                        github:'https://github.com/angeloazzzzurro/claudia-portfolio'},
+  {id:'qisim',    n:'QI Sim',       cat:'web',         tag:'Web App',     tBg:'#DBEAFE',tC:'#1D4ED8',top:'#7DD3FC',face:'#EFF6FF',desc:'Simulatore QI.',chips:['HTML','JS'],q:'Case study QI Sim?',                                            github:''},
+  {id:'checklist',n:'Checklist',    cat:'web',         tag:'Tool',        tBg:'#DBEAFE',tC:'#1E40AF',top:'#38BDF8',face:'#EFF6FF',desc:'Daily checklist.',chips:['React'],q:'Case study Checklist?',                                            github:''},
+  {id:'textual',  n:'TUI',          cat:'experimental',tag:'Python',      tBg:'#EFF6FF',tC:'#1E40AF',top:'#93C5FD',face:'#EFF6FF',desc:'Python TUI + tmux.',chips:['Python','Textual'],q:'Case study TUI?',                                    github:''},
+  {id:'aiagent',  n:'AI Agent',     cat:'web',         tag:'API',         tBg:'#EFF6FF',tC:'#1D4ED8',top:'#BAE6FD',face:'#EFF6FF',desc:'Claude-based agents.',chips:['Anthropic SDK'],q:'Case study AI Agent?',                               github:'https://github.com/angeloazzzzurro/Angel'},
+  {id:'finance',  n:'Finance',      cat:'web',         tag:'Dataviz',     tBg:'#DBEAFE',tC:'#1E40AF',top:'#60A5FA',face:'#EFF6FF',desc:'Compound interest viz.',chips:['Chart.js'],q:'Case study Finance?',                                    github:''},
 ];
 
 const CONN=[
@@ -722,16 +863,8 @@ for(let i=0;i<N;i++){
   c.addEventListener('click',e=>{
     if(wd)return;e.stopPropagation();
     if(af!=='all'&&p.cat!==af)return;
-    document.getElementById('spt').textContent=p.tag;document.getElementById('spt').style.background=p.tBg;document.getElementById('spt').style.color=p.tC;
-    document.getElementById('spn').textContent=p.n;document.getElementById('spd').textContent=p.desc;
-    const sc=document.getElementById('spc');sc.innerHTML='';
-    p.chips.forEach(ch=>{const s=document.createElement('span');s.textContent=ch;sc.appendChild(s);});
-    document.getElementById('spb').textContent='Esplora ✦';
-    document.getElementById('spb').onclick=()=>alert('Apri Claude e chiedimi: '+p.q);
-    const sr=scene.getBoundingClientRect(),cr=c.getBoundingClientRect();
-    let lx=cr.left-sr.left+cr.width+12,ly=cr.top-sr.top;
-    if(lx+206>W-10)lx=cr.left-sr.left-214;if(ly+228>H-10)ly=H-234;if(ly<10)ly=10;
-    spop.style.left=Math.max(10,lx)+'px';spop.style.top=ly+'px';spop.classList.add('on');
+    // Apri pagina dettaglio progetto
+    window.open(`progetti/template.html?title=${encodeURIComponent(p.n)}&subtitle=${encodeURIComponent(p.tag)}&desc=${encodeURIComponent(p.desc)}&chips=${encodeURIComponent(p.chips.join(', '))}&github=${encodeURIComponent(p.github||'')}`,'_blank');
   });
   sph.appendChild(c);cards.push(c);
 }
