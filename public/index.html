@@ -849,7 +849,7 @@ async function loadReports() {
     const btn=document.createElement('button');
     btn.className='rep-tab';
     btn.innerHTML=`${rep.icon} ${rep.title}`;
-    btn.style.cssText='font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;padding:9px 18px;border-radius:100px;border:2px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;transition:all .2s;';
+    btn.style.cssText="font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;padding:9px 18px;border-radius:100px;border:2px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;transition:all .2s;";
     btn.addEventListener('click',()=>loadReport(i));
     tabs.appendChild(btn);
   });
@@ -857,71 +857,6 @@ async function loadReports() {
   await loadReport(0);
 }
 
-  ];
-  const container = document.getElementById('report-list');
-  for (const rep of reports) {
-    try {
-      const res = await fetch(rep.url);
-      if (!res.ok) continue;
-      let content = await res.text();
-      let html = '';
-      if (rep.type === 'md') {
-        html = content
-          // Titoli
-          .replace(/^#### (.*)$/gm, '<h5 style="font-size:13px;margin:14px 0 4px;color:#1C1017">$1</h5>')
-          .replace(/^### (.*)$/gm, '<h4 style="font-size:15px;margin:16px 0 6px;color:#1C1017">$1</h4>')
-          .replace(/^## (.*)$/gm, '<h3 style="font-size:18px;margin:22px 0 8px;color:#1D4ED8">$1</h3>')
-          .replace(/^# (.*)$/gm, '<h2 style="font-size:22px;margin:0 0 14px;color:#1C1017">$1</h2>')
-          // Tabelle markdown → table HTML
-          .replace(/^\|(.+)\|\s*$/gm, (_, row) => {
-            const cells = row.split('|').map(c => c.trim());
-            return '<tr>' + cells.map(c => `<td style="padding:5px 10px;border:1px solid #DBEAFE;font-size:12px">${c}</td>`).join('') + '</tr>';
-          })
-          .replace(/^[\s]*:?-+:?[\s]*\|.*/gm, '')
-          .replace(/(<tr>.*<\/tr>\n?)+/gs, m => `<table style="border-collapse:collapse;width:100%;margin:10px 0;font-family:'DM Mono',monospace">${m}</table>`)
-          // Liste
-          .replace(/^[-*] (.*)$/gm, '<li style="margin:3px 0;padding-left:4px">$1</li>')
-          .replace(/(<li[^>]*>.*<\/li>\n?)+/gs, m => `<ul style="margin:8px 0 8px 20px">${m}</ul>`)
-          // Grassetto e corsivo
-          .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>')
-          // Codice inline
-          .replace(/`([^`]+)`/g, '<code style="background:#EFF6FF;color:#1D4ED8;padding:1px 5px;border-radius:4px;font-size:11px;font-family:\'DM Mono\',monospace">$1</code>')
-          // Paragrafi
-          .replace(/\n\n/g, '</p><p style="margin:8px 0;line-height:1.7">')
-          .replace(/\n/g, ' ');
-        html = '<p style="margin:8px 0;line-height:1.7">' + html + '</p>';
-      } else if (rep.type === 'html') {
-        // Estrai solo il contenuto principale
-        const match = content.match(/<body[\s\S]*?<\/body>/i);
-        html = match ? match[0] : content;
-      }
-      const block = document.createElement('div');
-      block.style.background = '#fff';
-      block.style.borderRadius = '16px';
-      block.style.boxShadow = '0 2px 12px #3B82F633';
-      block.style.padding = '28px';
-      block.innerHTML = `<h2 style="color:#1D4ED8;margin-bottom:10px;">${rep.title}</h2>` + html.substring(0, 3000) + (html.length > 3000 ? '... <em>continua su GitHub</em>' : '');
-      container.appendChild(block);
-    } catch (e) {}
-  }
-}
-// Aggiungi tab in nav
-const navl = document.querySelector('.navl');
-const reportBtn = document.createElement('button');
-reportBtn.className = 'nb';
-reportBtn.textContent = 'report';
-reportBtn.dataset.s = 'report';
-navl.appendChild(reportBtn);
-// Mostra sezione report al click
-reportBtn.addEventListener('click',()=>{
-  document.querySelectorAll('.nb').forEach(x=>x.classList.remove('on'));
-  document.querySelectorAll('.sec').forEach(x=>x.classList.remove('on'));
-  reportBtn.classList.add('on');
-  document.getElementById('s-report').classList.add('on');
-  if (!window._reportsLoaded) { loadReports(); window._reportsLoaded = true; }
-});
 // DARK MODE
 const darkStyles = `
   body { background: #101624 !important; color: #F0F7FF !important; }
