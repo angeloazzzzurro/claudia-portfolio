@@ -173,6 +173,12 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   max-width:260px;line-height:1.7;
   margin-bottom:20px;
 }
+.hero-links{display:flex;gap:14px;align-items:center;margin:0 0 14px;}
+.hero-links a{
+  font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;
+  color:#1D4ED8;text-decoration:none;border-bottom:1px solid rgba(29,78,216,.25);
+}
+.hero-links a:hover{color:#1E40AF;border-bottom-color:#1E40AF;}
 
 /* kawaii chips */
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:0;}
@@ -627,37 +633,34 @@ footer{
     <div class="hero-left">
       <div class="hero-tag">Milano · Developer · Creative</div>
       <h1 class="ht">
-        Developer<br>
-        <em>&amp; Creative</em><br>
-        <span class="dim">Technologist</span>
+        iOS + Web<br>
+        <em>Developer</em><br>
+        <span class="dim">Creative technologist</span>
       </h1>
-      <p class="hero-sub">iOS, web, sistemi identitari, food e-commerce. Estetica precisa e cuore kawaii.</p>
-      <button class="contact-btn" onclick="document.querySelector('.nb[data-s=contact]').click();" style="margin:18px 0 14px 0;padding:10px 24px;border-radius:100px;background:#3B82F6;color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;border:none;box-shadow:0 4px 14px #3B82F633;cursor:pointer;transition:background .18s,transform .1s;width:100%;">Contattami</button>
+      <p class="hero-sub">Progetto app e siti con UX chiara, estetica curata e implementazione end-to-end.</p>
+      <button class="contact-btn" onclick="document.querySelector('.nb[data-s=explore]').click();" style="margin:18px 0 12px 0;padding:10px 24px;border-radius:100px;background:#3B82F6;color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;border:none;box-shadow:0 4px 14px #3B82F633;cursor:pointer;transition:background .18s,transform .1s;width:100%;">Vedi progetti</button>
+      <div class="hero-links">
+        <a href="cv.html">Apri CV</a>
+        <a href="#" onclick="document.querySelector('.nb[data-s=contact]').click();return false;">Contatti</a>
+      </div>
       <div class="chips">
-        <span class="chip c1">SwiftUI ✦</span>
-        <span class="chip c2">Psyche/OS</span>
-        <span class="chip c3">Next.js</span>
-        <span class="chip c4">Python</span>
-        <span class="chip c5">Shopify</span>
-        <span class="chip c6">SpriteKit ♡</span>
+        <span class="chip c1">SwiftUI</span>
+        <span class="chip c3">Web Apps</span>
+        <span class="chip c4">AI Tools</span>
       </div>
     </div>
     <div class="hero-right">
       <div class="stat-pill sp1">
         <span class="stat-pill-n" id="hero-stat-1n">5+</span>
-        <span class="stat-pill-l" id="hero-stat-1l">App pubblicate</span>
+        <span class="stat-pill-l" id="hero-stat-1l">Progetti pubblicati</span>
       </div>
       <div class="stat-pill sp2">
-        <span class="stat-pill-n" id="hero-stat-2n">3</span>
-        <span class="stat-pill-l" id="hero-stat-2l">Stack attivi</span>
+        <span class="stat-pill-n" id="hero-stat-2n">iOS</span>
+        <span class="stat-pill-l" id="hero-stat-2l">SwiftUI / SpriteKit</span>
       </div>
       <div class="stat-pill sp3">
-        <span class="stat-pill-n" id="hero-stat-3n">MI</span>
-        <span class="stat-pill-l" id="hero-stat-3l">Milano based</span>
-      </div>
-      <div class="stat-pill sp4">
-        <span class="stat-pill-n" id="hero-stat-4n">.dev</span>
-        <span class="stat-pill-l" id="hero-stat-4l">claudia.dev</span>
+        <span class="stat-pill-n" id="hero-stat-3n">Web</span>
+        <span class="stat-pill-l" id="hero-stat-3l">React / Next.js</span>
       </div>
     </div>
   </div>
@@ -1464,7 +1467,7 @@ let W,H;
 function rsz(){W=scene.clientWidth;H=scene.clientHeight;cnv.width=W;cnv.height=H;}
 rsz();requestAnimationFrame(rsz);window.addEventListener('resize',rsz);
 
-const N=30,R=205,phi=(1+Math.sqrt(5))/2;
+const N=30,R=280,phi=(1+Math.sqrt(5))/2;
 const POS=[],cards=[];
 let hov=null,af='all',tk=0;
 
