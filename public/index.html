@@ -109,15 +109,24 @@ nav{
 /* ══════════════════════════════
    HOME
 ══════════════════════════════ */
-#s-home{overflow:hidden;}
+#s-home{
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:290px 1fr;
+  min-height:calc(100vh - 65px);
+}
 
 .hero{
-  padding:56px 40px 0;
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:40px;
-  align-items:start;
-  max-width:1300px;
+  grid-column:1;
+  padding:36px 24px 32px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+  border-right:1.5px solid rgba(59,130,246,.1);
+  background:rgba(240,247,255,.75);
+  backdrop-filter:blur(8px);
 }
 
 /* floating deco blobs */
@@ -128,9 +137,9 @@ nav{
   opacity:.18;
   filter:blur(60px);
 }
-.hd1{width:400px;height:400px;background:#3B82F6;top:-80px;right:-60px;}
-.hd2{width:300px;height:300px;background:#93C5FD;bottom:100px;left:-80px;}
-.hd3{width:200px;height:200px;background:#BAE6FD;top:200px;right:30%;}
+.hd1{width:320px;height:320px;background:#3B82F6;top:-60px;left:-80px;}
+.hd2{width:220px;height:220px;background:#93C5FD;bottom:60px;left:-40px;}
+.hd3{display:none;}
 
 .hero-left{position:relative;z-index:1;}
 
@@ -149,7 +158,7 @@ nav{
 
 h1.ht{
   font-family:'DM Serif Display',serif;
-  font-size:clamp(52px,7vw,88px);
+  font-size:clamp(34px,3.2vw,48px);
   line-height:.98;letter-spacing:-.03em;
   margin-bottom:8px;
   color:var(--ink);
@@ -158,9 +167,9 @@ h1.ht em{font-style:italic;color:#1D4ED8;}
 h1.ht .dim{color:rgba(28,16,23,.2);}
 
 .hero-sub{
-  font-size:15px;color:rgba(28,16,23,.75);
-  max-width:460px;line-height:1.75;
-  margin-bottom:32px;
+  font-size:13px;color:rgba(28,16,23,.65);
+  max-width:260px;line-height:1.7;
+  margin-bottom:20px;
 }
 
 /* kawaii chips */
@@ -181,39 +190,43 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 .c5{background:#EFF6FF;color:#1D4ED8;border-color:#BAE6FD;}
 .c6{background:#DBEAFE;color:#1E40AF;border-color:#BFDBFE;}
 
-/* hero right — stats pill cluster */
+/* hero right — stats compact 2x2 grid */
 .hero-right{
-  position:relative;z-index:1;
-  display:flex;flex-direction:column;gap:10px;
-  padding-top:8px;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:7px;
+  margin-top:20px;
 }
 .stat-pill{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 20px;border-radius:20px;
-  border:2px solid transparent;
+  display:flex;flex-direction:column;gap:2px;
+  padding:12px 14px;border-radius:14px;
+  border:1.5px solid transparent;
   animation:floatIn .5s ease both;
 }
 .stat-pill:nth-child(1){animation-delay:.1s}
 .stat-pill:nth-child(2){animation-delay:.2s}
 .stat-pill:nth-child(3){animation-delay:.3s}
 .stat-pill:nth-child(4){animation-delay:.4s}
-@keyframes floatIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:translateX(0)}}
+@keyframes floatIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .sp1{background:#DBEAFE;border-color:#93C5FD;}
 .sp2{background:#EFF6FF;border-color:#BFDBFE;}
 .sp3{background:#DBEAFE;border-color:#93C5FD;}
 .sp4{background:#EFF6FF;border-color:#BAE6FD;}
 .stat-pill-n{
   font-family:'DM Serif Display',serif;
-  font-size:28px;letter-spacing:-.02em;color:var(--ink);
+  font-size:22px;letter-spacing:-.02em;color:var(--ink);
 }
-.stat-pill-l{font-family:'DM Mono',monospace;font-size:10px;color:rgba(28,16,23,.45);letter-spacing:.06em;}
+.stat-pill-l{font-family:'DM Mono',monospace;font-size:9px;color:rgba(28,16,23,.45);letter-spacing:.06em;}
 
 /* ── SPHERE AREA ── */
-#sph-area{position:relative;margin-top:32px;}
+#sph-area{
+  grid-column:2;
+  display:flex;flex-direction:column;
+  position:relative;
+}
 
 #filters{
   display:flex;align-items:center;justify-content:center;
-  gap:8px;padding:0 40px 12px;flex-wrap:wrap;
+  gap:8px;padding:16px 24px 10px;flex-wrap:wrap;
 }
 .fb{
   font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
@@ -250,7 +263,8 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 }
 
 #scene{
-  position:relative;height:520px;
+  position:relative;
+  flex:1;min-height:480px;
   display:flex;align-items:center;justify-content:center;
   perspective:1000px;cursor:none;user-select:none;overflow:hidden;
 }
@@ -534,10 +548,9 @@ footer{
 
 <!-- ══ HOME ══ -->
 <div class="sec on" id="s-home">
-  <div class="hero-deco hd1"></div>
-  <div class="hero-deco hd2"></div>
-  <div class="hero-deco hd3"></div>
   <div class="hero">
+    <div class="hero-deco hd1"></div>
+    <div class="hero-deco hd2"></div>
     <div class="hero-left">
       <div class="hero-tag">Milano · Developer · Creative</div>
       <h1 class="ht">
@@ -545,8 +558,8 @@ footer{
         <em>&amp; Creative</em><br>
         <span class="dim">Technologist</span>
       </h1>
-      <p class="hero-sub">iOS, web, sistemi identitari, food e-commerce.<br>Costruisco cose con un'estetica precisa e un cuore kawaii.</p>
-      <button class="contact-btn" onclick="document.querySelector('.nb[data-s=contact]').click();" style="margin:24px 0 16px 0;padding:12px 32px;border-radius:100px;background:#3B82F6;color:#fff;font-family:'Syne',sans-serif;font-size:16px;font-weight:700;letter-spacing:.04em;border:none;box-shadow:0 4px 16px #3B82F633;cursor:pointer;transition:background .18s;">Contattami</button>
+      <p class="hero-sub">iOS, web, sistemi identitari, food e-commerce. Estetica precisa e cuore kawaii.</p>
+      <button class="contact-btn" onclick="document.querySelector('.nb[data-s=contact]').click();" style="margin:18px 0 14px 0;padding:10px 24px;border-radius:100px;background:#3B82F6;color:#fff;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;border:none;box-shadow:0 4px 14px #3B82F633;cursor:pointer;transition:background .18s,transform .1s;width:100%;">Contattami</button>
       <div class="chips">
         <span class="chip c1">SwiftUI ✦</span>
         <span class="chip c2">Psyche/OS</span>
@@ -675,8 +688,52 @@ footer{
 <!-- ══ REPORT & ANALISI ══ -->
 <div class="sec" id="s-report">
   <div class="sec-badge">report & analisi</div>
-  <div class="sttl">Report tecnici dal progetto METIME</div>
-  <div id="report-list" style="margin-top:32px;display:grid;gap:28px;"></div>
+  <div class="sttl">Report tecnici<br><em>METIME</em> ✦</div>
+
+  <!-- Tab bar -->
+  <div id="rep-tabs" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;"></div>
+
+  <!-- Layout: content + TOC -->
+  <div style="display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:start;" id="rep-layout">
+
+    <!-- Content area -->
+    <div id="rep-content" style="
+      background:#fff;border-radius:20px;
+      border:1.5px solid rgba(28,16,23,.07);
+      box-shadow:0 4px 24px rgba(59,130,246,.07);
+      padding:40px;min-height:400px;
+      font-size:14px;line-height:1.8;color:rgba(28,16,23,.85);
+    ">
+      <!-- Skeleton iniziale -->
+      <div id="rep-skeleton">
+        <div style="width:60%;height:28px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:8px;margin-bottom:20px;animation:shimmer 1.4s infinite;"></div>
+        <div style="width:100%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;margin-bottom:10px;animation:shimmer 1.4s infinite .1s;"></div>
+        <div style="width:90%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;margin-bottom:10px;animation:shimmer 1.4s infinite .2s;"></div>
+        <div style="width:95%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;margin-bottom:10px;animation:shimmer 1.4s infinite .3s;"></div>
+        <div style="width:70%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;margin-bottom:24px;animation:shimmer 1.4s infinite .4s;"></div>
+        <div style="width:45%;height:20px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:6px;margin-bottom:14px;animation:shimmer 1.4s infinite .1s;"></div>
+        <div style="width:100%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;margin-bottom:10px;animation:shimmer 1.4s infinite .2s;"></div>
+        <div style="width:85%;height:14px;background:linear-gradient(90deg,#f0f4ff,#e8f0ff,#f0f4ff);background-size:200%;border-radius:4px;animation:shimmer 1.4s infinite .3s;"></div>
+      </div>
+      <div id="rep-body" style="display:none;"></div>
+    </div>
+
+    <!-- TOC sidebar -->
+    <div id="rep-toc" style="
+      position:sticky;top:72px;
+      background:#fff;border-radius:16px;
+      border:1.5px solid rgba(28,16,23,.07);
+      padding:20px;font-family:'DM Mono',monospace;
+    ">
+      <div style="font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,16,23,.35);margin-bottom:12px;">Indice</div>
+      <div id="toc-list" style="display:flex;flex-direction:column;gap:4px;">
+        <div style="width:80%;height:10px;background:#f0f4ff;border-radius:3px;margin-bottom:6px;"></div>
+        <div style="width:60%;height:10px;background:#f0f4ff;border-radius:3px;margin-bottom:6px;"></div>
+        <div style="width:70%;height:10px;background:#f0f4ff;border-radius:3px;"></div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <footer>
@@ -729,14 +786,32 @@ async function loadReports() {
       let content = await res.text();
       let html = '';
       if (rep.type === 'md') {
-        // Semplice conversione markdown -> html (solo titoli, paragrafi, liste)
         html = content
-          .replace(/^# (.*)$/gm, '<h2>$1</h2>')
-          .replace(/^## (.*)$/gm, '<h3>$1</h3>')
-          .replace(/^### (.*)$/gm, '<h4>$1</h4>')
-          .replace(/^\* (.*)$/gm, '<li>$1</li>')
-          .replace(/\n\n/g, '<br>')
+          // Titoli
+          .replace(/^#### (.*)$/gm, '<h5 style="font-size:13px;margin:14px 0 4px;color:#1C1017">$1</h5>')
+          .replace(/^### (.*)$/gm, '<h4 style="font-size:15px;margin:16px 0 6px;color:#1C1017">$1</h4>')
+          .replace(/^## (.*)$/gm, '<h3 style="font-size:18px;margin:22px 0 8px;color:#1D4ED8">$1</h3>')
+          .replace(/^# (.*)$/gm, '<h2 style="font-size:22px;margin:0 0 14px;color:#1C1017">$1</h2>')
+          // Tabelle markdown → table HTML
+          .replace(/^\|(.+)\|\s*$/gm, (_, row) => {
+            const cells = row.split('|').map(c => c.trim());
+            return '<tr>' + cells.map(c => `<td style="padding:5px 10px;border:1px solid #DBEAFE;font-size:12px">${c}</td>`).join('') + '</tr>';
+          })
+          .replace(/^[\s]*:?-+:?[\s]*\|.*/gm, '')
+          .replace(/(<tr>.*<\/tr>\n?)+/gs, m => `<table style="border-collapse:collapse;width:100%;margin:10px 0;font-family:'DM Mono',monospace">${m}</table>`)
+          // Liste
+          .replace(/^[-*] (.*)$/gm, '<li style="margin:3px 0;padding-left:4px">$1</li>')
+          .replace(/(<li[^>]*>.*<\/li>\n?)+/gs, m => `<ul style="margin:8px 0 8px 20px">${m}</ul>`)
+          // Grassetto e corsivo
+          .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+          .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+          .replace(/\*(.+?)\*/g, '<em>$1</em>')
+          // Codice inline
+          .replace(/`([^`]+)`/g, '<code style="background:#EFF6FF;color:#1D4ED8;padding:1px 5px;border-radius:4px;font-size:11px;font-family:\'DM Mono\',monospace">$1</code>')
+          // Paragrafi
+          .replace(/\n\n/g, '</p><p style="margin:8px 0;line-height:1.7">')
           .replace(/\n/g, ' ');
+        html = '<p style="margin:8px 0;line-height:1.7">' + html + '</p>';
       } else if (rep.type === 'html') {
         // Estrai solo il contenuto principale
         const match = content.match(/<body[\s\S]*?<\/body>/i);
