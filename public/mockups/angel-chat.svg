@@ -1,0 +1,39 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="32" fill="#EEF6FF"/>
+  <rect x="36" y="36" width="1128" height="728" rx="28" fill="white" stroke="#BFDBFE" stroke-width="2"/>
+  <rect x="72" y="72" width="1056" height="72" rx="20" fill="#DBEAFE"/>
+  <text x="108" y="118" fill="#1E3A8A" font-size="32" font-family="Arial">Angel chat orchestration</text>
+  <rect x="72" y="172" width="690" height="540" rx="24" fill="#F8FBFF" stroke="#DBEAFE" stroke-width="2"/>
+  <rect x="96" y="208" width="300" height="84" rx="20" fill="#EFF6FF"/>
+  <text x="120" y="244" fill="#1E3A8A" font-size="20" font-family="Arial">Utente</text>
+  <text x="120" y="272" fill="#475569" font-size="18" font-family="Arial">Analizza i log e prepara il fix.</text>
+  <rect x="220" y="320" width="510" height="130" rx="22" fill="#1D4ED8"/>
+  <text x="248" y="358" fill="white" font-size="20" font-family="Arial">Angel</text>
+  <text x="248" y="392" fill="#DBEAFE" font-size="18" font-family="Arial">1. Creo un piano</text>
+  <text x="248" y="420" fill="#DBEAFE" font-size="18" font-family="Arial">2. Eseguo shell + file tools</text>
+  <text x="248" y="448" fill="#DBEAFE" font-size="18" font-family="Arial">3. Persisto risultati in memory</text>
+  <rect x="96" y="484" width="280" height="84" rx="20" fill="#EFF6FF"/>
+  <text x="120" y="520" fill="#1E3A8A" font-size="20" font-family="Arial">Osservazione</text>
+  <text x="120" y="548" fill="#475569" font-size="18" font-family="Arial">Tool result e stato worker aggiornati.</text>
+  <rect x="96" y="602" width="626" height="80" rx="20" fill="#0F172A"/>
+  <text x="122" y="648" fill="#93C5FD" font-size="18" font-family="Courier New">&gt; worker.py · queue_backend.py · memory.py</text>
+
+  <rect x="790" y="172" width="338" height="250" rx="24" fill="#F8FBFF" stroke="#DBEAFE" stroke-width="2"/>
+  <text x="822" y="214" fill="#1E3A8A" font-size="24" font-family="Arial">Tool stack</text>
+  <rect x="822" y="240" width="110" height="42" rx="14" fill="#DBEAFE"/>
+  <rect x="946" y="240" width="110" height="42" rx="14" fill="#DBEAFE"/>
+  <rect x="822" y="296" width="110" height="42" rx="14" fill="#DBEAFE"/>
+  <rect x="946" y="296" width="110" height="42" rx="14" fill="#DBEAFE"/>
+  <text x="852" y="267" fill="#1D4ED8" font-size="16" font-family="Arial">Shell</text>
+  <text x="980" y="267" fill="#1D4ED8" font-size="16" font-family="Arial">File</text>
+  <text x="842" y="323" fill="#1D4ED8" font-size="16" font-family="Arial">Browser</text>
+  <text x="972" y="323" fill="#1D4ED8" font-size="16" font-family="Arial">Code</text>
+
+  <rect x="790" y="446" width="338" height="266" rx="24" fill="#0F172A"/>
+  <text x="822" y="490" fill="#E5F0FF" font-size="24" font-family="Arial">Memory lanes</text>
+  <rect x="822" y="520" width="274" height="18" rx="9" fill="#1D4ED8"/>
+  <rect x="822" y="556" width="210" height="18" rx="9" fill="#60A5FA"/>
+  <rect x="822" y="592" width="246" height="18" rx="9" fill="#93C5FD"/>
+  <text x="822" y="640" fill="#BFDBFE" font-size="18" font-family="Arial">short-term context</text>
+  <text x="822" y="668" fill="#BFDBFE" font-size="18" font-family="Arial">persistent summary</text>
+</svg>

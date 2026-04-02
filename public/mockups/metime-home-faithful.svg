@@ -1,0 +1,41 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="32" fill="#F7F1E8"/>
+  <rect x="30" y="30" width="1140" height="740" rx="28" fill="#FFF9F1" stroke="#E6D6BC" stroke-width="2"/>
+  <rect x="58" y="58" width="1084" height="70" rx="20" fill="#F1E4CF"/>
+  <text x="94" y="102" fill="#7C5A3A" font-size="28" font-family="Arial">METIME</text>
+  <text x="864" y="102" fill="#9B7B57" font-size="16" font-family="Arial">home · garden · games · diary · store</text>
+
+  <rect x="58" y="156" width="250" height="560" rx="28" fill="#EEDFC9"/>
+  <rect x="84" y="188" width="198" height="58" rx="18" fill="#D6B47E"/>
+  <rect x="84" y="262" width="198" height="58" rx="18" fill="#F8F1E7"/>
+  <rect x="84" y="336" width="198" height="58" rx="18" fill="#F8F1E7"/>
+  <rect x="84" y="410" width="198" height="58" rx="18" fill="#F8F1E7"/>
+  <text x="136" y="224" fill="white" font-size="18" font-family="Arial">home</text>
+  <text x="132" y="298" fill="#8D6A45" font-size="18" font-family="Arial">garden</text>
+  <text x="132" y="372" fill="#8D6A45" font-size="18" font-family="Arial">store</text>
+  <text x="132" y="446" fill="#8D6A45" font-size="18" font-family="Arial">inventory</text>
+
+  <rect x="336" y="156" width="556" height="560" rx="32" fill="#F5EBDD" stroke="#E6D6BC"/>
+  <ellipse cx="614" cy="632" rx="180" ry="42" fill="#DCC7A5" opacity="0.45"/>
+  <circle cx="614" cy="410" r="112" fill="#F6D4C8"/>
+  <circle cx="580" cy="388" r="12" fill="#5A3F33"/>
+  <circle cx="648" cy="388" r="12" fill="#5A3F33"/>
+  <path d="M576 444 Q614 474 652 444" stroke="#8D5D57" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <ellipse cx="554" cy="426" rx="20" ry="12" fill="#F0B8B2" opacity="0.65"/>
+  <ellipse cx="674" cy="426" rx="20" ry="12" fill="#F0B8B2" opacity="0.65"/>
+  <circle cx="540" cy="318" r="22" fill="#E6BFAE"/>
+  <circle cx="688" cy="318" r="22" fill="#E6BFAE"/>
+  <text x="550" y="566" fill="#8D6A45" font-size="22" font-family="Arial">care focus panel</text>
+
+  <rect x="920" y="156" width="222" height="560" rx="28" fill="#F8F1E7" stroke="#E6D6BC"/>
+  <text x="952" y="202" fill="#8D6A45" font-size="22" font-family="Arial">Mood HUD</text>
+  <rect x="952" y="228" width="158" height="62" rx="18" fill="#FFF9F1"/>
+  <rect x="952" y="308" width="158" height="62" rx="18" fill="#FFF9F1"/>
+  <rect x="952" y="388" width="158" height="62" rx="18" fill="#FFF9F1"/>
+  <text x="982" y="266" fill="#9B7B57" font-size="18" font-family="Arial">mood</text>
+  <text x="982" y="346" fill="#9B7B57" font-size="18" font-family="Arial">energy</text>
+  <text x="982" y="426" fill="#9B7B57" font-size="18" font-family="Arial">coins</text>
+  <rect x="952" y="518" width="158" height="132" rx="22" fill="#D6B47E"/>
+  <text x="986" y="584" fill="white" font-size="18" font-family="Arial">feed</text>
+  <text x="986" y="614" fill="white" font-size="18" font-family="Arial">pet</text>
+</svg>

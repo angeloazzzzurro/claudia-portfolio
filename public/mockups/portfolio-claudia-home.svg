@@ -1,0 +1,37 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="32" fill="#F0F7FF"/>
+  <rect x="28" y="28" width="1144" height="744" rx="28" fill="#F8FBFF" stroke="#DBEAFE" stroke-width="2"/>
+  <rect x="56" y="56" width="1088" height="76" rx="22" fill="rgba(255,255,255,0.7)" stroke="#BFDBFE"/>
+  <text x="96" y="103" fill="#0F1E3C" font-size="28" font-family="Arial">Claudia</text>
+  <text x="854" y="103" fill="#1D4ED8" font-size="16" font-family="Arial">home · about · skills · contact · explore</text>
+
+  <rect x="72" y="170" width="620" height="220" rx="26" fill="white" stroke="#DBEAFE"/>
+  <text x="104" y="226" fill="#1D4ED8" font-size="18" font-family="Arial">Milano · Developer · Creative</text>
+  <text x="104" y="290" fill="#0F1E3C" font-size="58" font-family="Georgia">Developer</text>
+  <text x="104" y="350" fill="#1D4ED8" font-size="58" font-family="Georgia">&amp; Creative</text>
+  <text x="104" y="390" fill="#64748B" font-size="22" font-family="Arial">portfolio monofile HTML/CSS/JS con look editoriale e interazioni custom</text>
+
+  <rect x="730" y="170" width="378" height="220" rx="26" fill="white" stroke="#DBEAFE"/>
+  <rect x="760" y="206" width="138" height="64" rx="18" fill="#DBEAFE"/>
+  <rect x="920" y="206" width="138" height="64" rx="18" fill="#EFF6FF"/>
+  <rect x="760" y="290" width="138" height="64" rx="18" fill="#DBEAFE"/>
+  <rect x="920" y="290" width="138" height="64" rx="18" fill="#EFF6FF"/>
+  <text x="804" y="246" fill="#1D4ED8" font-size="28" font-family="Georgia">5+</text>
+  <text x="956" y="246" fill="#1D4ED8" font-size="28" font-family="Georgia">3</text>
+  <text x="806" y="330" fill="#1D4ED8" font-size="28" font-family="Georgia">MI</text>
+  <text x="946" y="330" fill="#1D4ED8" font-size="28" font-family="Georgia">.dev</text>
+
+  <rect x="72" y="430" width="1036" height="286" rx="28" fill="white" stroke="#DBEAFE"/>
+  <text x="104" y="474" fill="#1D4ED8" font-size="22" font-family="Arial">Interactive sphere</text>
+  <circle cx="590" cy="575" r="160" fill="none" stroke="#DBEAFE" stroke-width="2"/>
+  <circle cx="590" cy="505" r="28" fill="#DBEAFE" stroke="#93C5FD"/>
+  <circle cx="700" cy="560" r="28" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <circle cx="650" cy="670" r="28" fill="#DBEAFE" stroke="#93C5FD"/>
+  <circle cx="510" cy="655" r="28" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <circle cx="465" cy="555" r="28" fill="#DBEAFE" stroke="#93C5FD"/>
+  <path d="M590 505L700 560" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+  <path d="M700 560L650 670" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+  <path d="M650 670L510 655" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+  <path d="M510 655L465 555" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+  <path d="M465 555L590 505" stroke="#93C5FD" stroke-width="2" stroke-dasharray="8 8"/>
+</svg>
