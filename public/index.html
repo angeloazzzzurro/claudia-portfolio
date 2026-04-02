@@ -29,6 +29,32 @@ html.dark .theme-toggle:hover { background:rgba(59,130,246,.2); border-color:rgb
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claudia ✦ Developer & Creative</title>
+<meta name="description" content="Developer & Creative. Building apps with Swift, JavaScript, Python. Design-driven engineering for iOS, Web & Systems.">
+<meta name="keywords" content="developer, designer, swift, javascript, python, ios, web, creative">
+<meta name="author" content="Claudia">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://claudia.dev/">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://claudia.dev/">
+<meta property="og:title" content="Claudia ✦ Developer & Creative">
+<meta property="og:description" content="Building innovative apps & experiences with Swift, JavaScript, Python. Explore 14+ projects in iOS, Web, and Business.">
+<meta property="og:image" content="https://claudia.dev/og-image.png">
+<meta property="og:image:alt" content="Claudia's portfolio featuring 14 projects across iOS, Web, and Business">
+<meta property="og:locale" content="it_IT">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://claudia.dev/">
+<meta name="twitter:title" content="Claudia ✦ Developer & Creative">
+<meta name="twitter:description" content="Building innovative apps & experiences. 14+ projects showcased.">
+<meta name="twitter:image" content="https://claudia.dev/og-image.png">
+
+<!-- Additional SEO -->
+<meta name="theme-color" content="#3B82F6">
+<meta name="color-scheme" content="light dark">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%233B82F6'/%3E%3Ctext x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial,sans-serif' font-size='34' fill='white'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -652,9 +678,9 @@ footer{
   .navl{ gap:2px; flex-wrap:wrap; }
   .nb{ font-size:11px; padding:6px 12px; }
   
-  #s-home{ grid-template-columns:1fr; height:auto; }
-  .hero{ grid-column:1; padding:24px 20px; border-right:none; border-bottom:1.5px solid rgba(59,130,246,.1); }
-  #sph-area{ grid-column:1; grid-row:2; min-height:360px; }
+  #s-home{ grid-template-columns:1fr; grid-template-rows:auto auto; height:auto; }
+  .hero{ grid-column:1; grid-row:2; padding:20px 20px 24px; border-right:none; border-top:1.5px solid rgba(59,130,246,.1); border-bottom:none; }
+  #sph-area{ grid-column:1; grid-row:1; min-height:420px; }
   
   h1.ht{ font-size:clamp(28px,5vw,40px); }
   .hero-sub{ font-size:13px; max-width:100%; }
@@ -682,7 +708,7 @@ footer{
   .navl{ flex-direction:column; gap:4px; width:100%; }
   .nb{ width:100%; text-align:center; font-size:10px; padding:5px 8px; }
   
-  .hero{ padding:16px 12px; }
+  .hero{ padding:14px 12px 16px; }
   h1.ht{ font-size:clamp(24px,6vw,32px); margin-bottom:4px; }
   .hero-tag{ font-size:9px; padding:4px 12px; margin-bottom:16px; }
   .hero-sub{ font-size:12px; line-height:1.6; margin-bottom:12px; }
@@ -695,7 +721,8 @@ footer{
   .stat-pill-n{ font-size:20px; }
   .stat-pill-l{ font-size:8px; }
   
-  #filters{ gap:4px; padding:12px 12px 6px; }
+  #sph-area{ min-height:360px; }
+  #filters{ gap:4px; padding:10px 12px 6px; }
   .fb{ font-size:9px; padding:5px 10px; }
   
   .card{ width:90px; height:64px; }
