@@ -2,6 +2,29 @@
 <html lang="it">
 <head>
 <style id="darkmode-style">
+html.dark {
+  --bg:#0F1E3C;
+  --ink:#F0F7FF;
+  --muted:#93C5FD;
+}
+html.dark nav {
+  background:rgba(15,30,60,.92);
+  border-bottom-color:rgba(93,165,245,.12);
+}
+html.dark .nb, html.dark .nb:hover { color:rgba(240,247,255,.65); }
+html.dark .nb:hover { background:rgba(93,165,245,.15); }
+html.dark .nb.on { color:#BAE6FD; }
+html.dark .hero { background:rgba(15,30,60,.75); border-right-color:rgba(93,165,245,.12); }
+html.dark #sph-area { background:rgba(15,30,60,.5); }
+html.dark .card .ci { background:#1E2D4A; border-color:rgba(93,165,245,.2); }
+html.dark #spop { background:#1E2D4A; border-left-color:rgba(93,165,245,.15); }
+html.dark .spclose { background:rgba(30,45,74,.9); border-color:rgba(93,165,245,.2); }
+html.dark .spclose:hover { background:rgba(59,130,246,.15); }
+html.dark #flbl { color:rgba(240,247,255,.25); }
+html.dark #sh { color:rgba(240,247,255,.15); }
+html.dark .spc span { background:rgba(93,165,245,.12); color:rgba(240,247,255,.6); }
+html.dark .theme-toggle { background:rgba(59,130,246,.12); border-color:rgba(93,165,245,.3); }
+html.dark .theme-toggle:hover { background:rgba(59,130,246,.2); border-color:rgba(93,165,245,.4); }
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,6 +124,15 @@ nav{
 }
 .avd{width:7px;height:7px;border-radius:50%;background:#3B82F6;animation:bl 2s ease infinite;}
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
+.theme-toggle{
+  background:rgba(59,130,246,.08);border:1.5px solid rgba(59,130,246,.25);
+  font-size:11px;padding:6px 14px;border-radius:100px;cursor:none;
+  color:var(--ink);font-family:'DM Mono',monospace;font-weight:500;
+  transition:background .2s,border-color .2s,transform .2s;
+  letter-spacing:.04em;
+}
+.theme-toggle:hover{background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.35);}
+.theme-toggle:active{transform:scale(.94);}
 
 /* ── SECTIONS ── */
 .sec{display:none;animation:fu .32s ease both;}
@@ -607,7 +639,7 @@ footer{
 
 <!-- NAV -->
 <nav>
-    <button id="darkmode-toggle" style="margin-left:12px;font-size:11px;padding:7px 16px;border-radius:100px;border:1px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;">Dark mode</button>
+    <button id="darkmode-toggle" class="theme-toggle" style="margin-left:12px;">🌙 Dark mode</button>
   <div class="logo">
     <span class="logo-dot"></span>
     Claudia
@@ -1569,6 +1601,32 @@ window.addEventListener('mouseup',()=>{if(!drag)return;drag=false;vY=lvY*.87;vX=
 scene.addEventListener('touchstart',e=>{drag=true;wd=false;lmx=e.touches[0].clientX;lmy=e.touches[0].clientY;lvX=0;lvY=0;vX=0;vY=0;e.preventDefault();},{passive:false});
 window.addEventListener('touchmove',e=>{if(!drag)return;const dx=e.touches[0].clientX-lmx,dy=e.touches[0].clientY-lmy;if(Math.abs(dx)+Math.abs(dy)>3)wd=true;rY+=dx*.44;rX+=dy*.44;lvY=dx*.44;lvX=dy*.44;lmx=e.touches[0].clientX;lmy=e.touches[0].clientY;e.preventDefault();},{passive:false});
 window.addEventListener('touchend',()=>{if(!drag)return;drag=false;vY=lvY*.87;vX=lvX*.87;setTimeout(()=>sh.style.opacity='1',900);});
+
+// ── DARK MODE ──
+const darkToggle = document.getElementById('darkmode-toggle');
+const isDarkMode = () => document.documentElement.classList.contains('dark');
+const saveDarkMode = (dark) => localStorage.setItem('darkMode', dark ? 'true' : 'false');
+const loadDarkMode = () => localStorage.getItem('darkMode') === 'true';
+
+function initDarkMode(){
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const shouldBeDark = loadDarkMode() === null ? prefersDark : loadDarkMode();
+  if(shouldBeDark) {
+    document.documentElement.classList.add('dark');
+    darkToggle.textContent = '☀️ Light mode';
+  } else {
+    darkToggle.textContent = '🌙 Dark mode';
+  }
+}
+
+darkToggle.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  const isDark = isDarkMode();
+  darkToggle.textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+  saveDarkMode(isDark);
+});
+
+initDarkMode();
 </script>
 </body>
 </html>
