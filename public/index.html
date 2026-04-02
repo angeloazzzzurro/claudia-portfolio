@@ -47,6 +47,9 @@ html.dark .theme-toggle:hover { background:rgba(59,130,246,.2); border-color:rgb
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; }
+}
 body{background:#F0F7FF;color:var(--ink);font-family:'Syne',sans-serif;cursor:none;overflow-x:hidden;}
 
 /* ── CUSTOM CURSOR ── */
@@ -1383,16 +1386,33 @@ const cur=document.getElementById('cur'),crng=document.getElementById('crng');
 let cmx=0,cmy=0,rx=0,ry=0,customCursor=true;
 const cursorToggle = document.getElementById('cursor-toggle');
 
+// ── CURSOR ACCESSIBILITY ──
+const isTouchDevice = () => window.matchMedia('(hover: none)').matches || 'ontouchstart' in window;
+const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function setCursorMode(on) {
-  customCursor = on;
-  cur.style.display = on ? 'block' : 'none';
-  crng.style.display = on ? 'block' : 'none';
-  document.body.style.cursor = on ? 'none' : 'auto';
-  cursorToggle.textContent = on ? 'Cursore standard' : 'Cursore personalizzato';
+  customCursor = on && !isTouchDevice();
+  cur.style.display = customCursor ? 'block' : 'none';
+  crng.style.display = customCursor ? 'block' : 'none';
+  document.body.style.cursor = customCursor ? 'none' : 'auto';
+  cursorToggle.textContent = customCursor ? 'Cursore standard' : 'Cursore personalizzato';
+  cursorToggle.disabled = isTouchDevice();
 }
 
 cursorToggle.addEventListener('click', () => setCursorMode(!customCursor));
-setCursorMode(true);
+
+// Initialize cursor mode with accessibility checks
+if (isTouchDevice()) {
+  setCursorMode(false);
+  cursorToggle.style.opacity = '0.5';
+  cursorToggle.title = 'Non disponibile su dispositivi touch';
+} else if (prefersReducedMotion()) {
+  setCursorMode(false);
+  cursorToggle.style.opacity = '0.5';
+  cursorToggle.title = 'Disabilitato poiché preferisci meno animazioni';
+} else {
+  setCursorMode(true);
+}
 
 document.addEventListener('mousemove',e=>{
   if (!customCursor) return;
