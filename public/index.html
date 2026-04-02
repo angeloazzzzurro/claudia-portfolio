@@ -113,7 +113,8 @@ nav{
   overflow:hidden;
   display:grid;
   grid-template-columns:290px 1fr;
-  min-height:calc(100vh - 65px);
+  grid-template-rows:1fr;
+  height:calc(100vh - 65px);
 }
 
 .hero{
@@ -222,6 +223,8 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   grid-column:2;
   display:flex;flex-direction:column;
   position:relative;
+  min-height:0;
+  overflow:hidden;
 }
 
 #filters{
@@ -504,6 +507,9 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 .avail-text .avail-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:3px;}
 .avail-text .avail-sub{font-size:12px;color:rgba(28,16,23,.46);font-family:'DM Mono',monospace;}
 
+/* ── SHIMMER ── */
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
 /* ── FOOTER ── */
 footer{
   padding:20px 40px;
@@ -749,34 +755,108 @@ footer{
 </footer>
 
 <script>
-// REPORT & ANALISI — carica tutti i report dal repo METIME
+// REPORT & ANALISI
+const REPORTS = [
+  { title:'Analisi del Codice',      icon:'🔍', url:'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/analisi_codice.md',            type:'md' },
+  { title:'Audit Homepage',          icon:'🧪', url:'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/audit_homepage.md',            type:'md' },
+  { title:'Presentazione Portfolio', icon:'📋', url:'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/presentations/presentation_content.md', type:'md' },
+  { title:'README',                  icon:'📖', url:'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/README.md',                                  type:'md' },
+];
+const _repCache = {};
+
+function mdToHtml(content) {
+  let h = content.replace(/```[\w]*\n?([\s\S]*?)```/g, (_,code) =>
+    `<pre style="background:#0F172A;color:#93C5FD;padding:16px 20px;border-radius:12px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:12px;line-height:1.7;margin:16px 0">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre>`
+  );
+  h = h
+    .replace(/^#### (.*)$/gm, (_,t)=>`<h5 style="font-size:13px;font-weight:700;margin:18px 0 5px;color:#1C1017">${t}</h5>`)
+    .replace(/^### (.*)$/gm,  (_,t)=>`<h4 style="font-size:15px;font-weight:700;margin:22px 0 7px;color:#1C1017">${t}</h4>`)
+    .replace(/^## (.*)$/gm,   (_,t)=>`<h3 style="font-size:19px;font-weight:700;margin:28px 0 10px;color:#1D4ED8;padding-bottom:6px;border-bottom:2px solid #DBEAFE">${t}</h3>`)
+    .replace(/^# (.*)$/gm,    (_,t)=>`<h2 style="font-size:26px;font-family:'DM Serif Display',serif;font-style:italic;margin:0 0 20px;color:#1C1017">${t}</h2>`);
+  h = h.replace(/^\|(.+)\|\s*$/gm, (_,row)=>{
+    const cells=row.split('|').map(c=>c.trim());
+    return '<tr>'+cells.map(c=>`<td style="padding:8px 12px;border:1px solid #DBEAFE;font-size:12px;font-family:'DM Mono',monospace">${c}</td>`).join('')+'</tr>';
+  }).replace(/^\|[-| :]+\|\s*$/gm,'');
+  h = h.replace(/(<tr>[\s\S]*?<\/tr>\s*)+/g, m=>
+    `<div style="overflow-x:auto;margin:14px 0"><table style="border-collapse:collapse;width:100%">${m}</table></div>`
+  );
+  h = h
+    .replace(/^[-*] (.*)$/gm,'<li style="margin:5px 0;padding-left:2px">$1</li>')
+    .replace(/^\d+\. (.*)$/gm,'<li style="margin:5px 0;padding-left:2px">$1</li>');
+  h = h.replace(/(<li[\s\S]*?<\/li>\s*)+/g, m=>`<ul style="margin:10px 0 10px 22px;line-height:1.8">${m}</ul>`);
+  h = h
+    .replace(/\*\*\*(.+?)\*\*\*/g,'<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g,'<em>$1</em>')
+    .replace(/`([^`\n]+)`/g,'<code style="background:#EFF6FF;color:#1D4ED8;padding:2px 6px;border-radius:4px;font-size:12px;font-family:\'DM Mono\',monospace">$1</code>');
+  h = h.replace(/\n\n/g,'\n§\n').replace(/\n/g,' ').replace(/§/g,'</p><p style="margin:10px 0;line-height:1.8">');
+  return '<p style="margin:10px 0;line-height:1.8">'+h+'</p>';
+}
+
+function buildToc(container) {
+  const heads = container.querySelectorAll('h2,h3,h4');
+  const toc = document.getElementById('toc-list');
+  toc.innerHTML = '';
+  if (!heads.length) { toc.innerHTML='<span style="font-size:11px;color:rgba(28,16,23,.3)">—</span>'; return; }
+  heads.forEach((h,i) => {
+    h.id = 'rh'+i;
+    const indent = h.tagName==='H2'?0:h.tagName==='H3'?10:20;
+    const a = document.createElement('a');
+    a.href = '#rh'+i;
+    a.textContent = h.textContent.substring(0,42)+(h.textContent.length>42?'…':'');
+    const baseColor = h.tagName==='H2'?'rgba(28,16,23,.65)':'rgba(28,16,23,.42)';
+    a.style.cssText = `display:block;font-size:${h.tagName==='H2'?'10px':'9px'};color:${baseColor};text-decoration:none;padding:4px 0 4px ${indent+10}px;line-height:1.4;transition:color .15s,border-color .15s;border-left:2px solid transparent;`;
+    a.addEventListener('mouseenter',()=>{a.style.color='#3B82F6';a.style.borderLeftColor='#3B82F6';});
+    a.addEventListener('mouseleave',()=>{a.style.color=baseColor;a.style.borderLeftColor='transparent';});
+    a.addEventListener('click',e=>{e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'});});
+    toc.appendChild(a);
+  });
+}
+
+async function loadReport(idx) {
+  document.querySelectorAll('.rep-tab').forEach((t,i)=>{
+    const on=i===idx;
+    t.style.background=on?'#1D4ED8':'#EFF6FF';
+    t.style.color=on?'#fff':'#1D4ED8';
+    t.style.borderColor=on?'#1D4ED8':'#93C5FD';
+    t.style.fontWeight=on?'700':'500';
+  });
+  document.getElementById('rep-skeleton').style.display='block';
+  document.getElementById('rep-body').style.display='none';
+  const rep=REPORTS[idx];
+  if (!_repCache[idx]) {
+    try { const r=await fetch(rep.url); _repCache[idx]=r.ok?await r.text():'_(impossibile caricare)_'; }
+    catch(e){ _repCache[idx]='_(errore di rete)_'; }
+  }
+  const html = mdToHtml(_repCache[idx]);
+  const body = document.getElementById('rep-body');
+  body.innerHTML=`<div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #DBEAFE;flex-wrap:wrap">
+    <span style="font-size:26px">${rep.icon}</span>
+    <div style="flex:1">
+      <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:#1C1017">${rep.title}</div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(28,16,23,.35);letter-spacing:.08em;text-transform:uppercase;margin-top:3px">METIME · GitHub</div>
+    </div>
+    <a href="${rep.url}" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;color:#3B82F6;text-decoration:none;padding:7px 16px;border:1.5px solid #93C5FD;border-radius:100px;white-space:nowrap" onmouseover="this.style.background='#3B82F6';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='#3B82F6'">↗ Raw</a>
+  </div>`+html;
+  document.getElementById('rep-skeleton').style.display='none';
+  body.style.display='block';
+  buildToc(body);
+}
+
 async function loadReports() {
-  const reports = [
-    {
-      title: 'Analisi del Codice',
-      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/analisi_codice.md',
-      type: 'md'
-    },
-    {
-      title: 'Audit Homepage',
-      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/reviews/audit_homepage.md',
-      type: 'md'
-    },
-    {
-      title: 'Presentazione Portfolio',
-      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/presentations/presentation_content.md',
-      type: 'md'
-    },
-    {
-      title: 'Documentazione Progetto',
-      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/docs/index.html',
-      type: 'html'
-    },
-    {
-      title: 'README',
-      url: 'https://raw.githubusercontent.com/angeloazzzzurro/METIME/main/README.md',
-      type: 'md'
-    }
+  const tabs=document.getElementById('rep-tabs');
+  REPORTS.forEach((rep,i)=>{
+    const btn=document.createElement('button');
+    btn.className='rep-tab';
+    btn.innerHTML=`${rep.icon} ${rep.title}`;
+    btn.style.cssText='font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.06em;padding:9px 18px;border-radius:100px;border:2px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;cursor:pointer;transition:all .2s;';
+    btn.addEventListener('click',()=>loadReport(i));
+    tabs.appendChild(btn);
+  });
+  if (window.innerWidth<700) document.getElementById('rep-layout').style.gridTemplateColumns='1fr';
+  await loadReport(0);
+}
+
   ];
   const container = document.getElementById('report-list');
   for (const rep of reports) {
@@ -947,7 +1027,7 @@ const CONN=[
 const scene=document.getElementById('scene'),sph=document.getElementById('sph'),cnv=document.getElementById('cnv'),ctx=cnv.getContext('2d'),spop=document.getElementById('spop'),sh=document.getElementById('sh');
 let W,H;
 function rsz(){W=scene.clientWidth;H=scene.clientHeight;cnv.width=W;cnv.height=H;}
-rsz();window.addEventListener('resize',rsz);
+rsz();requestAnimationFrame(rsz);window.addEventListener('resize',rsz);
 
 const N=30,R=205,phi=(1+Math.sqrt(5))/2;
 const POS=[],cards=[];
