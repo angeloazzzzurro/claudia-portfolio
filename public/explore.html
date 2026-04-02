@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore | Claudia Portfolio</title>
+  <link rel="stylesheet" href="github-pages.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Claudia / Explore</div>
+    <nav class="nav">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a href="skills.html">skills</a>
+      <a class="active" href="explore.html">explore</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="kicker">GitHub repositories</div>
+      <h1>Explore con progetti reali.</h1>
+      <p class="subtitle">Questa pagina legge direttamente da GitHub e mostra gli ultimi repository pubblici aggiornati.</p>
+    </section>
+
+    <section class="repo-list" id="explore-list"></section>
+  </main>
+
+  <script src="github-pages.js"></script>
+  <script>initExplorePage();</script>
+</body>
+</html>

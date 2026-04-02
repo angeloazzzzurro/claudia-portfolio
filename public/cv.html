@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CV – Xia Jie Xin (Claudia)</title>
+<meta name="description" content="Curriculum Vitae – Xia Jie Xin Claudia. Visual designer, creative technologist, iOS developer, AI practitioner.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F1E3C;
+    --blue:#1D4ED8;
+    --blue-dark:#1E40AF;
+    --blue-light:#DBEAFE;
+    --blue-pale:#EFF6FF;
+    --blue-border:#BFDBFE;
+    --muted:rgba(15,30,60,.45);
+    --divider:rgba(59,130,246,.12);
+    --bg:#FAFCFF;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+  html{font-size:16px;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'DM Mono',monospace;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ── Layout ── */
+  .page{
+    max-width:860px;
+    margin:0 auto;
+    padding:56px 48px 80px;
+  }
+
+  /* ── Top bar ── */
+  .cv-topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-bottom:40px;
+    padding-bottom:32px;
+    border-bottom:2px solid var(--divider);
+  }
+
+  .cv-name{
+    font-family:'DM Serif Display',serif;
+    font-size:38px;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    line-height:1.1;
+    margin-bottom:6px;
+  }
+
+  .cv-name em{
+    font-style:italic;
+    color:var(--blue);
+  }
+
+  .cv-contact{
+    font-size:11px;
+    color:var(--muted);
+    line-height:2;
+  }
+
+  .cv-contact a{
+    color:var(--blue);
+    text-decoration:none;
+    border-bottom:1px solid var(--blue-border);
+  }
+
+  .cv-contact a:hover{color:var(--blue-dark);}
+
+  .cv-actions{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    flex-shrink:0;
+  }
+
+  .btn-print{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    font-weight:700;
+    padding:10px 22px;
+    border-radius:100px;
+    border:1.5px solid var(--blue-border);
+    background:var(--blue-pale);
+    color:var(--blue);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .18s;
+    text-decoration:none;
+    display:inline-block;
+  }
+
+  .btn-print:hover{
+    background:var(--blue-light);
+    border-color:var(--blue);
+  }
+
+  .btn-back{
+    font-family:'DM Mono',monospace;
+    font-size:11px;
+    padding:9px 20px;
+    border-radius:100px;
+    border:1.5px solid var(--divider);
+    background:transparent;
+    color:var(--muted);
+    cursor:pointer;
+    white-space:nowrap;
+    transition:all .18s;
+    text-decoration:none;
+    display:inline-block;
+  }
+
+  .btn-back:hover{
+    color:var(--ink);
+    border-color:rgba(15,30,60,.25);
+  }
+
+  /* ── Blocks ── */
+  .cv-block{
+    margin-bottom:32px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--divider);
+  }
+
+  .cv-block:last-child{
+    border-bottom:none;
+    margin-bottom:0;
+    padding-bottom:0;
+  }
+
+  .cv-block-title{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:18px;
+  }
+
+  /* ── Entries ── */
+  .cv-entry{margin-bottom:16px;}
+  .cv-entry:last-child{margin-bottom:0;}
+
+  .cv-entry-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:3px;
+    flex-wrap:wrap;
+  }
+
+  .cv-role{
+    font-family:'DM Serif Display',serif;
+    font-size:16px;
+    color:var(--ink);
+  }
+
+  .cv-year{
+    font-size:10px;
+    color:var(--muted);
+    white-space:nowrap;
+    flex-shrink:0;
+  }
+
+  .cv-org{
+    font-size:11px;
+    color:var(--blue);
+    margin-bottom:4px;
+  }
+
+  .cv-text{
+    font-size:13px;
+    color:rgba(15,30,60,.65);
+    line-height:1.75;
+  }
+
+  /* ── Chips ── */
+  .cv-chip{
+    font-size:11px;
+    padding:4px 12px;
+    border-radius:100px;
+    background:var(--blue-light);
+    color:var(--blue);
+    display:inline-block;
+    margin-right:6px;
+    margin-bottom:8px;
+  }
+
+  .cv-chip-org{
+    font-size:10px;
+    color:var(--muted);
+  }
+
+  .cv-new{
+    background:var(--blue-pale);
+    color:var(--blue-dark);
+    border:1px solid var(--blue-border);
+  }
+
+  /* ── Links ── */
+  .cv-link{
+    display:inline-block;
+    margin-top:6px;
+    font-size:11px;
+    color:var(--blue);
+    text-decoration:none;
+    border-bottom:1px solid rgba(29,78,216,.25);
+  }
+
+  .cv-link:hover{
+    color:var(--blue-dark);
+    border-bottom-color:var(--blue-dark);
+  }
+
+  /* ── Skills grid ── */
+  .cv-skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+
+  .cv-skill-cat{
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+
+  /* ── Section label ── */
+  .cv-sub-label{
+    font-size:11px;
+    color:var(--muted);
+    font-style:italic;
+    margin-bottom:12px;
+    margin-top:4px;
+  }
+
+  .cv-sub-label + .cv-entry{margin-top:0;}
+
+  /* chip entries — text below chip */
+  .cv-entry .cv-chip ~ .cv-text,
+  .cv-entry .cv-chip-org ~ .cv-text{
+    margin-top:6px;
+  }
+
+  /* sub-label spacing variant */
+  .cv-sub-label--gap{margin-top:16px;}
+
+  /* footer dots palette */
+  .fdot:nth-child(1){background:#3B82F6;}
+  .fdot:nth-child(2){background:#BAE6FD;}
+  .fdot:nth-child(3){background:#38BDF8;}
+  .fdot:nth-child(4){background:#7DD3FC;}
+  .fdot:nth-child(5){background:#93C5FD;}
+  .fdot:nth-child(6){background:#BFDBFE;}
+
+  /* ── Footer ── */
+  .cv-footer{
+    margin-top:48px;
+    padding-top:20px;
+    border-top:1px solid var(--divider);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .cv-footer-copy{
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.06em;
+  }
+
+  .cv-footer-dots{
+    display:flex;
+    gap:5px;
+    align-items:center;
+  }
+
+  .fdot{
+    width:8px;height:8px;
+    border-radius:50%;
+  }
+
+  /* ── Print ── */
+  @media print{
+    body{background:#fff;}
+    .cv-actions,.cv-footer{display:none!important;}
+    .page{padding:24px 32px 40px;}
+    .cv-block{page-break-inside:avoid;}
+    .cv-topbar{padding-bottom:20px;margin-bottom:28px;}
+  }
+
+  /* ── Mobile ── */
+  @media(max-width:600px){
+    .page{padding:32px 20px 56px;}
+    .cv-skills-grid{grid-template-columns:1fr;}
+    .cv-name{font-size:28px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <div class="cv-topbar">
+    <div>
+      <div class="cv-name">Xia Jie Xin<br><em>Claudia</em> ✦</div>
+      <p class="cv-contact">
+        Via Tavazzano 2, Milan &nbsp;·&nbsp; +39 3924004756 &nbsp;·&nbsp; <a href="mailto:xjiexin97@gmail.com">xjiexin97@gmail.com</a><br>
+        <a href="https://www.linkedin.com/in/jie-xin-xia-096232179" target="_blank" rel="noopener">linkedin.com/in/jie-xin-xia-096232179</a>
+        &nbsp;·&nbsp;
+        <a href="https://www.behance.net/claudiajiexinxia" target="_blank" rel="noopener">behance.net/claudiajiexinxia</a>
+      </p>
+    </div>
+    <div class="cv-actions no-print">
+      <a href="index.html" class="btn-back">← Portfolio</a>
+      <button class="btn-print" onclick="window.print()">Esporta PDF ↓</button>
+    </div>
+  </div>
+
+  <!-- Professional Profile -->
+  <div class="cv-block">
+    <div class="cv-block-title">Professional Profile</div>
+    <p class="cv-text">Italo-Chinese visual designer and creative technologist with a multidisciplinary background in fashion, visual storytelling, generative AI, and software development. Born in Cagliari and raised in Milan, she combines artistic training and emerging technologies to build immersive experiences across design, narrative, and interactive systems. Her work focuses on emotional resonance, surreal aesthetics, and human-AI collaboration.</p>
+  </div>
+
+  <!-- Education -->
+  <div class="cv-block">
+    <div class="cv-block-title">Education</div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">MA in Fashion Design (Womenswear &amp; Knitwear)</span><span class="cv-year">2020–2021</span></div>
+      <div class="cv-org">IED – Istituto Europeo di Design, Milan</div>
+      <p class="cv-text">Tesi: embodiment digitale, astrazione della forma corporea, capi come estensioni emotive.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">BA in Fashion Design (Accessories &amp; Footwear)</span><span class="cv-year">2016–2019</span></div>
+      <div class="cv-org">IED – Istituto Europeo di Design, Milan</div>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Diploma Artistico – Grafica &amp; Visual Design</span><span class="cv-year">2011–2016</span></div>
+      <div class="cv-org">Liceo Artistico Umberto Boccioni, Milan</div>
+    </div>
+  </div>
+
+  <!-- Currently Studying -->
+  <div class="cv-block">
+    <div class="cv-block-title">Currently Studying</div>
+    <div class="cv-entry"><span class="cv-chip">Principles of UX/UI Design</span><span class="cv-chip-org">Meta · Coursera</span><p class="cv-text">Interface design fundamentals, accessibility, and user-centered design process.</p></div>
+    <div class="cv-entry"><span class="cv-chip">Start the UX Design Process</span><span class="cv-chip-org">Google · Coursera</span><p class="cv-text">Problem framing, persona research, wireflows, and design systems.</p></div>
+    <div class="cv-entry"><span class="cv-chip cv-new">iOS App Development</span><span class="cv-chip-org">Self-directed · Xcode + Swift</span><p class="cv-text">SwiftUI, SpriteKit, SwiftData, StoreKit 2, and AVFoundation for production-ready apps.</p></div>
+    <div class="cv-entry"><span class="cv-chip cv-new">Machine Learning &amp; Deep Learning</span><span class="cv-chip-org">Self-directed · PyTorch</span><p class="cv-text">CNN pipelines for emotion recognition from image and audio, mel-spectrogram modeling, and multimodal late-fusion experiments.</p></div>
+    <div class="cv-entry"><span class="cv-chip cv-new">AI-Assisted Development</span><span class="cv-chip-org">Claude Code CLI</span><p class="cv-text">Agentic coding workflows, prompt engineering, terminal-first development, and Git-based collaboration.</p></div>
+  </div>
+
+  <!-- Work Experience -->
+  <div class="cv-block">
+    <div class="cv-block-title">Work Experience</div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Freelance Executive Producer</span><span class="cv-year">Sep–Nov 2021</span></div>
+      <div class="cv-org">Warner Bros Music Italia</div>
+      <p class="cv-text">Creative Direction and Visual Concept Development. Directed video concepts and visual identity for music projects, supervising scriptwriting, scheduling, budget breakdown, and delivery with directors and post-production teams.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Visual Operations &amp; E-commerce Coordination</span><span class="cv-year">Mar 2021 – Mar 2022</span></div>
+      <div class="cv-org">EXNOVO – Italian Vintage Furniture Trader</div>
+      <p class="cv-text">Managed Milan-Shanghai logistics and supply chain, product photography, catalog design, and online inventory. Coordinated restoration workflows, product storytelling, and e-commerce branding for vintage collections.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Freelance Producer – Children's Fashion Content</span><span class="cv-year">Sep–Nov 2021</span></div>
+      <p class="cv-text">Produced visual campaigns for 0-14 y.o. fashion brands (Taobao, Alibaba). Managed photoshoots, e-commerce visual language, and style research.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Leather Goods Designer</span><span class="cv-year">Sep–Nov 2019</span></div>
+      <div class="cv-org">Kiro di Affaitato Angelica</div>
+      <p class="cv-text">Researched trends, developed collections, and produced tech packs and illustrations with Adobe Illustrator and Photoshop. Supported prototyping and factory coordination.</p>
+    </div>
+  </div>
+
+  <!-- Creative Projects -->
+  <div class="cv-block">
+    <div class="cv-block-title">Creative Projects</div>
+
+    <p class="cv-sub-label">Software &amp; AI Development</p>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">METIME – iOS Wellness App</span><span class="cv-chip cv-new">NEW</span></div>
+      <p class="cv-text">iOS 17+ app built with SwiftUI, SpriteKit, SwiftData, StoreKit 2, and AVFoundation. A kawaii virtual pet mirrors user wellness through mood states, isometric world design, ambient audio, and secure data handling.</p>
+      <a class="cv-link" href="https://github.com/angeloazzzzurro/METIME" target="_blank" rel="noopener">Codice su GitHub →</a>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Angel – Autonomous AI Agent Framework</span><span class="cv-chip cv-new">NEW</span></div>
+      <p class="cv-text">Lightweight autonomous agent framework with iterative loops, tool routing (Shell/File/Browser/Search), short and long-term memory, and sandboxed Python execution.</p>
+      <a class="cv-link" href="https://github.com/angeloazzzzurro/Angel" target="_blank" rel="noopener">Codice su GitHub →</a>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">deepML1 – Emotion Recognition (ML)</span><span class="cv-chip cv-new">NEW</span></div>
+      <p class="cv-text">PyTorch project with image CNNs (FER2013), audio CNNs (RAVDESS mel-spectrograms), and multimodal late-fusion experiments for affect detection.</p>
+      <a class="cv-link" href="index.html#s-report">Documentazione tecnica →</a>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Luna Flow – Cycle Tracking Web App</span></div>
+      <p class="cv-text">Cycle tracker with prediction logic, timeline visualization, and local-first data storage for private daily logging.</p>
+      <a class="cv-link" href="progetti/controllo-ciclo.html">Apri demo web →</a>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">MindScope – Cognitive Test App</span></div>
+      <p class="cv-text">iOS concept for interactive cognitive assessments (ADHD and IQ flows) with a clean, guided mobile UX.</p>
+      <a class="cv-link" href="index.html#s-contact">Case study su richiesta →</a>
+    </div>
+
+    <p class="cv-sub-label cv-sub-label--gap">Generative AI &amp; Visual</p>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Retina Fantasma</span></div>
+      <p class="cv-text">AI-generated short film on fragmented memory and emotional distance through surreal digital imagery.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Alice in a Labyrinth of Light</span></div>
+      <p class="cv-text">Behance prompt series inspired by childhood trauma, dreamscapes, and symbolic visual storytelling.</p>
+    </div>
+    <div class="cv-entry">
+      <div class="cv-entry-head"><span class="cv-role">Project SEMA</span></div>
+      <p class="cv-text">Experimental visual world-building practice combining cinematic prompts, narrative archetypes, and emotional color scripting.</p>
+    </div>
+  </div>
+
+  <!-- Technical & Creative Skills -->
+  <div class="cv-block">
+    <div class="cv-block-title">Technical &amp; Creative Skills</div>
+    <div class="cv-skills-grid">
+      <div>
+        <div class="cv-skill-cat">AI &amp; Generative</div>
+        <p class="cv-text">Midjourney, Adobe Firefly, RunwayML, LTX Studio, ComfyUI, Claude Code</p>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Development</div>
+        <p class="cv-text">Swift/SwiftUI, SpriteKit, Python, PyTorch, JavaScript, TypeScript, Node.js, React, Git/GitHub</p>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Design</div>
+        <p class="cv-text">Photoshop, Illustrator, InDesign, Figma (in progress)</p>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Platforms &amp; Cloud</div>
+        <p class="cv-text">Vercel, GitHub Actions, Miro, Notion, Google Colab, Groq, Shopify</p>
+      </div>
+      <div>
+        <div class="cv-skill-cat">Fashion</div>
+        <p class="cv-text">Pattern making (bags/shoes), collection planning, technical sketching</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Soft Skills -->
+  <div class="cv-block">
+    <div class="cv-block-title">Soft Skills</div>
+    <div class="cv-skills-grid">
+      <div class="cv-text">✦ Aesthetic sensitivity e cross-media vision</div>
+      <div class="cv-text">✦ Emotional intelligence e team empathy</div>
+      <div class="cv-text">✦ Creative direction under pressure</div>
+      <div class="cv-text">✦ Research-oriented e self-taught (AI + coding)</div>
+      <div class="cv-text">✦ Mindset interdisciplinare fashion × tech × storytelling</div>
+    </div>
+  </div>
+
+  <!-- Languages -->
+  <div class="cv-block">
+    <div class="cv-block-title">Languages</div>
+    <div class="cv-skills-grid">
+      <div class="cv-text">Italiano — Native</div>
+      <div class="cv-text">Chinese (Mandarin) — Native</div>
+      <div class="cv-text">English — C1 Advanced</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="cv-footer no-print">
+    <span class="cv-footer-copy">© 2026 Claudia · xjiexin97@gmail.com ✦</span>
+    <div class="cv-footer-dots">
+      <div class="fdot"></div>
+      <div class="fdot"></div>
+      <div class="fdot"></div>
+      <div class="fdot"></div>
+      <div class="fdot"></div>
+      <div class="fdot"></div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>

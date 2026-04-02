@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills | Claudia Portfolio</title>
+  <link rel="stylesheet" href="github-pages.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Claudia / Skills</div>
+    <nav class="nav">
+      <a href="index.html">home</a>
+      <a href="about.html">about</a>
+      <a class="active" href="skills.html">skills</a>
+      <a href="explore.html">explore</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="kicker">GitHub language analytics</div>
+      <h1>Skills estratte dai repository.</h1>
+      <p class="subtitle">Le percentuali sono calcolate dai linguaggi principali dei repository pubblici non-fork.</p>
+      <div class="lang-bar" id="skills-bar"></div>
+      <div class="legend" id="skills-legend"></div>
+    </section>
+
+    <section class="repo-list" id="skills-sample"></section>
+  </main>
+
+  <script src="github-pages.js"></script>
+  <script>initSkillsPage();</script>
+</body>
+</html>

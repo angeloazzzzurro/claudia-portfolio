@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+:root {
+  --bg: #f0f7ff;
+  --panel: #ffffff;
+  --ink: #0f1e3c;
+  --muted: #4b5f84;
+  --line: #c7ddff;
+  --accent: #1d4ed8;
+  --accent-soft: #dbeafe;
+  --warm: #60a5fa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: 'Space Grotesk', sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%, #dbeafe 0%, transparent 45%),
+    radial-gradient(circle at 90% 12%, #bfdbfe 0%, transparent 42%),
+    var(--bg);
+  min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.topbar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(240, 247, 255, 0.92);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #fff;
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+
+.nav a:hover,
+.nav a.active {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 32px auto 64px;
+}
+
+.hero {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 14px 34px rgba(29, 78, 216, 0.08);
+  animation: reveal 0.55s ease;
+}
+
+.kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(30px, 7vw, 58px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 16px 0 0;
+  color: var(--muted);
+  max-width: 70ch;
+  line-height: 1.65;
+}
+
+.grid {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+}
+
+.stat {
+  grid-column: span 3;
+}
+
+.stat .label {
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.stat .value {
+  margin-top: 6px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 27px;
+}
+
+.repo-list {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.repo-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+}
+
+.repo-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.repo-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+.repo-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.repo-desc {
+  margin: 8px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.lang-bar {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+  height: 12px;
+  display: flex;
+}
+
+.lang-segment {
+  height: 100%;
+}
+
+.legend {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.legend-item {
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  padding: 14px;
+  color: var(--muted);
+  background: #fff;
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .stat { grid-column: span 6; }
+}
+
+@media (max-width: 560px) {
+  .topbar { padding: 12px; }
+  .container { margin-top: 20px; }
+  .hero { padding: 18px; border-radius: 18px; }
+  .stat { grid-column: span 12; }
+}

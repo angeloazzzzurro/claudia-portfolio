@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luna Flow - Controllo Ciclo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f7ff;
+    --bg-soft: #eaf2ff;
+    --panel: rgba(255, 255, 255, 0.82);
+    --panel-strong: #ffffff;
+    --ink: #0f1e3c;
+    --muted: #4b5f84;
+    --line: rgba(59, 130, 246, 0.16);
+    --berry: #3b82f6;
+    --berry-deep: #1d4ed8;
+    --sage: #60a5fa;
+    --gold: #93c5fd;
+    --sky: #bfdbfe;
+    --shadow: 0 24px 60px rgba(29, 78, 216, 0.12);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-height: 100vh;
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(circle at top left, rgba(59, 130, 246, 0.18), transparent 24%),
+      radial-gradient(circle at 85% 15%, rgba(147, 197, 253, 0.18), transparent 20%),
+      linear-gradient(180deg, #f0f7ff 0%, #eaf2ff 45%, #ffffff 100%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 28px 0 48px;
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(59, 130, 246, 0.18);
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--berry), #f299b9);
+    box-shadow: 0 0 0 6px rgba(212, 92, 139, 0.12);
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+
+  .hero-card,
+  .panel,
+  .note,
+  .log-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    padding: 32px;
+    min-height: 320px;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    inset: auto auto -80px -30px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 92, 139, 0.24) 0%, rgba(212, 92, 139, 0) 72%);
+  }
+
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -20px;
+    width: 180px;
+    height: 180px;
+    border-radius: 42% 58% 50% 50%;
+    background: radial-gradient(circle, rgba(138, 183, 216, 0.24) 0%, rgba(138, 183, 216, 0) 72%);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.64);
+    border: 1px solid rgba(163, 50, 100, 0.12);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--berry-deep);
+  }
+
+  h1 {
+    max-width: 9ch;
+    margin-bottom: 16px;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 0.94;
+    letter-spacing: -0.04em;
+  }
+
+  .hero-copy {
+    max-width: 54ch;
+    margin-bottom: 28px;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .metric {
+    padding: 16px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(132, 87, 110, 0.1);
+  }
+
+  .metric-label {
+    margin-bottom: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .metric-value {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .phase-panel {
+    border-radius: 32px;
+    padding: 28px;
+  }
+
+  .phase-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    background: rgba(212, 92, 139, 0.1);
+    color: var(--berry-deep);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .phase-title {
+    margin-bottom: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .phase-copy {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 22px;
+  }
+
+  .phase-list {
+    display: grid;
+    gap: 12px;
+  }
+
+  .phase-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: var(--panel-strong);
+    border: 1px solid rgba(132, 87, 110, 0.08);
+  }
+
+  .phase-item span:first-child {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .phase-item strong {
+    font-size: 15px;
+  }
+
+  .main-grid {
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 22px;
+    margin-bottom: 22px;
+  }
+
+  .panel {
+    border-radius: 28px;
+    padding: 26px;
+  }
+
+  .panel-title {
+    margin-bottom: 6px;
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    letter-spacing: -0.03em;
+  }
+
+  .panel-subtitle {
+    margin-bottom: 22px;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .field {
+    display: grid;
+    gap: 8px;
+  }
+
+  .field.full {
+    grid-column: 1 / -1;
+  }
+
+  label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  input,
+  textarea,
+  button {
+    font: inherit;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid rgba(132, 87, 110, 0.16);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.92);
+    color: var(--ink);
+    padding: 14px 16px;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: 2px solid rgba(212, 92, 139, 0.24);
+    border-color: rgba(212, 92, 139, 0.36);
+  }
+
+  textarea {
+    min-height: 92px;
+    resize: vertical;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 999px;
+    padding: 13px 18px;
+    cursor: pointer;
+    transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: var(--berry);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--ink);
+    border: 1px solid rgba(132, 87, 110, 0.16);
+  }
+
+  .timeline {
+    display: grid;
+    gap: 12px;
+  }
+
+  .timeline-band {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    padding: 18px;
+    border: 1px solid rgba(132, 87, 110, 0.12);
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .timeline-band::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(212, 92, 139, 0.14) 0%, rgba(228, 168, 76, 0.12) 50%, rgba(110, 157, 133, 0.12) 100%);
+    pointer-events: none;
+  }
+
+  .timeline-head,
+  .timeline-scale {
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: baseline;
+  }
+
+  .timeline-head strong {
+    font-size: 16px;
+  }
+
+  .timeline-head span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .timeline-scale {
+    display: grid;
+    grid-template-columns: repeat(var(--cycle-length, 28), minmax(0, 1fr));
+    gap: 4px;
+  }
+
+  .day-pill {
+    height: 42px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    border: 1px solid rgba(132, 87, 110, 0.08);
+    color: rgba(45, 31, 45, 0.58);
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  .day-pill.period {
+    background: rgba(212, 92, 139, 0.18);
+    color: var(--berry-deep);
+  }
+
+  .day-pill.fertile {
+    background: rgba(228, 168, 76, 0.2);
+    color: #8e5f10;
+  }
+
+  .day-pill.ovulation {
+    background: rgba(110, 157, 133, 0.24);
+    color: #3d6652;
+    font-weight: 700;
+  }
+
+  .day-pill.today {
+    outline: 2px solid rgba(45, 31, 45, 0.5);
+    outline-offset: -2px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+
+  .note,
+  .log-card {
+    border-radius: 24px;
+    padding: 22px;
+  }
+
+  .note-title {
+    margin-bottom: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+  }
+
+  .note-copy {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0 18px;
+  }
+
+  .symptom-chip {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(132, 87, 110, 0.14);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .symptom-chip.active {
+    background: rgba(212, 92, 139, 0.14);
+    border-color: rgba(212, 92, 139, 0.26);
+    color: var(--berry-deep);
+  }
+
+  .logs {
+    display: grid;
+    gap: 12px;
+  }
+
+  .log-entry {
+    padding: 14px 16px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.74);
+    border: 1px solid rgba(132, 87, 110, 0.1);
+  }
+
+  .log-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    align-items: baseline;
+  }
+
+  .log-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .log-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .log-tag {
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(138, 183, 216, 0.16);
+    color: #395d74;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+  }
+
+  .empty-state {
+    padding: 18px;
+    border-radius: 18px;
+    border: 1px dashed rgba(132, 87, 110, 0.18);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .footer-note {
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    line-height: 1.7;
+  }
+
+  .footer-note strong {
+    color: var(--ink);
+  }
+
+  @media (max-width: 960px) {
+    .hero,
+    .main-grid,
+    .info-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .highlight-grid,
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-card,
+    .phase-panel,
+    .panel,
+    .note,
+    .log-card {
+      padding: 22px;
+      border-radius: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .shell {
+      width: min(100% - 20px, 100%);
+      padding-top: 18px;
+    }
+
+    .topbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    h1 {
+      font-size: 46px;
+    }
+
+    .timeline-scale {
+      gap: 3px;
+    }
+
+    .day-pill {
+      height: 34px;
+      font-size: 9px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <a class="back" href="../index.html">← Torna al portfolio</a>
+      <div class="brand"><span class="brand-dot"></span>Luna Flow · demo locale</div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="eyebrow">Controllo ciclo · local first</div>
+        <h1>Lettura chiara del tuo ritmo.</h1>
+        <p class="hero-copy">
+          Inserisci la data di inizio dell’ultimo ciclo, la durata media e i tuoi appunti. L’app calcola fase corrente, finestra fertile, ovulazione stimata e prossimo inizio ciclo, salvando tutto solo nel browser.
+        </p>
+        <div class="highlight-grid">
+          <div class="metric">
+            <div class="metric-label">Oggi sei a</div>
+            <div class="metric-value" id="cycle-day">Giorno 1</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Prossimo ciclo</div>
+            <div class="metric-value" id="next-period">--</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Finestra fertile</div>
+            <div class="metric-value" id="fertile-range">--</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="phase-panel panel">
+        <div class="phase-chip" id="phase-chip">Fase attuale</div>
+        <div class="phase-title" id="phase-title">Mestruale</div>
+        <p class="phase-copy" id="phase-copy">Aggiorna i dati per vedere una lettura personalizzata.</p>
+        <div class="phase-list">
+          <div class="phase-item"><span>Ovulazione stimata</span><strong id="ovulation-date">--</strong></div>
+          <div class="phase-item"><span>Durata mestruazione</span><strong id="period-length-readout">5 giorni</strong></div>
+          <div class="phase-item"><span>Durata media ciclo</span><strong id="cycle-length-readout">28 giorni</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="main-grid">
+      <div class="panel">
+        <div class="panel-title">Impostazioni ciclo</div>
+        <p class="panel-subtitle">Valori medi modificabili in qualsiasi momento. I dati restano nel tuo browser con localStorage.</p>
+        <form id="cycle-form">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="last-period-start">Inizio ultimo ciclo</label>
+              <input id="last-period-start" name="lastPeriodStart" type="date" required>
+            </div>
+            <div class="field">
+              <label for="cycle-length">Durata media ciclo</label>
+              <input id="cycle-length" name="cycleLength" type="number" min="21" max="40" step="1" required>
+            </div>
+            <div class="field">
+              <label for="period-length">Durata mestruazione</label>
+              <input id="period-length" name="periodLength" type="number" min="2" max="10" step="1" required>
+            </div>
+            <div class="field full">
+              <label for="notes">Note ricorrenti</label>
+              <textarea id="notes" name="notes" placeholder="Es. crampi leggeri nei primi due giorni, energia alta dopo ovulazione..."></textarea>
+            </div>
+          </div>
+          <div class="button-row">
+            <button class="btn btn-primary" type="submit">Salva e aggiorna previsioni</button>
+            <button class="btn btn-secondary" type="button" id="reset-data">Reset dati</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Timeline del ciclo</div>
+        <p class="panel-subtitle">Segmento visivo del ciclo medio con evidenza su mestruazione, fertilità, ovulazione e giorno corrente.</p>
+        <div class="timeline">
+          <div class="timeline-band">
+            <div class="timeline-head">
+              <strong id="timeline-title">Ciclo medio di 28 giorni</strong>
+              <span id="timeline-summary">Fase mestruale</span>
+            </div>
+            <div class="timeline-scale" id="timeline-scale"></div>
+          </div>
+          <div class="note">
+            <div class="note-title">Promemoria</div>
+            <p class="note-copy" id="notes-preview">Nessuna nota salvata. Usa questo spazio per osservare pattern reali, non per sostituire un parere medico.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-grid">
+      <div class="note">
+        <div class="note-title">Segnali della fase</div>
+        <p class="note-copy" id="phase-guidance">Dopo il salvataggio vedrai una guida rapida contestuale alla fase stimata.</p>
+      </div>
+      <div class="note">
+        <div class="note-title">Prossime date</div>
+        <p class="note-copy" id="next-dates">Salva i dati per generare le prossime milestone del ciclo.</p>
+      </div>
+      <div class="note">
+        <div class="note-title">Privacy</div>
+        <p class="note-copy">Tutto resta in locale: nessun backend, nessun account, nessuna sincronizzazione remota.</p>
+      </div>
+    </section>
+
+    <section class="main-grid">
+      <div class="panel">
+        <div class="panel-title">Log rapido di oggi</div>
+        <p class="panel-subtitle">Registra sintomi o sensazioni della giornata per costruire uno storico minimo ma utile.</p>
+        <div class="chips" id="symptom-chips"></div>
+        <div class="field full">
+          <label for="daily-note">Nota giornaliera</label>
+          <textarea id="daily-note" placeholder="Energia, umore, sonno, appetito, dolori, focus..."></textarea>
+        </div>
+        <div class="button-row">
+          <button class="btn btn-primary" type="button" id="save-log">Aggiungi log di oggi</button>
+        </div>
+      </div>
+
+      <div class="log-card">
+        <div class="panel-title">Storico recente</div>
+        <p class="panel-subtitle">Ultimi appunti salvati localmente.</p>
+        <div class="logs" id="logs"></div>
+      </div>
+    </section>
+
+    <p class="footer-note"><strong>Nota:</strong> questa demo fornisce stime orientative basate su medie inserite manualmente. Non è un dispositivo medico.</p>
+  </div>
+
+<script>
+  const storageKey = 'luna-flow-state';
+  const defaultState = {
+    lastPeriodStart: offsetDate(new Date(), -12),
+    cycleLength: 28,
+    periodLength: 5,
+    notes: '',
+    logs: []
+  };
+
+  const symptomOptions = [
+    'Crampi',
+    'Gonfiore',
+    'Energia alta',
+    'Energia bassa',
+    'Mal di testa',
+    'Umore sensibile',
+    'Focus',
+    'Fame intensa'
+  ];
+
+  const phaseDefinitions = {
+    menstrual: {
+      label: 'Fase mestruale',
+      chip: 'Mestruazione',
+      copy: 'Finestra di recupero: il corpo è impegnato nel rinnovamento. Pianifica con meno attrito e più margine.',
+      guidance: 'Se senti energia bassa o maggiore sensibilità, alleggerire il carico può aiutare. Tieni traccia di flusso, dolori e sonno.',
+      color: 'rgba(212, 92, 139, 0.14)'
+    },
+    follicular: {
+      label: 'Fase follicolare',
+      chip: 'Ripartenza',
+      copy: 'Spesso coincide con una salita graduale di energia, lucidità e apertura verso attività nuove.',
+      guidance: 'Buon momento per pianificare, iniziare, testare abitudini e osservare come cambia il focus giorno dopo giorno.',
+      color: 'rgba(138, 183, 216, 0.18)'
+    },
+    ovulation: {
+      label: 'Ovulazione',
+      chip: 'Picco fertile',
+      copy: 'Periodo centrale del ciclo con fertilità stimata più alta. Le sensazioni possono essere più intense o variabili.',
+      guidance: 'Se il tuo obiettivo è evitare o cercare una gravidanza, qui le sole medie non bastano: usa metodi appropriati e supporto medico se serve.',
+      color: 'rgba(110, 157, 133, 0.2)'
+    },
+    luteal: {
+      label: 'Fase luteale',
+      chip: 'Pre-ciclo',
+      copy: 'La seconda metà del ciclo può portare oscillazioni di fame, umore, sonno o bisogno di maggiore struttura.',
+      guidance: 'Monitora sintomi ricorrenti, organizza pause e osserva se alcuni trigger si ripetono con precisione in questa finestra.',
+      color: 'rgba(228, 168, 76, 0.18)'
+    }
+  };
+
+  const form = document.getElementById('cycle-form');
+  const resetButton = document.getElementById('reset-data');
+  const saveLogButton = document.getElementById('save-log');
+  const symptomChips = document.getElementById('symptom-chips');
+  const logsEl = document.getElementById('logs');
+  const dailyNoteInput = document.getElementById('daily-note');
+  const activeSymptoms = new Set();
+  let state = loadState();
+
+  buildSymptomChips();
+  populateForm();
+  render();
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    state = {
+      ...state,
+      lastPeriodStart: String(formData.get('lastPeriodStart') || defaultState.lastPeriodStart),
+      cycleLength: clampInt(formData.get('cycleLength'), 21, 40, 28),
+      periodLength: clampInt(formData.get('periodLength'), 2, 10, 5),
+      notes: String(formData.get('notes') || '').trim()
+    };
+
+    saveState();
+    render();
+  });
+
+  resetButton.addEventListener('click', () => {
+    state = { ...defaultState, logs: [] };
+    activeSymptoms.clear();
+    dailyNoteInput.value = '';
+    saveState();
+    populateForm();
+    buildSymptomChips();
+    render();
+  });
+
+  saveLogButton.addEventListener('click', () => {
+    const note = dailyNoteInput.value.trim();
+    const symptoms = Array.from(activeSymptoms);
+
+    if (!note && symptoms.length === 0) {
+      return;
+    }
+
+    const entry = {
+      id: String(Date.now()),
+      date: isoToday(),
+      symptoms,
+      note
+    };
+
+    state.logs = [entry, ...(state.logs || [])].slice(0, 8);
+    saveState();
+
+    activeSymptoms.clear();
+    dailyNoteInput.value = '';
+    buildSymptomChips();
+    renderLogs();
+  });
+
+  function render() {
+    populateForm();
+
+    const insight = getCycleInsight(state);
+    const phaseDef = phaseDefinitions[insight.phaseKey];
+
+    document.getElementById('cycle-day').textContent = `Giorno ${insight.dayInCycle}`;
+    document.getElementById('next-period').textContent = formatShortDate(insight.nextPeriodDate);
+    document.getElementById('fertile-range').textContent = `${formatCompactDay(insight.fertileStartDate)}–${formatCompactDay(insight.fertileEndDate)}`;
+    document.getElementById('phase-chip').textContent = phaseDef.chip;
+    document.getElementById('phase-chip').style.background = phaseDef.color;
+    document.getElementById('phase-title').textContent = phaseDef.label;
+    document.getElementById('phase-copy').textContent = phaseDef.copy;
+    document.getElementById('ovulation-date').textContent = formatLongDate(insight.ovulationDate);
+    document.getElementById('period-length-readout').textContent = `${state.periodLength} giorni`;
+    document.getElementById('cycle-length-readout').textContent = `${state.cycleLength} giorni`;
+    document.getElementById('timeline-title').textContent = `Ciclo medio di ${state.cycleLength} giorni`;
+    document.getElementById('timeline-summary').textContent = `${phaseDef.label} · oggi`;
+    document.getElementById('notes-preview').textContent = state.notes || 'Nessuna nota salvata. Usa questo spazio per osservare pattern reali, non per sostituire un parere medico.';
+    document.getElementById('phase-guidance').textContent = phaseDef.guidance;
+    document.getElementById('next-dates').textContent = `Ovulazione stimata il ${formatLongDate(insight.ovulationDate)}. Finestra fertile tra ${formatLongDate(insight.fertileStartDate)} e ${formatLongDate(insight.fertileEndDate)}. Prossimo ciclo previsto il ${formatLongDate(insight.nextPeriodDate)}.`;
+
+    renderTimeline(insight);
+    renderLogs();
+  }
+
+  function renderTimeline(insight) {
+    const scale = document.getElementById('timeline-scale');
+    scale.style.setProperty('--cycle-length', String(state.cycleLength));
+    scale.innerHTML = '';
+
+    for (let day = 1; day <= state.cycleLength; day += 1) {
+      const pill = document.createElement('div');
+      pill.className = 'day-pill';
+      pill.textContent = day;
+
+      if (day <= state.periodLength) {
+        pill.classList.add('period');
+      }
+
+      if (day >= insight.fertileStartDay && day <= insight.fertileEndDay) {
+        pill.classList.add('fertile');
+      }
+
+      if (day === insight.ovulationDay) {
+        pill.classList.add('ovulation');
+      }
+
+      if (day === insight.dayInCycle) {
+        pill.classList.add('today');
+      }
+
+      scale.appendChild(pill);
+    }
+  }
+
+  function renderLogs() {
+    const logs = state.logs || [];
+
+    if (!logs.length) {
+      logsEl.innerHTML = '<div class="empty-state">Nessun log ancora salvato.</div>';
+      return;
+    }
+
+    logsEl.innerHTML = logs.map((entry) => {
+      const tags = (entry.symptoms || []).map((symptom) => `<span class="log-tag">${escapeHtml(symptom)}</span>`).join('');
+      const note = entry.note ? `<div>${escapeHtml(entry.note)}</div>` : '';
+      return `
+        <article class="log-entry">
+          <div class="log-head">
+            <strong>${formatLongDate(entry.date)}</strong>
+            <span class="log-date">${escapeHtml(entry.date)}</span>
+          </div>
+          ${tags ? `<div class="log-tags">${tags}</div>` : ''}
+          ${note}
+        </article>
+      `;
+    }).join('');
+  }
+
+  function buildSymptomChips() {
+    symptomChips.innerHTML = '';
+
+    symptomOptions.forEach((label) => {
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = `symptom-chip${activeSymptoms.has(label) ? ' active' : ''}`;
+      chip.textContent = label;
+      chip.addEventListener('click', () => {
+        if (activeSymptoms.has(label)) {
+          activeSymptoms.delete(label);
+        } else {
+          activeSymptoms.add(label);
+        }
+
+        buildSymptomChips();
+      });
+      symptomChips.appendChild(chip);
+    });
+  }
+
+  function populateForm() {
+    document.getElementById('last-period-start').value = state.lastPeriodStart;
+    document.getElementById('cycle-length').value = String(state.cycleLength);
+    document.getElementById('period-length').value = String(state.periodLength);
+    document.getElementById('notes').value = state.notes || '';
+  }
+
+  function getCycleInsight(source) {
+    const cycleLength = clampInt(source.cycleLength, 21, 40, 28);
+    const periodLength = clampInt(source.periodLength, 2, 10, 5);
+    const lastPeriodStart = parseIsoDate(source.lastPeriodStart) || parseIsoDate(defaultState.lastPeriodStart);
+    const today = startOfDay(new Date());
+    const daysSinceStart = Math.max(0, diffInDays(lastPeriodStart, today));
+    const dayInCycle = (daysSinceStart % cycleLength) + 1;
+    const ovulationDay = Math.max(periodLength + 3, cycleLength - 14);
+    const fertileStartDay = Math.max(periodLength + 1, ovulationDay - 5);
+    const fertileEndDay = Math.min(cycleLength, ovulationDay + 1);
+    const nextPeriodDate = addDays(lastPeriodStart, Math.ceil((daysSinceStart + 1) / cycleLength) * cycleLength);
+    const ovulationDate = addDays(lastPeriodStart, Math.ceil(daysSinceStart / cycleLength) * cycleLength + ovulationDay - 1);
+    const fertileStartDate = addDays(lastPeriodStart, Math.ceil(daysSinceStart / cycleLength) * cycleLength + fertileStartDay - 1);
+    const fertileEndDate = addDays(lastPeriodStart, Math.ceil(daysSinceStart / cycleLength) * cycleLength + fertileEndDay - 1);
+
+    let phaseKey = 'follicular';
+
+    if (dayInCycle <= periodLength) {
+      phaseKey = 'menstrual';
+    } else if (dayInCycle >= fertileStartDay && dayInCycle <= fertileEndDay) {
+      phaseKey = dayInCycle === ovulationDay ? 'ovulation' : 'follicular';
+    } else if (dayInCycle > fertileEndDay) {
+      phaseKey = 'luteal';
+    }
+
+    return {
+      phaseKey,
+      dayInCycle,
+      ovulationDay,
+      fertileStartDay,
+      fertileEndDay,
+      nextPeriodDate,
+      ovulationDate,
+      fertileStartDate,
+      fertileEndDate
+    };
+  }
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) {
+        return { ...defaultState };
+      }
+
+      const parsed = JSON.parse(raw);
+      return {
+        ...defaultState,
+        ...parsed,
+        logs: Array.isArray(parsed.logs) ? parsed.logs : []
+      };
+    } catch {
+      return { ...defaultState };
+    }
+  }
+
+  function saveState() {
+    localStorage.setItem(storageKey, JSON.stringify(state));
+  }
+
+  function clampInt(value, min, max, fallback) {
+    const parsed = Number.parseInt(String(value), 10);
+    if (Number.isNaN(parsed)) {
+      return fallback;
+    }
+    return Math.min(max, Math.max(min, parsed));
+  }
+
+  function parseIsoDate(value) {
+    if (!value) {
+      return null;
+    }
+
+    const [year, month, day] = String(value).split('-').map((part) => Number.parseInt(part, 10));
+    if (!year || !month || !day) {
+      return null;
+    }
+
+    return new Date(year, month - 1, day);
+  }
+
+  function diffInDays(from, to) {
+    const msPerDay = 24 * 60 * 60 * 1000;
+    return Math.floor((startOfDay(to) - startOfDay(from)) / msPerDay);
+  }
+
+  function addDays(date, amount) {
+    const copy = new Date(date);
+    copy.setDate(copy.getDate() + amount);
+    return startOfDay(copy);
+  }
+
+  function startOfDay(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  function offsetDate(date, amount) {
+    return toIsoDate(addDays(startOfDay(date), amount));
+  }
+
+  function toIsoDate(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  function isoToday() {
+    return toIsoDate(new Date());
+  }
+
+  function formatLongDate(dateLike) {
+    const date = typeof dateLike === 'string' ? parseIsoDate(dateLike) : dateLike;
+    return new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long' }).format(date);
+  }
+
+  function formatShortDate(dateLike) {
+    const date = typeof dateLike === 'string' ? parseIsoDate(dateLike) : dateLike;
+    return new Intl.DateTimeFormat('it-IT', { day: '2-digit', month: '2-digit' }).format(date);
+  }
+
+  function formatCompactDay(dateLike) {
+    const date = typeof dateLike === 'string' ? parseIsoDate(dateLike) : dateLike;
+    return new Intl.DateTimeFormat('it-IT', { day: '2-digit', month: 'short' }).format(date);
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+</script>
+</body>
+</html>

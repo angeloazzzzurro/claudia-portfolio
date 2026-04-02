@@ -1,1 +1,19 @@
 .vercel
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# local env
+.env
+.env.*
+
+# macOS / editor temp
+.DS_Store
+*.swp
+*.swo

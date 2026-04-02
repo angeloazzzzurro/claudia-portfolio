@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "test": "node tests/smoke.test.js",
+    "test:smoke": "node tests/smoke.test.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}
