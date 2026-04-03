@@ -1,6 +1,14 @@
-const GITHUB_USER = 'angeloazzzzurro';
-const BASE_API = `https://api.github.com/users/${GITHUB_USER}`;
 const LANG_COLORS = ['#1d4ed8', '#2563eb', '#0ea5e9', '#38bdf8', '#7c3aed', '#0f766e', '#60a5fa'];
+
+let _dataCache = null;
+
+async function _loadData() {
+  if (_dataCache) return _dataCache;
+  const res = await fetch('/github-data.json');
+  if (!res.ok) throw new Error('github-data.json non trovato — esegui: npm run build');
+  _dataCache = await res.json();
+  return _dataCache;
+}
 
 function shortNumber(value) {
   if (value >= 1000000) return `${(value / 1000000).toFixed(1)}M`;
@@ -17,23 +25,14 @@ function formatDate(iso) {
   });
 }
 
-async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: { 'Accept': 'application/vnd.github+json' }
-  });
-  if (!response.ok) {
-    throw new Error(`GitHub API error ${response.status}`);
-  }
-  return response.json();
-}
-
 async function getProfile() {
-  return fetchJson(BASE_API);
+  const data = await _loadData();
+  return data.profile;
 }
 
 async function getRepos() {
-  const repos = await fetchJson(`${BASE_API}/repos?per_page=100&sort=updated`);
-  return repos.filter((repo) => !repo.fork);
+  const data = await _loadData();
+  return data.repos;
 }
 
 function mountStat(container, label, value) {

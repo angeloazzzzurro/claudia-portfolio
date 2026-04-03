@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Grotesk:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
   --bg: #f0f7ff;
@@ -16,7 +16,7 @@
 body {
   margin: 0;
   color: var(--ink);
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Syne', sans-serif;
   background:
     radial-gradient(circle at 15% 0%, #dbeafe 0%, transparent 45%),
     radial-gradient(circle at 90% 12%, #bfdbfe 0%, transparent 42%),
@@ -42,9 +42,9 @@ a { color: inherit; }
 }
 
 .brand {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: 'DM Serif Display', serif;
   font-size: 19px;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.03em;
 }
 
@@ -60,6 +60,7 @@ a { color: inherit; }
   border-radius: 999px;
   padding: 8px 14px;
   font-size: 12px;
+  font-family: 'DM Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   background: #fff;
@@ -130,13 +131,14 @@ h1 {
 .stat .label {
   color: var(--muted);
   font-size: 11px;
+  font-family: 'DM Mono', monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .stat .value {
   margin-top: 6px;
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: 'DM Serif Display', serif;
   font-size: 27px;
 }
 
@@ -161,7 +163,7 @@ h1 {
 }
 
 .repo-name {
-  font-family: 'Bricolage Grotesque', sans-serif;
+  font-family: 'DM Serif Display', serif;
   font-size: 22px;
   text-decoration: none;
   color: var(--accent);
@@ -170,6 +172,7 @@ h1 {
 .repo-meta {
   color: var(--muted);
   font-size: 12px;
+  font-family: 'DM Mono', monospace;
 }
 
 .repo-desc {

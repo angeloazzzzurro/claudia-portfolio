@@ -136,7 +136,8 @@ html{scroll-behavior:smooth;}
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{ animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important; }
 }
-body{background:#F0F7FF;color:var(--ink);font-family:'Syne',sans-serif;cursor:none;overflow-x:hidden;}
+body{background:#F0F7FF;color:var(--ink);font-family:'Syne',sans-serif;cursor:auto;overflow-x:hidden;}
+body.custom-cursor,body.custom-cursor *{cursor:none!important;}
 
 /* ── CUSTOM CURSOR ── */
 #cur{
@@ -183,7 +184,7 @@ nav{
   font-family:'DM Mono',monospace;font-size:13px;font-weight:500;
   letter-spacing:.06em;color:rgba(28,16,23,.45);
   background:none;border:none;padding:7px 16px 5px 16px;border-radius:100px;
-  cursor:none;transition:color .2s,background .2s,transform .1s,box-shadow .2s;
+  cursor:pointer;transition:color .2s,background .2s,transform .1s,box-shadow .2s;
   position:relative;overflow:hidden;
 }
 .nb:hover{color:var(--ink);background:rgba(59,130,246,.1);}
@@ -215,7 +216,7 @@ nav{
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.3}}
 .theme-toggle{
   background:rgba(59,130,246,.08);border:1.5px solid rgba(59,130,246,.25);
-  font-size:11px;padding:6px 14px;border-radius:100px;cursor:none;
+  font-size:11px;padding:6px 14px;border-radius:100px;cursor:pointer;
   color:var(--ink);font-family:'DM Mono',monospace;font-weight:500;
   transition:background .2s,border-color .2s,transform .2s;
   letter-spacing:.04em;
@@ -224,7 +225,7 @@ nav{
 .theme-toggle:active{transform:scale(.94);}
 .cursor-toggle{
   background:rgba(59,130,246,.08);border:1.5px solid rgba(59,130,246,.25);
-  font-size:11px;padding:6px 14px;border-radius:100px;cursor:none;
+  font-size:11px;padding:6px 14px;border-radius:100px;cursor:pointer;
   color:var(--ink);font-family:'DM Mono',monospace;font-weight:500;
   transition:background .2s,border-color .2s,transform .2s;
   letter-spacing:.04em;
@@ -317,7 +318,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   font-family:'DM Mono',monospace;font-size:13px;
   padding:7px 16px;border-radius:100px;
   border:2px solid transparent;
-  cursor:none;transition:transform .18s,box-shadow .18s;
+  cursor:pointer;transition:transform .18s,box-shadow .18s;
   font-weight:500;position:relative;overflow:hidden;
 }
 .chip:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,.1);}
@@ -374,7 +375,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   letter-spacing:.07em;text-transform:uppercase;
   padding:7px 16px;border-radius:100px;
   border:2px solid transparent;
-  cursor:none;transition:background .2s,color .2s,border-color .2s,transform .1s,box-shadow .2s;
+  cursor:pointer;transition:background .2s,color .2s,border-color .2s,transform .1s,box-shadow .2s;
   display:flex;align-items:center;gap:5px;
   position:relative;overflow:hidden;
 }
@@ -407,7 +408,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   position:relative;
   flex:1;min-height:480px;
   display:flex;align-items:center;justify-content:center;
-  perspective:1000px;cursor:none;user-select:none;overflow:hidden;
+  perspective:1000px;cursor:grab;user-select:none;overflow:hidden;
 }
 #cnv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 #sph{width:0;height:0;transform-style:preserve-3d;will-change:transform;}
@@ -602,7 +603,7 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
   background:#fff;
   border:2px solid rgba(0,0,0,.06);
   transition:border-color .2s,transform .2s;
-  cursor:none;margin-bottom:8px;
+  cursor:pointer;margin-bottom:8px;
 }
 .c-row:hover{border-color:#1D4ED8;transform:translateX(4px);}
 .clft{display:flex;align-items:center;gap:14px;}
@@ -827,7 +828,6 @@ footer{
   </div>
   <div class="navl">
     <button class="nb on" data-s="home">home</button>
-    <button class="nb" data-s="about">about</button>
     <button class="nb" data-s="skills">skills</button>
     <button class="nb" data-s="explore">explore</button>
     <button class="nb" data-s="cv">cv</button>
@@ -847,6 +847,7 @@ footer{
     <div class="hero-deco hd1"></div>
     <div class="hero-deco hd2"></div>
     <div class="hero-left">
+      <img id="hero-avatar" src="" alt="Claudia" style="display:none;width:56px;height:56px;border-radius:50%;border:2px solid rgba(59,130,246,.25);object-fit:cover;margin-bottom:16px;box-shadow:0 4px 12px rgba(59,130,246,.15);">
       <div class="hero-tag">Milano · Developer · Creative</div>
       <h1 class="ht">
         iOS + Web<br>
@@ -906,33 +907,6 @@ footer{
           <div class="spc" id="spc"></div>
           <button class="spb" id="spb"></button>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══ ABOUT ══ -->
-<div class="sec" id="s-about">
-  <div class="sec-badge">chi sono</div>
-  <div class="sttl">Developer,<br><em>designer,</em><br>builder ✦</div>
-  <div class="about-grid">
-    <div>
-      <p class="ab" id="about-gh-bio">Lavoro all'intersezione tra ingegneria e pratica contemplativa. Ogni progetto ha una coerenza estetica precisa — da iOS a food e-commerce, da sistemi identitari a web artifacts.</p>
-      <p class="ab" id="about-gh-meta">Basata a Milano. SwiftUI, Next.js, Python. Esploro costantemente nuovi tool e framework, con una preferenza per tutto ciò che è kawaii.</p>
-      <div class="aq" id="about-gh-quote">"Psyche/OS è simultaneamente un progetto di ingegneria e una pratica contemplativa."</div>
-      <div class="stack-list">
-        <div class="stack-row"><span class="stack-name">SwiftUI / iOS</span><span class="stack-badge sbr">primary ✦</span></div>
-        <div class="stack-row"><span class="stack-name">Next.js / React</span><span class="stack-badge sbb">active</span></div>
-        <div class="stack-row"><span class="stack-name">Python / Textual</span><span class="stack-badge sbb">active</span></div>
-        <div class="stack-row"><span class="stack-name">Shopify / Recharge</span><span class="stack-badge sbg">active</span></div>
-      </div>
-    </div>
-    <div>
-      <div class="stats-kawaii">
-        <div class="sk-box skb1"><div class="sk-n" id="about-stat-1n">5+</div><div class="sk-l" id="about-stat-1l">App pubblicate</div></div>
-        <div class="sk-box skb2"><div class="sk-n" id="about-stat-2n">3</div><div class="sk-l" id="about-stat-2l">Stack attivi</div></div>
-        <div class="sk-box skb3"><div class="sk-n" id="about-stat-3n">MI</div><div class="sk-l" id="about-stat-3l">Milano based</div></div>
-        <div class="sk-box skb4"><div class="sk-n" id="about-stat-4n">.dev</div><div class="sk-l" id="about-stat-4l">Dominio target</div></div>
       </div>
     </div>
   </div>
@@ -1261,12 +1235,11 @@ async function syncHomeGithubContent() {
     const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
     const featuredRepo = [...repos].sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0))[0];
 
-    setTextById('about-gh-bio', profile.bio || 'Profilo GitHub aggiornato automaticamente.');
-    setTextById('about-gh-meta', `${profile.location || 'Remote'} · ${repos.length} repository pubblici · ${profile.followers || 0} follower.`);
-    if (featuredRepo) {
-      setTextById('about-gh-quote', `"Repository in evidenza: ${featuredRepo.name} (${featuredRepo.stargazers_count || 0}★)."`);
+    const avatar = document.getElementById('hero-avatar');
+    if (avatar && profile.avatar_url) {
+      avatar.src = profile.avatar_url;
+      avatar.style.display = 'block';
     }
-
     const locationLabel = profile.location ? profile.location.split(',')[0].trim() : 'Remote';
     const metrics = [
       { n: formatCompactNumber(repos.length), l: 'Repo pubblici' },
@@ -1279,8 +1252,6 @@ async function syncHomeGithubContent() {
       const slot = index + 1;
       setTextById(`hero-stat-${slot}n`, metric.n);
       setTextById(`hero-stat-${slot}l`, metric.l);
-      setTextById(`about-stat-${slot}n`, metric.n);
-      setTextById(`about-stat-${slot}l`, metric.l);
     });
 
     const languageCounts = new Map();
@@ -1454,7 +1425,6 @@ document.querySelector('.nb[data-s="report"]').addEventListener('click',()=>{
 // NAV
 document.querySelectorAll('.nb').forEach(b=>{b.addEventListener('click',()=>{
   const externalPageMap = {
-    about: 'about.html',
     skills: 'skills.html',
     explore: 'explore.html'
   };
@@ -1523,8 +1493,8 @@ function setCursorMode(on) {
   customCursor = on && !isTouchDevice();
   cur.style.display = customCursor ? 'block' : 'none';
   crng.style.display = customCursor ? 'block' : 'none';
-  document.body.style.cursor = customCursor ? 'none' : 'auto';
-  cursorToggle.textContent = customCursor ? 'Cursore standard' : 'Cursore personalizzato';
+  document.body.classList.toggle('custom-cursor', customCursor);
+  cursorToggle.textContent = customCursor ? 'Cursore standard' : '🖱 Cursore';
   cursorToggle.disabled = isTouchDevice();
 }
 
@@ -1540,7 +1510,7 @@ if (isTouchDevice()) {
   cursorToggle.style.opacity = '0.5';
   cursorToggle.title = 'Disabilitato poiché preferisci meno animazioni';
 } else {
-  setCursorMode(true);
+  setCursorMode(false);
 }
 
 document.addEventListener('mousemove',e=>{

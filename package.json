@@ -1,5 +1,6 @@
 {
   "scripts": {
+    "build": "node scripts/fetch-github-data.js",
     "test": "node tests/smoke.test.js",
     "test:smoke": "node tests/smoke.test.js"
   },
