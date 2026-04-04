@@ -35,6 +35,19 @@ async function getRepos() {
   return data.repos;
 }
 
+function prioritizeRepos(repos, names = []) {
+  if (!Array.isArray(names) || names.length === 0) return repos;
+
+  const byName = new Map(repos.map((repo) => [String(repo.name || '').toLowerCase(), repo]));
+  const priority = names
+    .map((name) => byName.get(String(name).toLowerCase()))
+    .filter(Boolean);
+  const picked = new Set(priority.map((repo) => repo.id));
+  const rest = repos.filter((repo) => !picked.has(repo.id));
+
+  return [...priority, ...rest];
+}
+
 function mountStat(container, label, value) {
   const card = document.createElement('div');
   card.className = 'card stat';
@@ -50,9 +63,10 @@ async function initAboutPage() {
   try {
     const [profile, repos] = await Promise.all([getProfile(), getRepos()]);
     const starred = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
-    const topRepos = [...repos]
-      .sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0))
-      .slice(0, 4);
+    const topRepos = prioritizeRepos(
+      [...repos].sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0)),
+      ['Angel']
+    ).slice(0, 4);
 
     bioRoot.textContent = profile.bio || 'Profilo GitHub senza bio pubblica.';
     mountStat(statsRoot, 'Repository pubblici', shortNumber(profile.public_repos));
@@ -124,10 +138,12 @@ async function initSkillsPage() {
       legend.appendChild(item);
     });
 
-    const examples = [...repos]
-      .filter((repo) => repo.language)
-      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-      .slice(0, 6);
+    const examples = prioritizeRepos(
+      [...repos]
+        .filter((repo) => repo.language)
+        .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)),
+      ['Angel']
+    ).slice(0, 6);
 
     if (examples.length === 0) {
       sample.innerHTML = '<div class="empty">Nessun repository recente con linguaggio impostato.</div>';
@@ -158,9 +174,10 @@ async function initExplorePage() {
 
   try {
     const repos = await getRepos();
-    const featured = [...repos]
-      .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
-      .slice(0, 12);
+    const featured = prioritizeRepos(
+      [...repos].sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at)),
+      ['Angel']
+    ).slice(0, 12);
 
     if (featured.length === 0) {
       root.innerHTML = '<div class="empty">Nessun repository pubblico trovato.</div>';

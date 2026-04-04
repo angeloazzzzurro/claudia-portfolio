@@ -2,6 +2,93 @@
 <html lang="it">
 <head>
 <style id="darkmode-style">
+html.dark {
+  --bg:#0F1E3C;
+  --ink:#F0F7FF;
+  --muted:#93C5FD;
+}
+html.dark body { background:#0F1E3C; color:#F0F7FF; }
+html.dark .sec { background:#0F1E3C; }
+html.dark .clb { background:rgba(15,30,60,.95); border-top-color:rgba(93,165,245,.1); }
+html.dark .cnm { color:#F0F7FF; }
+html.dark .ctg { color:rgba(240,247,255,.7); }
+html.dark nav {
+  background:rgba(15,30,60,.92);
+  border-bottom-color:rgba(93,165,245,.12);
+}
+html.dark .nb, html.dark .nb:hover { color:rgba(240,247,255,.65); }
+html.dark .nb:hover { background:rgba(93,165,245,.15); }
+html.dark .nb.on { color:#BAE6FD; }
+html.dark .hero { background:rgba(15,30,60,.75); border-right-color:rgba(93,165,245,.12); }
+html.dark #sph-area { background:rgba(15,30,60,.5); }
+html.dark .card .ci { background:#1E2D4A; border-color:rgba(93,165,245,.2); }
+html.dark #spop { background:#1E2D4A; border-left-color:rgba(93,165,245,.15); }
+html.dark .spclose { background:rgba(30,45,74,.9); border-color:rgba(93,165,245,.2); }
+html.dark .spclose:hover { background:rgba(59,130,246,.15); }
+html.dark #flbl { color:rgba(240,247,255,.25); }
+html.dark #sh { color:rgba(240,247,255,.15); }
+html.dark .spc span { background:rgba(93,165,245,.12); color:rgba(240,247,255,.6); }
+html.dark .theme-toggle { background:rgba(59,130,246,.12); border-color:rgba(93,165,245,.3); }
+html.dark .theme-toggle:hover { background:rgba(59,130,246,.2); border-color:rgba(93,165,245,.4); }
+html.dark .cursor-toggle { background:rgba(59,130,246,.12); border-color:rgba(93,165,245,.3); }
+html.dark .cursor-toggle:hover { background:rgba(59,130,246,.2); border-color:rgba(93,165,245,.4); }
+
+/* ── TESTI HARDCODATI ── */
+html.dark .hero-sub { color:rgba(240,247,255,.65); }
+html.dark h1.ht .dim { color:rgba(240,247,255,.28); }
+html.dark .stat-pill-l { color:rgba(240,247,255,.45); }
+html.dark .sttl { color:#F0F7FF; }
+html.dark .sttl em { color:rgba(240,247,255,.25); }
+html.dark .ab { color:rgba(240,247,255,.75); }
+html.dark .sk-l { color:rgba(240,247,255,.4); }
+html.dark .sk-name { color:#F0F7FF; }
+html.dark .sk-desc { color:rgba(240,247,255,.7); }
+html.dark .c-big { color:#F0F7FF; }
+html.dark .c-sub { color:rgba(240,247,255,.6); }
+html.dark .c-name { color:#F0F7FF; }
+html.dark .c-val { color:rgba(240,247,255,.4); }
+html.dark .c-arr { color:rgba(240,247,255,.3); }
+html.dark .c-row:hover .c-arr { color:#BAE6FD; }
+html.dark .exp-name { color:#F0F7FF; }
+html.dark .exp-desc { color:rgba(240,247,255,.55); }
+html.dark .spn { color:#F0F7FF; }
+html.dark .spd { color:rgba(240,247,255,.6); }
+html.dark .cv-role { color:#F0F7FF; }
+html.dark .cv-year { color:rgba(240,247,255,.4); }
+html.dark .cv-text { color:rgba(240,247,255,.65); }
+html.dark .cv-org { color:#93C5FD; }
+html.dark .stack-name { color:#F0F7FF; }
+html.dark .sk-n { color:#F0F7FF; }
+html.dark .dom-url { color:#F0F7FF; }
+html.dark .dom-note { color:rgba(240,247,255,.38); }
+html.dark .avail-text .avail-title { color:#F0F7FF; }
+html.dark .avail-text .avail-sub { color:rgba(240,247,255,.46); }
+html.dark .fl { color:rgba(240,247,255,.28); }
+
+/* ── SFONDI HARDCODATI ── */
+html.dark .stat-pill { background:rgba(30,45,74,.8); border-color:rgba(93,165,245,.2); }
+html.dark .sk-box { background:rgba(30,45,74,.8); border-color:rgba(93,165,245,.2); }
+html.dark .stack-row { background:rgba(30,45,74,.7); border-color:rgba(93,165,245,.12); }
+html.dark .stack-row:hover { border-color:#93C5FD; }
+html.dark .skc { background:rgba(30,45,74,.7); }
+html.dark .c-row { background:rgba(30,45,74,.7); border-color:rgba(93,165,245,.12); }
+html.dark .c-row:hover { border-color:#93C5FD; }
+html.dark .avail-card { background:rgba(30,45,74,.7); border-color:rgba(93,165,245,.2); }
+html.dark .dom { background:linear-gradient(135deg,rgba(30,45,74,.9),rgba(15,30,60,.9)); border-color:rgba(93,165,245,.2); }
+html.dark .exp-card { background:#1E2D4A; border-color:rgba(93,165,245,.15); }
+html.dark .exp-chip { background:rgba(93,165,245,.12); color:#BAE6FD; }
+html.dark .exp-more-btn { background:rgba(30,45,74,.8); border-color:rgba(93,165,245,.3); color:#BAE6FD; }
+html.dark .aq { background:linear-gradient(135deg,rgba(30,45,74,.8),rgba(15,30,60,.8)); border-color:rgba(93,165,245,.2); color:#F0F7FF; }
+html.dark #s-skills { background:linear-gradient(160deg,rgba(15,30,60,1) 0%,rgba(20,38,74,1) 50%,rgba(15,30,60,1) 100%); }
+html.dark footer { background:rgba(15,30,60,.8); border-top-color:rgba(93,165,245,.12); }
+html.dark #rep-content, html.dark #rep-toc { color:rgba(240,247,255,.8); }
+html.dark #rep-content h1, html.dark #rep-content h2, html.dark #rep-content h3 { color:#F0F7FF; }
+html.dark #rep-content a { color:#93C5FD; }
+html.dark #rep-content code { background:rgba(93,165,245,.12); color:#BAE6FD; }
+html.dark .rep-tab { background:rgba(30,45,74,.8); border-color:rgba(93,165,245,.3); color:#BAE6FD; }
+html.dark .rep-tab:hover { background:rgba(30,45,74,1); }
+html.dark .rep-tab.active { background:#1D4ED8; color:#fff; border-color:#1D4ED8; }
+html.dark .copy-btn { background:rgba(255,255,255,.06); border-color:rgba(93,165,245,.2); color:#93C5FD; }
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -565,6 +652,36 @@ h1.ht .dim{color:rgba(28,16,23,.2);}
 
 /* ── SHIMMER ── */
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ══ REPORT ══ */
+.rep-tab{
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  letter-spacing:.06em;padding:9px 18px;border-radius:100px;
+  border:2px solid #93C5FD;background:#EFF6FF;color:#1D4ED8;
+  cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.rep-tab:hover{background:#DBEAFE;border-color:#60A5FA;}
+.rep-tab.active{background:#1D4ED8;color:#fff;border-color:#1D4ED8;font-weight:700;}
+#rep-content{overflow-y:auto;max-height:calc(100vh - 200px);scroll-behavior:smooth;}
+#rep-progress{
+  position:sticky;top:0;height:3px;
+  background:linear-gradient(90deg,#3B82F6,#60A5FA);
+  width:0%;transition:width .08s linear;
+  border-radius:0 2px 2px 0;
+  margin:-40px -40px 20px;
+  z-index:5;
+}
+.code-wrap{position:relative;margin:16px 0;}
+.copy-btn{
+  position:absolute;top:10px;right:10px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(147,197,253,.3);
+  color:#93C5FD;font-family:'DM Mono',monospace;font-size:10px;
+  padding:4px 10px;border-radius:6px;cursor:pointer;transition:all .18s;
+}
+.copy-btn:hover{background:rgba(255,255,255,.22);color:#fff;}
+.copy-btn.copied{background:#059669;border-color:#059669;color:#fff;}
+#rep-body{opacity:1;transition:opacity .2s;}
+#toc-list a.toc-active{color:#3B82F6!important;border-left-color:#3B82F6!important;}
 
 /* ── FOOTER ── */
 footer{
@@ -1249,9 +1366,17 @@ async function syncHomeGithubContent() {
   }
 }
 
+function copyCode(btn){
+  const code = btn.previousElementSibling.textContent;
+  navigator.clipboard.writeText(code).then(()=>{
+    btn.textContent='✓ copiato'; btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='copy'; btn.classList.remove('copied'); }, 2000);
+  }).catch(()=>{ btn.textContent='errore'; setTimeout(()=>{ btn.textContent='copy'; }, 1500); });
+}
+
 function mdToHtml(content) {
   let h = content.replace(/```[\w]*\n?([\s\S]*?)```/g, (_,code) =>
-    `<pre style="background:#0F172A;color:#93C5FD;padding:16px 20px;border-radius:12px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:12px;line-height:1.7;margin:16px 0">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre>`
+    `<div class="code-wrap"><pre style="background:#0F172A;color:#93C5FD;padding:16px 20px;border-radius:12px;overflow-x:auto;font-family:'DM Mono',monospace;font-size:12px;line-height:1.7;margin:0">${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</pre><button class="copy-btn" onclick="copyCode(this)">copy</button></div>`
   );
   h = h
     .replace(/^#### (.*)$/gm, (_,t)=>`<h5 style="font-size:13px;font-weight:700;margin:18px 0 5px;color:#1C1017">${t}</h5>`)
@@ -1279,23 +1404,51 @@ function mdToHtml(content) {
 }
 
 function buildToc(container) {
-  const heads = container.querySelectorAll('h2,h3,h4');
+  const heads = container.querySelectorAll('h2,h3,h4,h5');
   const toc = document.getElementById('toc-list');
   toc.innerHTML = '';
   if (!heads.length) { toc.innerHTML='<span style="font-size:11px;color:rgba(28,16,23,.3)">—</span>'; return; }
+  const tocLinks = [];
   heads.forEach((h,i) => {
     h.id = 'rh'+i;
-    const indent = h.tagName==='H2'?0:h.tagName==='H3'?10:20;
+    const indent = h.tagName==='H2'?0:h.tagName==='H3'?10:h.tagName==='H4'?18:24;
+    const sz = h.tagName==='H2'?'10px':'9px';
     const a = document.createElement('a');
     a.href = '#rh'+i;
     a.textContent = h.textContent.substring(0,42)+(h.textContent.length>42?'…':'');
-    const baseColor = h.tagName==='H2'?'rgba(28,16,23,.65)':'rgba(28,16,23,.42)';
-    a.style.cssText = `display:block;font-size:${h.tagName==='H2'?'10px':'9px'};color:${baseColor};text-decoration:none;padding:4px 0 4px ${indent+10}px;line-height:1.4;transition:color .15s,border-color .15s;border-left:2px solid transparent;`;
-    a.addEventListener('mouseenter',()=>{a.style.color='#3B82F6';a.style.borderLeftColor='#3B82F6';});
-    a.addEventListener('mouseleave',()=>{a.style.color=baseColor;a.style.borderLeftColor='transparent';});
-    a.addEventListener('click',e=>{e.preventDefault();h.scrollIntoView({behavior:'smooth',block:'start'});});
+    a.style.cssText = `display:block;font-size:${sz};color:rgba(28,16,23,.45);text-decoration:none;padding:4px 0 4px ${indent+10}px;line-height:1.4;transition:color .15s,border-left-color .15s;border-left:2px solid transparent;`;
+    a.addEventListener('click',e=>{
+      e.preventDefault();
+      const rc = document.getElementById('rep-content');
+      rc.scrollTo({top: h.offsetTop - 60, behavior:'smooth'});
+    });
     toc.appendChild(a);
+    tocLinks.push(a);
   });
+  // IntersectionObserver: highlight active TOC entry
+  if (window._tocObs) window._tocObs.disconnect();
+  const repContent = document.getElementById('rep-content');
+  window._tocObs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if (!entry.isIntersecting) return;
+      const idx = parseInt(entry.target.id.replace('rh',''));
+      tocLinks.forEach((l,i)=>l.classList.toggle('toc-active', i===idx));
+    });
+  },{root: repContent, rootMargin:'-5% 0px -75% 0px', threshold:0});
+  heads.forEach(h=>window._tocObs.observe(h));
+}
+
+function setupReadingProgress(){
+  const bar = document.getElementById('rep-progress');
+  const content = document.getElementById('rep-content');
+  if (!bar || !content) return;
+  if (window._repScrollFn) content.removeEventListener('scroll', window._repScrollFn);
+  window._repScrollFn = ()=>{
+    const max = content.scrollHeight - content.clientHeight;
+    bar.style.width = max > 0 ? (content.scrollTop / max * 100)+'%' : '0%';
+  };
+  content.addEventListener('scroll', window._repScrollFn, {passive:true});
+  bar.style.width = '0%';
 }
 
 async function loadReport(idx) {
@@ -1315,8 +1468,8 @@ async function loadReport(idx) {
     if (typeof rep.content === 'string' && rep.content.trim()) {
       _repCache[idx] = rep.content;
     } else if (rep.url) {
-      try { const r=await fetch(rep.url); _repCache[idx]=r.ok?await r.text():'_(impossibile caricare)_'; }
-      catch(e){ _repCache[idx]='_(errore di rete)_'; }
+      try { const r = await fetch(rep.url); _repCache[idx] = r.ok ? await r.text() : '_(impossibile caricare)_'; }
+      catch(e){ _repCache[idx] = '_(errore di rete)_'; }
     } else {
       _repCache[idx] = '_(report non disponibile)_';
     }
@@ -1330,8 +1483,7 @@ async function loadReport(idx) {
     const label = /^https?:\/\//i.test(rep.url) && rep.type === 'md' ? '↗ Raw' : '↗ Apri';
     actionButtons.push(`<a href="${rep.url}" target="_blank" style="font-family:'DM Mono',monospace;font-size:10px;color:#3B82F6;text-decoration:none;padding:7px 16px;border:1.5px solid #93C5FD;border-radius:100px;white-space:nowrap" onmouseover="this.style.background='#3B82F6';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='#3B82F6'">${label}</a>`);
   }
-  const body = document.getElementById('rep-body');
-  body.innerHTML=`<div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #DBEAFE;flex-wrap:wrap">
+  body.innerHTML = `<div style="display:flex;align-items:center;gap:12px;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #DBEAFE;flex-wrap:wrap">
     <span style="font-size:26px">${rep.icon}</span>
     <div style="flex:1">
       <div style="font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:#1C1017">${rep.title}</div>
@@ -1346,6 +1498,7 @@ async function loadReport(idx) {
   document.getElementById('rep-skeleton').style.display='none';
   body.style.display='block';
   buildToc(body);
+  setupReadingProgress();
 }
 
 async function loadReports() {
