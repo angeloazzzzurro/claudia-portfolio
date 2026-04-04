@@ -1091,6 +1091,8 @@ const MOCKUP_MAP = {
     { url:`${RAW}/claude-codex/main/web-ui/test-screenshots/Desktop-03-terminal-done.png`,   caption:'Desktop — terminale' },
     { url:`${RAW}/claude-codex/main/web-ui/test-screenshots/iPhone-14-01-loaded.png`,        caption:'iPhone — caricato' },
     { url:`${RAW}/claude-codex/main/web-ui/test-screenshots/iPhone-14-02-simulation-done.png`,caption:'iPhone — simulazione' },
+    { url:'mockups/claude-codex-simulator.svg', caption:'Simulatore live' },
+    { url:'mockups/claude-codex-workspace.svg', caption:'Workspace' },
   ],
   portfolio: [
     { url:'mockups/portfolio-claudia-home.svg',    caption:'Home' },
@@ -1099,10 +1101,6 @@ const MOCKUP_MAP = {
   angel: [
     { url:'mockups/angel-dashboard.svg', caption:'Dashboard' },
     { url:'mockups/angel-chat.svg',      caption:'Chat interface' },
-  ],
-  claudecodex: [
-    { url:'mockups/claude-codex-simulator.svg', caption:'Simulatore live' },
-    { url:'mockups/claude-codex-workspace.svg', caption:'Workspace' },
   ],
 };
 
@@ -1406,64 +1404,18 @@ document.querySelector('.nb[data-s="report"]').addEventListener('click',()=>{
 });
 
 // DARK MODE
-const darkStyles = `
-  body { background: #101624 !important; color: #F0F7FF !important; }
-  nav, footer { background: rgba(16,22,36,0.92) !important; }
-  .nb { color:#BFD7FF !important; border-color:rgba(125,211,252,.28) !important; background:rgba(16,22,36,.45) !important; }
-  .nb.on { color:#F0F7FF !important; border-color:#60A5FA !important; background:#1E3A8A !important; }
-  .logo, .sttl, .c-big, .sk-name, .stack-name { color: #F0F7FF !important; }
-  .sec-badge, .hero-tag, .chip, .stat-pill, .stack-badge, .skc, .avail-card, .dom, .c-row, .sk-box { background: #1a2233 !important; color: #F0F7FF !important; border-color: #3B82F6 !important; }
-  .cico, .avail-orb { background: #222c44 !important; }
-  .c-val, .sk-desc, .ab, .hero-sub, .c-sub, .dom-note { color: #BFD7FF !important; }
-  .stat-pill-l, .sk-l, .stack-badge, .sec-badge, .ctg, .spc span { color: #7DD3FC !important; }
-
-  /* Explore readability */
-  .exp-card { background:#1A2233 !important; border-color:rgba(96,165,250,.34) !important; box-shadow:0 10px 24px rgba(0,0,0,.26) !important; }
-  .exp-name, .exp-tag { color:#F0F7FF !important; }
-  .exp-desc { color:#CFE2FF !important; }
-  .exp-chip { background:rgba(59,130,246,.24) !important; color:#CFE2FF !important; }
-  .exp-more-btn { background:#1E3A8A !important; color:#EAF3FF !important; border-color:#60A5FA !important; }
-
-
-  /* Sphere popup readability */
-  #spop { background:#1A2233 !important; border-left-color:rgba(96,165,250,.35) !important; }
-  .spn { color:#F0F7FF !important; }
-  .spd, .spc span { color:#CFE2FF !important; }
-  .sp-divider { background:rgba(147,197,253,.24) !important; }
-  .spclose { background:rgba(26,34,51,.9) !important; color:#F0F7FF !important; border-color:rgba(125,211,252,.3) !important; }
-  .spb { background:#1E3A8A !important; color:#F0F7FF !important; }
-
-  /* Sphere banner readability */
-  #sphere-banner { background:rgba(15,20,40,.94) !important; border-top-color:rgba(96,165,250,.25) !important; }
-  #sb-name { color:#F0F7FF !important; }
-  #sb-hint { color:rgba(147,197,253,.4) !important; }
-  .sp-report-btn { color:#93C5FD !important; border-color:rgba(147,197,253,.3) !important; }
-  .sp-report-btn:hover { background:#1E3A8A !important; }
-
-  /* Report readability */
-  #rep-content, #rep-toc { background:#1A2233 !important; border-color:rgba(96,165,250,.34) !important; color:#EAF3FF !important; }
-  #rep-content, #rep-content p, #rep-content li, #rep-content ul, #rep-content ol, #rep-content blockquote { color:#CFE2FF !important; }
-  #rep-content h1, #rep-content h2, #rep-content h3, #rep-content h4, #rep-content strong { color:#F0F7FF !important; }
-  #rep-content a, #rep-toc a { color:#93C5FD !important; }
-  #rep-content pre, #rep-content code { background:#0F172A !important; color:#DBEAFE !important; border-color:rgba(96,165,250,.3) !important; }
-  #rep-content hr { border-color:rgba(147,197,253,.25) !important; }
-
-  /* Generic section text fallback */
-  .sec, .sec a { color:#EAF3FF; }
-  #flbl, #sh { color:#9FC4FF !important; }
-
-  #s-cv, #s-cv .cv-role, #s-cv .cv-skill-cat, #s-cv .cv-link { color: #F0F7FF !important; }
-  #s-cv .cv-text, #s-cv .cv-chip-org, #s-cv .cv-year { color: #BFD7FF !important; }
-  #s-cv .cv-block { border-bottom-color: rgba(147,197,253,.28) !important; }
-  #s-cv .cv-chip, #s-cv .cv-new { background: #1E3A8A !important; color: #DBEAFE !important; border-color: #3B82F6 !important; }
-`;
 const darkToggle = document.getElementById('darkmode-toggle');
-const darkStyleTag = document.getElementById('darkmode-style');
-let darkOn = false;
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  root.classList.add('dark');
+}
+darkToggle.textContent = root.classList.contains('dark') ? 'Light mode' : 'Dark mode';
 darkToggle.addEventListener('click', () => {
-  darkOn = !darkOn;
-  darkStyleTag.textContent = darkOn ? darkStyles : '';
-  darkToggle.textContent = darkOn ? 'Light mode' : 'Dark mode';
+  root.classList.toggle('dark');
+  const isDark = root.classList.contains('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  darkToggle.textContent = isDark ? 'Light mode' : 'Dark mode';
 });
 // NAV
 document.querySelectorAll('.nb').forEach(b=>{b.addEventListener('click',()=>{
