@@ -1757,8 +1757,8 @@ const N=30,R=205,phi=(1+Math.sqrt(5))/2;
 const POS=[],cards=[];
 let hov=null,af='all',tk=0;
 
-// primary card positions: 4 evenly-spaced indices across the sphere
-const PRIMARY_IDX=P.map((_,k)=>Math.round(k*N/P.length));
+// primary card positions: front-facing, evenly spread across sphere
+const PRIMARY_IDX=P.length===5?[7,12,18,23,28]:P.map((_,k)=>Math.round(k*N/P.length));
 
 for(let i=0;i<N;i++){
   const inc=Math.acos(1-2*(i/N)),az=2*Math.PI*i/phi;
