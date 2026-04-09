@@ -1,0 +1,146 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="tl" cx="0%" cy="0%" r="30%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="tr" cx="100%" cy="0%" r="25%">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#93C5FD" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pageBg" x1="0" y1="0" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#F0F7FF"/>
+      <stop offset="45%" stop-color="#EAF2FF"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#pageBg)"/>
+  <rect width="1200" height="800" fill="url(#tl)"/>
+  <rect width="1200" height="800" fill="url(#tr)"/>
+
+  <!-- Top bar -->
+  <rect x="16" y="16" width="220" height="40" rx="20" fill="rgba(255,255,255,0.72)" stroke="rgba(59,130,246,0.18)" stroke-width="1"/>
+  <text x="36" y="42" fill="#0F1E3C" font-size="12" font-family="monospace" letter-spacing="1">← TORNA AL PORTFOLIO</text>
+  <rect x="920" y="16" width="260" height="40" rx="20" fill="rgba(255,255,255,0.72)" stroke="rgba(59,130,246,0.18)" stroke-width="1"/>
+  <circle cx="942" cy="36" r="6" fill="#3B82F6"/>
+  <text x="956" y="42" fill="#0F1E3C" font-size="12" font-family="monospace">Luna Flow · demo locale</text>
+
+  <!-- === HERO SECTION === -->
+  <!-- Hero card (left) -->
+  <rect x="16" y="76" width="580" height="270" rx="28" fill="rgba(255,255,255,0.88)" stroke="rgba(59,130,246,0.12)" stroke-width="1"/>
+  <!-- Subtle inner gradient -->
+  <rect x="16" y="76" width="580" height="8" rx="4" fill="rgba(59,130,246,0.06)"/>
+
+  <text x="44" y="114" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="2">CONTROLLO CICLO · LOCAL FIRST</text>
+  <text x="44" y="158" fill="#0F1E3C" font-size="34" font-family="Georgia">Lettura chiara del</text>
+  <text x="44" y="196" fill="#0F1E3C" font-size="34" font-family="Georgia">tuo ritmo.</text>
+  <text x="44" y="228" fill="#4B5F84" font-size="13" font-family="Arial" opacity="0.85">Calcola fase corrente, finestra fertile,</text>
+  <text x="44" y="246" fill="#4B5F84" font-size="13" font-family="Arial" opacity="0.85">ovulazione e prossimo inizio — tutto nel browser.</text>
+
+  <!-- 3 metrics -->
+  <rect x="44" y="264" width="155" height="66" rx="16" fill="#F0F7FF" stroke="rgba(59,130,246,0.14)" stroke-width="1"/>
+  <text x="64" y="287" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">OGGI SEI A</text>
+  <text x="64" y="316" fill="#0F1E3C" font-size="22" font-family="Georgia" font-weight="bold">Giorno 14</text>
+
+  <rect x="212" y="264" width="180" height="66" rx="16" fill="#F0F7FF" stroke="rgba(59,130,246,0.14)" stroke-width="1"/>
+  <text x="232" y="287" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">PROSSIMO CICLO</text>
+  <text x="232" y="316" fill="#0F1E3C" font-size="22" font-family="Georgia" font-weight="bold">23 Apr</text>
+
+  <rect x="404" y="264" width="176" height="66" rx="16" fill="#F0F7FF" stroke="rgba(59,130,246,0.14)" stroke-width="1"/>
+  <text x="424" y="287" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">FINESTRA FERTILE</text>
+  <text x="424" y="316" fill="#0F1E3C" font-size="16" font-family="Georgia" font-weight="bold">10 – 16 Apr</text>
+
+  <!-- Phase panel (right) -->
+  <rect x="612" y="76" width="572" height="270" rx="28" fill="rgba(255,255,255,0.88)" stroke="rgba(59,130,246,0.12)" stroke-width="1"/>
+  <rect x="636" y="106" width="120" height="26" rx="13" fill="rgba(212,92,139,0.1)"/>
+  <circle cx="652" cy="119" r="4" fill="#D45C8B"/>
+  <text x="662" y="124" fill="#1D4ED8" font-size="10" font-family="monospace" letter-spacing="1">FASE ATTUALE</text>
+
+  <text x="636" y="164" fill="#0F1E3C" font-size="36" font-family="Georgia">Ovulatoria</text>
+  <text x="636" y="200" fill="#4B5F84" font-size="13" font-family="Arial" line-height="1.6">Picco di energia e socialità. Momento ideale</text>
+  <text x="636" y="218" fill="#4B5F84" font-size="13" font-family="Arial">per progetti importanti e connessioni.</text>
+
+  <rect x="636" y="240" width="516" height="40" rx="12" fill="#F8FAFE"/>
+  <text x="652" y="256" fill="#4B5F84" font-size="12" font-family="Arial">Ovulazione stimata</text>
+  <text x="652" y="272" fill="#0F1E3C" font-size="12" font-family="Arial" font-weight="bold">Giovedì 11 Aprile</text>
+  <text x="960" y="256" fill="#4B5F84" font-size="12" font-family="Arial">Durata ciclo</text>
+  <text x="960" y="272" fill="#0F1E3C" font-size="12" font-family="Arial" font-weight="bold">28 giorni</text>
+  <rect x="636" y="288" width="516" height="40" rx="12" fill="#F8FAFE"/>
+  <text x="652" y="304" fill="#4B5F84" font-size="12" font-family="Arial">Durata mestruazione</text>
+  <text x="652" y="320" fill="#0F1E3C" font-size="12" font-family="Arial" font-weight="bold">5 giorni</text>
+
+  <!-- Divider -->
+  <rect x="16" y="366" width="1168" height="1" fill="rgba(59,130,246,0.1)"/>
+
+  <!-- === MAIN GRID === -->
+  <!-- Left panel: settings form -->
+  <rect x="16" y="380" width="560" height="330" rx="28" fill="rgba(255,255,255,0.88)" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+  <text x="44" y="424" fill="#0F1E3C" font-size="26" font-family="Georgia" letter-spacing="-0.5">Impostazioni ciclo</text>
+  <text x="44" y="448" fill="#4B5F84" font-size="12" font-family="Arial">I dati restano nel tuo browser con localStorage.</text>
+
+  <!-- Form fields -->
+  <text x="44" y="478" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">INIZIO ULTIMO CICLO</text>
+  <rect x="44" y="486" width="512" height="44" rx="18" fill="rgba(255,255,255,0.92)" stroke="rgba(132,87,110,0.16)" stroke-width="1"/>
+  <text x="64" y="514" fill="#0F1E3C" font-size="14" font-family="Arial">27 Marzo 2026</text>
+  <text x="510" y="514" fill="#94A3B8" font-size="14" font-family="Arial">📅</text>
+
+  <text x="44" y="552" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">DURATA MEDIA CICLO</text>
+  <rect x="44" y="560" width="240" height="44" rx="18" fill="rgba(255,255,255,0.92)" stroke="rgba(132,87,110,0.16)" stroke-width="1"/>
+  <text x="64" y="588" fill="#0F1E3C" font-size="14" font-family="Arial">28 giorni</text>
+
+  <text x="316" y="552" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">DURATA MESTRUAZIONE</text>
+  <rect x="316" y="560" width="240" height="44" rx="18" fill="rgba(255,255,255,0.92)" stroke="rgba(132,87,110,0.16)" stroke-width="1"/>
+  <text x="336" y="588" fill="#0F1E3C" font-size="14" font-family="Arial">5 giorni</text>
+
+  <text x="44" y="626" fill="#4B5F84" font-size="10" font-family="monospace" letter-spacing="1">NOTE RICORRENTI</text>
+  <rect x="44" y="634" width="512" height="52" rx="18" fill="rgba(255,255,255,0.92)" stroke="rgba(132,87,110,0.16)" stroke-width="1"/>
+  <text x="64" y="662" fill="#94A3B8" font-size="13" font-family="Arial">Es. crampi leggeri, energia alta dopo ovulazione...</text>
+
+  <rect x="44" y="700" width="280" height="44" rx="22" fill="#3B82F6"/>
+  <text x="84" y="727" fill="white" font-size="13" font-family="Arial" font-weight="bold">Salva e aggiorna previsioni</text>
+  <rect x="340" y="700" width="120" height="44" rx="22" fill="transparent" stroke="rgba(15,30,60,0.15)" stroke-width="1.5"/>
+  <text x="378" y="727" fill="#0F1E3C" font-size="13" font-family="Arial">Reset dati</text>
+
+  <!-- Right panel: timeline -->
+  <rect x="592" y="380" width="592" height="330" rx="28" fill="rgba(255,255,255,0.88)" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+  <text x="620" y="424" fill="#0F1E3C" font-size="26" font-family="Georgia" letter-spacing="-0.5">Timeline del ciclo</text>
+  <text x="620" y="448" fill="#4B5F84" font-size="12" font-family="Arial">Ciclo medio di 28 giorni · fase corrente evidenziata</text>
+
+  <!-- Timeline bar -->
+  <rect x="620" y="464" width="544" height="20" rx="10" fill="#EAF2FF"/>
+  <!-- Mestruale phase (days 1-5) -->
+  <rect x="620" y="464" width="97" height="20" rx="10" fill="#FDA4AF"/>
+  <!-- Follicolare phase (days 6-13) -->
+  <rect x="717" y="464" width="155" height="20" fill="#FDE68A"/>
+  <!-- Ovulatoria (days 14-16) — current -->
+  <rect x="872" y="464" width="58" height="20" fill="#86EFAC"/>
+  <!-- Luteinica (days 17-28) -->
+  <rect x="930" y="464" width="234" height="20" rx="10" fill="#C4B5FD"/>
+
+  <!-- Current day marker -->
+  <rect x="898" y="456" width="3" height="36" rx="1" fill="#0F1E3C"/>
+  <circle cx="899" cy="454" r="5" fill="#0F1E3C"/>
+  <text x="882" y="510" fill="#0F1E3C" font-size="10" font-family="monospace">oggi · g.14</text>
+
+  <!-- Timeline legend -->
+  <circle cx="636" cy="534" r="6" fill="#FDA4AF"/>
+  <text x="648" y="538" fill="#4B5F84" font-size="11" font-family="Arial">mestruale (1–5)</text>
+  <circle cx="776" cy="534" r="6" fill="#FDE68A"/>
+  <text x="788" y="538" fill="#4B5F84" font-size="11" font-family="Arial">follicolare (6–13)</text>
+  <circle cx="920" cy="534" r="6" fill="#86EFAC"/>
+  <text x="932" y="538" fill="#4B5F84" font-size="11" font-family="Arial">ovulatoria (14–16)</text>
+  <circle cx="636" cy="558" r="6" fill="#C4B5FD"/>
+  <text x="648" y="562" fill="#4B5F84" font-size="11" font-family="Arial">luteale (17–28)</text>
+
+  <!-- Note/Promemoria -->
+  <rect x="620" y="578" width="544" height="100" rx="18" fill="#F0F7FF" stroke="rgba(59,130,246,0.1)" stroke-width="1"/>
+  <text x="640" y="602" fill="#0F1E3C" font-size="14" font-family="Georgia" font-weight="bold">Promemoria</text>
+  <text x="640" y="626" fill="#4B5F84" font-size="12" font-family="Arial">Nessuna nota salvata. Usa questo spazio per</text>
+  <text x="640" y="644" fill="#4B5F84" font-size="12" font-family="Arial">osservare pattern reali, non per sostituire</text>
+  <text x="640" y="662" fill="#4B5F84" font-size="12" font-family="Arial">un parere medico.</text>
+
+  <!-- Bottom note -->
+  <text x="600" y="764" fill="#94A3B8" font-size="11" font-family="Arial" text-anchor="middle">🔒 tutti i dati restano nel tuo browser · nessun server · nessun account · nessun tracciamento</text>
+</svg>

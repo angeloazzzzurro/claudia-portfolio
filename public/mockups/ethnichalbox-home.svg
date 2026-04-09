@@ -1,63 +1,113 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="800" rx="32" fill="#F0F7FF"/>
-  <rect x="28" y="28" width="1144" height="744" rx="28" fill="#F8FBFF" stroke="#DBEAFE" stroke-width="2"/>
+  <defs>
+    <linearGradient id="heroBg" x1="72" y1="148" x2="72" y2="340" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Page background -->
+  <rect width="1200" height="800" fill="#F0F7FF"/>
 
   <!-- Nav bar -->
-  <rect x="56" y="56" width="1088" height="64" rx="18" fill="rgba(255,255,255,0.85)" stroke="#BFDBFE"/>
-  <text x="96" y="96" fill="#1E40AF" font-size="24" font-family="Georgia" font-style="italic">EthnicalBox</text>
-  <text x="820" y="96" fill="#1D4ED8" font-size="15" font-family="Arial">Esplora · Ristoranti · Cucine · Preferiti</text>
+  <rect x="0" y="0" width="1200" height="60" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1"/>
+  <text x="32" y="26" fill="#1E40AF" font-size="20" font-family="Georgia" font-style="italic">EthnicalBox</text>
+  <text x="32" y="44" fill="#60A5FA" font-size="10" font-family="Arial" letter-spacing="1">SCOPRI · GUSTA · CONDIVIDI</text>
+  <text x="680" y="36" fill="#334155" font-size="13" font-family="Arial">Esplora</text>
+  <text x="760" y="36" fill="#334155" font-size="13" font-family="Arial">Ristoranti</text>
+  <text x="860" y="36" fill="#334155" font-size="13" font-family="Arial">Cucine</text>
+  <text x="950" y="36" fill="#334155" font-size="13" font-family="Arial">Preferiti ♥</text>
+  <rect x="1080" y="14" width="96" height="32" rx="16" fill="#1E40AF"/>
+  <text x="1104" y="34" fill="white" font-size="12" font-family="Arial">Accedi</text>
 
-  <!-- Hero / Landing strip -->
-  <rect x="72" y="154" width="1036" height="180" rx="22" fill="#1E40AF"/>
-  <text x="110" y="210" fill="#BAE6FD" font-size="14" font-family="Arial" letter-spacing="3">SCOPRI · GUSTA · CONDIVIDI</text>
-  <text x="110" y="268" fill="#FFFFFF" font-size="54" font-family="Georgia">Cibo &amp; Cultura</text>
-  <text x="110" y="314" fill="#93C5FD" font-size="20" font-family="Arial">Ristoranti etnici selezionati — dalla tua città al mondo</text>
-  <rect x="860" y="220" width="190" height="48" rx="24" fill="#3B82F6"/>
-  <text x="912" y="252" fill="#FFFFFF" font-size="16" font-family="Arial">Esplora ora →</text>
+  <!-- Hero banner -->
+  <rect x="24" y="76" width="1152" height="200" rx="24" fill="url(#heroBg)"/>
+  <!-- Subtle pattern overlay -->
+  <circle cx="950" cy="130" r="80" fill="#FFFFFF" opacity="0.04"/>
+  <circle cx="1050" cy="190" r="60" fill="#FFFFFF" opacity="0.04"/>
 
-  <!-- Category chips row -->
-  <text x="90" y="386" fill="#1E40AF" font-size="13" font-family="Arial" letter-spacing="2">CATEGORIE</text>
-  <rect x="72" y="396" width="130" height="40" rx="20" fill="#1E40AF"/>
-  <text x="112" y="422" fill="#FFFFFF" font-size="14" font-family="Arial">🍜 Asiatico</text>
-  <rect x="214" y="396" width="140" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD"/>
-  <text x="250" y="422" fill="#1D4ED8" font-size="14" font-family="Arial">🌮 Messicano</text>
-  <rect x="366" y="396" width="130" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD"/>
-  <text x="399" y="422" fill="#1D4ED8" font-size="14" font-family="Arial">🍕 Italiano</text>
-  <rect x="508" y="396" width="130" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD"/>
-  <text x="537" y="422" fill="#1D4ED8" font-size="14" font-family="Arial">🫕 Medioriente</text>
-  <rect x="650" y="396" width="120" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD"/>
-  <text x="684" y="422" fill="#1D4ED8" font-size="14" font-family="Arial">🍣 Giapponese</text>
+  <text x="60" y="118" fill="#BAE6FD" font-size="11" font-family="Arial" letter-spacing="4">SCOPRI · GUSTA · CONDIVIDI</text>
+  <text x="60" y="166" fill="#FFFFFF" font-size="52" font-family="Georgia">Cibo &amp; Cultura</text>
+  <text x="60" y="200" fill="#93C5FD" font-size="18" font-family="Arial">Ristoranti etnici selezionati — dalla tua città al mondo</text>
+  <text x="60" y="228" fill="#DBEAFE" font-size="14" font-family="Arial">Milano · Roma · Napoli · Torino · Bologna</text>
+  <rect x="60" y="244" width="180" height="44" rx="22" fill="#FFFFFF"/>
+  <text x="96" y="271" fill="#1E40AF" font-size="14" font-family="Arial" font-weight="bold">Esplora ora →</text>
+  <rect x="256" y="244" width="160" height="44" rx="22" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+  <text x="286" y="271" fill="#DBEAFE" font-size="14" font-family="Arial">Vicino a me</text>
 
-  <!-- Restaurant cards row -->
-  <text x="90" y="482" fill="#1E40AF" font-size="13" font-family="Arial" letter-spacing="2">RISTORANTI IN EVIDENZA</text>
+  <!-- Search bar -->
+  <rect x="24" y="294" width="1152" height="52" rx="26" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="1.5"/>
+  <text x="56" y="325" fill="#94A3B8" font-size="13" font-family="Arial">🔍  Cerca per cucina, ristorante, piatto, quartiere...</text>
+  <rect x="1048" y="304" width="112" height="32" rx="16" fill="#3B82F6"/>
+  <text x="1076" y="325" fill="white" font-size="12" font-family="Arial">Cerca</text>
 
-  <!-- Card 1 -->
-  <rect x="72" y="496" width="310" height="230" rx="20" fill="white" stroke="#BFDBFE" stroke-width="1.5"/>
-  <rect x="72" y="496" width="310" height="120" rx="20" fill="#DBEAFE"/>
-  <rect x="72" y="576" width="310" height="40" fill="#DBEAFE"/>
-  <text x="108" y="546" fill="#1E40AF" font-size="30" font-family="Arial">🍜</text>
-  <text x="96" y="644" fill="#0F1E3C" font-size="16" font-family="Georgia">Dragon Noodle House</text>
-  <text x="96" y="668" fill="#64748B" font-size="13" font-family="Arial">Cucina cinese · Via Tortona 12</text>
-  <rect x="96" y="686" width="60" height="20" rx="10" fill="#DBEAFE"/>
-  <text x="107" y="701" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.8</text>
+  <!-- Category chips -->
+  <text x="32" y="376" fill="#1E40AF" font-size="11" font-family="Arial" letter-spacing="3" font-weight="bold">CATEGORIE</text>
+  <rect x="24" y="386" width="136" height="40" rx="20" fill="#1E40AF"/>
+  <text x="56" y="411" fill="#FFFFFF" font-size="13" font-family="Arial">🍜 Asiatico</text>
+  <rect x="172" y="386" width="148" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="198" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🌮 Messicano</text>
+  <rect x="332" y="386" width="134" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="361" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🍕 Italiano</text>
+  <rect x="478" y="386" width="152" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="494" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🫕 Medioriente</text>
+  <rect x="642" y="386" width="150" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="664" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🍣 Giapponese</text>
+  <rect x="804" y="386" width="134" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="830" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🥘 Indiano</text>
+  <rect x="950" y="386" width="130" height="40" rx="20" fill="#DBEAFE" stroke="#93C5FD" stroke-width="1"/>
+  <text x="978" y="411" fill="#1D4ED8" font-size="13" font-family="Arial">🥗 Altro</text>
 
-  <!-- Card 2 -->
-  <rect x="400" y="496" width="310" height="230" rx="20" fill="white" stroke="#BFDBFE" stroke-width="1.5"/>
-  <rect x="400" y="496" width="310" height="120" rx="20" fill="#EFF6FF"/>
-  <rect x="400" y="576" width="310" height="40" fill="#EFF6FF"/>
-  <text x="436" y="546" fill="#1D4ED8" font-size="30" font-family="Arial">🌮</text>
-  <text x="424" y="644" fill="#0F1E3C" font-size="16" font-family="Georgia">El Rancho Taqueria</text>
-  <text x="424" y="668" fill="#64748B" font-size="13" font-family="Arial">Cucina messicana · Corso Como 5</text>
-  <rect x="424" y="686" width="60" height="20" rx="10" fill="#DBEAFE"/>
-  <text x="435" y="701" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.6</text>
+  <!-- Section heading -->
+  <text x="32" y="460" fill="#1E40AF" font-size="11" font-family="Arial" letter-spacing="3" font-weight="bold">RISTORANTI IN EVIDENZA</text>
 
-  <!-- Card 3 -->
-  <rect x="728" y="496" width="310" height="230" rx="20" fill="white" stroke="#BFDBFE" stroke-width="1.5"/>
-  <rect x="728" y="496" width="310" height="120" rx="20" fill="#DBEAFE"/>
-  <rect x="728" y="576" width="310" height="40" fill="#DBEAFE"/>
-  <text x="764" y="546" fill="#1E40AF" font-size="30" font-family="Arial">🫕</text>
-  <text x="752" y="644" fill="#0F1E3C" font-size="16" font-family="Georgia">Beirut Kitchen</text>
-  <text x="752" y="668" fill="#64748B" font-size="13" font-family="Arial">Cucina libanese · Via Savona 8</text>
-  <rect x="752" y="686" width="60" height="20" rx="10" fill="#DBEAFE"/>
-  <text x="763" y="701" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.9</text>
+  <!-- Restaurant Card 1 -->
+  <rect x="24" y="472" width="356" height="280" rx="20" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1.5"/>
+  <rect x="24" y="472" width="356" height="132" rx="20" fill="#BFDBFE"/>
+  <rect x="24" y="564" width="356" height="40" fill="#BFDBFE"/>
+  <text x="166" y="548" fill="#1E3A8A" font-size="52" font-family="Arial">🍜</text>
+  <text x="44" y="636" fill="#0F1E3C" font-size="16" font-family="Georgia" font-weight="bold">Dragon Noodle House</text>
+  <text x="44" y="658" fill="#64748B" font-size="12" font-family="Arial">Cucina cinese · Via Tortona 12, Milano</text>
+  <rect x="44" y="672" width="66" height="22" rx="11" fill="#DBEAFE"/>
+  <text x="54" y="687" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.8 (142)</text>
+  <rect x="120" y="672" width="72" height="22" rx="11" fill="#F0FDF4"/>
+  <text x="132" y="687" fill="#166534" font-size="11" font-family="Arial">€€ · Aperto</text>
+  <text x="44" y="712" fill="#94A3B8" font-size="11" font-family="Arial">Ramen · Dim Sum · Noodles · Dumplings</text>
+  <rect x="272" y="698" width="92" height="32" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="292" y="718" fill="#1D4ED8" font-size="12" font-family="Arial">Prenota →</text>
+
+  <!-- Restaurant Card 2 -->
+  <rect x="396" y="472" width="356" height="280" rx="20" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1.5"/>
+  <rect x="396" y="472" width="356" height="132" rx="20" fill="#FEF3C7"/>
+  <rect x="396" y="564" width="356" height="40" fill="#FEF3C7"/>
+  <text x="538" y="548" fill="#92400E" font-size="52" font-family="Arial">🌮</text>
+  <text x="416" y="636" fill="#0F1E3C" font-size="16" font-family="Georgia" font-weight="bold">El Rancho Taqueria</text>
+  <text x="416" y="658" fill="#64748B" font-size="12" font-family="Arial">Cucina messicana · Corso Como 5, Milano</text>
+  <rect x="416" y="672" width="66" height="22" rx="11" fill="#DBEAFE"/>
+  <text x="426" y="687" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.6 (89)</text>
+  <rect x="492" y="672" width="72" height="22" rx="11" fill="#F0FDF4"/>
+  <text x="504" y="687" fill="#166534" font-size="11" font-family="Arial">€ · Aperto</text>
+  <text x="416" y="712" fill="#94A3B8" font-size="11" font-family="Arial">Tacos · Burritos · Guacamole · Margarita</text>
+  <rect x="644" y="698" width="92" height="32" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="664" y="718" fill="#1D4ED8" font-size="12" font-family="Arial">Prenota →</text>
+
+  <!-- Restaurant Card 3 -->
+  <rect x="768" y="472" width="356" height="280" rx="20" fill="#FFFFFF" stroke="#DBEAFE" stroke-width="1.5"/>
+  <rect x="768" y="472" width="356" height="132" rx="20" fill="#FCE7F3"/>
+  <rect x="768" y="564" width="356" height="40" fill="#FCE7F3"/>
+  <text x="910" y="548" fill="#831843" font-size="52" font-family="Arial">🫕</text>
+  <text x="788" y="636" fill="#0F1E3C" font-size="16" font-family="Georgia" font-weight="bold">Beirut Kitchen</text>
+  <text x="788" y="658" fill="#64748B" font-size="12" font-family="Arial">Cucina libanese · Via Savona 8, Milano</text>
+  <rect x="788" y="672" width="66" height="22" rx="11" fill="#DBEAFE"/>
+  <text x="798" y="687" fill="#1D4ED8" font-size="11" font-family="Arial">★ 4.9 (211)</text>
+  <rect x="864" y="672" width="72" height="22" rx="11" fill="#F0FDF4"/>
+  <text x="876" y="687" fill="#166534" font-size="11" font-family="Arial">€€ · Aperto</text>
+  <text x="788" y="712" fill="#94A3B8" font-size="11" font-family="Arial">Hummus · Falafel · Shawarma · Mezze</text>
+  <rect x="1016" y="698" width="92" height="32" rx="16" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="1036" y="718" fill="#1D4ED8" font-size="12" font-family="Arial">Prenota →</text>
+
+  <!-- Footer -->
+  <rect x="0" y="768" width="1200" height="32" fill="#F1F5F9"/>
+  <text x="32" y="788" fill="#94A3B8" font-size="11" font-family="Arial">© 2026 EthnicalBox · React + Vite · Deploy su Vercel</text>
+  <text x="900" y="788" fill="#94A3B8" font-size="11" font-family="Arial">📍 147 ristoranti · 12 cucine</text>
 </svg>

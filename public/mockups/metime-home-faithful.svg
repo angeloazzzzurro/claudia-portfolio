@@ -1,41 +1,193 @@
 <svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="800" rx="32" fill="#F7F1E8"/>
-  <rect x="30" y="30" width="1140" height="740" rx="28" fill="#FFF9F1" stroke="#E6D6BC" stroke-width="2"/>
-  <rect x="58" y="58" width="1084" height="70" rx="20" fill="#F1E4CF"/>
-  <text x="94" y="102" fill="#7C5A3A" font-size="28" font-family="Arial">METIME</text>
-  <text x="864" y="102" fill="#9B7B57" font-size="16" font-family="Arial">home · garden · games · diary · store</text>
+  <defs>
+    <radialGradient id="petGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F6D4C8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#EEDFC9" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="800" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFF9F2"/>
+      <stop offset="100%" stop-color="#F5EBD8"/>
+    </linearGradient>
+  </defs>
 
-  <rect x="58" y="156" width="250" height="560" rx="28" fill="#EEDFC9"/>
-  <rect x="84" y="188" width="198" height="58" rx="18" fill="#D6B47E"/>
-  <rect x="84" y="262" width="198" height="58" rx="18" fill="#F8F1E7"/>
-  <rect x="84" y="336" width="198" height="58" rx="18" fill="#F8F1E7"/>
-  <rect x="84" y="410" width="198" height="58" rx="18" fill="#F8F1E7"/>
-  <text x="136" y="224" fill="white" font-size="18" font-family="Arial">home</text>
-  <text x="132" y="298" fill="#8D6A45" font-size="18" font-family="Arial">garden</text>
-  <text x="132" y="372" fill="#8D6A45" font-size="18" font-family="Arial">store</text>
-  <text x="132" y="446" fill="#8D6A45" font-size="18" font-family="Arial">inventory</text>
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <!-- Subtle texture dots -->
+  <circle cx="100" cy="100" r="2" fill="#E6C9A8" opacity="0.4"/>
+  <circle cx="300" cy="60" r="1.5" fill="#E6C9A8" opacity="0.3"/>
+  <circle cx="900" cy="80" r="2" fill="#E6C9A8" opacity="0.3"/>
+  <circle cx="1100" cy="150" r="1.5" fill="#E6C9A8" opacity="0.4"/>
 
-  <rect x="336" y="156" width="556" height="560" rx="32" fill="#F5EBDD" stroke="#E6D6BC"/>
-  <ellipse cx="614" cy="632" rx="180" ry="42" fill="#DCC7A5" opacity="0.45"/>
-  <circle cx="614" cy="410" r="112" fill="#F6D4C8"/>
-  <circle cx="580" cy="388" r="12" fill="#5A3F33"/>
-  <circle cx="648" cy="388" r="12" fill="#5A3F33"/>
-  <path d="M576 444 Q614 474 652 444" stroke="#8D5D57" stroke-width="8" stroke-linecap="round" fill="none"/>
-  <ellipse cx="554" cy="426" rx="20" ry="12" fill="#F0B8B2" opacity="0.65"/>
-  <ellipse cx="674" cy="426" rx="20" ry="12" fill="#F0B8B2" opacity="0.65"/>
-  <circle cx="540" cy="318" r="22" fill="#E6BFAE"/>
-  <circle cx="688" cy="318" r="22" fill="#E6BFAE"/>
-  <text x="550" y="566" fill="#8D6A45" font-size="22" font-family="Arial">care focus panel</text>
+  <!-- iOS Status bar -->
+  <rect x="0" y="0" width="1200" height="44" fill="#F5EAD5"/>
+  <text x="40" y="28" fill="#7C5A3A" font-size="13" font-family="Arial" font-weight="bold">9:41</text>
+  <text x="1080" y="28" fill="#7C5A3A" font-size="13" font-family="Arial">●●●●  WiFi  🔋</text>
 
-  <rect x="920" y="156" width="222" height="560" rx="28" fill="#F8F1E7" stroke="#E6D6BC"/>
-  <text x="952" y="202" fill="#8D6A45" font-size="22" font-family="Arial">Mood HUD</text>
-  <rect x="952" y="228" width="158" height="62" rx="18" fill="#FFF9F1"/>
-  <rect x="952" y="308" width="158" height="62" rx="18" fill="#FFF9F1"/>
-  <rect x="952" y="388" width="158" height="62" rx="18" fill="#FFF9F1"/>
-  <text x="982" y="266" fill="#9B7B57" font-size="18" font-family="Arial">mood</text>
-  <text x="982" y="346" fill="#9B7B57" font-size="18" font-family="Arial">energy</text>
-  <text x="982" y="426" fill="#9B7B57" font-size="18" font-family="Arial">coins</text>
-  <rect x="952" y="518" width="158" height="132" rx="22" fill="#D6B47E"/>
-  <text x="986" y="584" fill="white" font-size="18" font-family="Arial">feed</text>
-  <text x="986" y="614" fill="white" font-size="18" font-family="Arial">pet</text>
+  <!-- Top nav bar -->
+  <rect x="0" y="44" width="1200" height="56" fill="#EFE0C8"/>
+  <rect x="0" y="99" width="1200" height="1" fill="#DEC8A8"/>
+  <text x="32" y="76" fill="#7C5A3A" font-size="22" font-family="Arial" font-weight="bold">METIME</text>
+  <text x="32" y="93" fill="#9B7B57" font-size="10" font-family="Arial" letter-spacing="1">IL TUO SPAZIO MENTALE</text>
+
+  <!-- Mood ring / companion status top right -->
+  <rect x="980" y="52" width="180" height="40" rx="20" fill="#FFF3E6" stroke="#E6C9A8" stroke-width="1.5"/>
+  <circle cx="1002" cy="72" r="10" fill="#F6D4C8"/>
+  <text x="1020" y="68" fill="#8D6A45" font-size="11" font-family="Arial">stato: serena 🌸</text>
+  <text x="1020" y="84" fill="#C4956B" font-size="10" font-family="Arial">energia 78%</text>
+
+  <!-- Main layout: sidebar + content + mood panel -->
+
+  <!-- Left sidebar -->
+  <rect x="0" y="100" width="220" height="656" fill="#E8D5BA"/>
+  <rect x="219" y="100" width="1" fill="#D6B47E" height="656"/>
+
+  <text x="20" y="136" fill="#7C5A3A" font-size="11" font-family="Arial" letter-spacing="2">SEZIONI</text>
+  <rect x="10" y="148" width="200" height="52" rx="16" fill="#D6B47E"/>
+  <text x="44" y="172" fill="#FFFFFF" font-size="18" font-family="Arial">🏠</text>
+  <text x="74" y="172" fill="#FFFFFF" font-size="14" font-family="Arial" font-weight="bold">home</text>
+  <text x="74" y="190" fill="#FFF3E6" font-size="11" font-family="Arial">stato pet</text>
+
+  <rect x="10" y="210" width="200" height="52" rx="16" fill="#F8F1E7"/>
+  <text x="44" y="234" fill="#8D6A45" font-size="18" font-family="Arial">🌿</text>
+  <text x="74" y="234" fill="#8D6A45" font-size="14" font-family="Arial">garden</text>
+  <text x="74" y="252" fill="#B8956A" font-size="11" font-family="Arial">mondo isometrico</text>
+
+  <rect x="10" y="272" width="200" height="52" rx="16" fill="#F8F1E7"/>
+  <text x="44" y="296" fill="#8D6A45" font-size="18" font-family="Arial">🎮</text>
+  <text x="74" y="296" fill="#8D6A45" font-size="14" font-family="Arial">games</text>
+  <text x="74" y="314" fill="#B8956A" font-size="11" font-family="Arial">mini giochi</text>
+
+  <rect x="10" y="334" width="200" height="52" rx="16" fill="#F8F1E7"/>
+  <text x="44" y="358" fill="#8D6A45" font-size="18" font-family="Arial">📓</text>
+  <text x="74" y="358" fill="#8D6A45" font-size="14" font-family="Arial">diario</text>
+  <text x="74" y="376" fill="#B8956A" font-size="11" font-family="Arial">riflessioni</text>
+
+  <rect x="10" y="396" width="200" height="52" rx="16" fill="#F8F1E7"/>
+  <text x="44" y="420" fill="#8D6A45" font-size="18" font-family="Arial">🛍️</text>
+  <text x="74" y="420" fill="#8D6A45" font-size="14" font-family="Arial">store</text>
+  <text x="74" y="438" fill="#B8956A" font-size="11" font-family="Arial">accessori · skin</text>
+
+  <!-- Coins at bottom of sidebar -->
+  <rect x="10" y="680" width="200" height="60" rx="16" fill="#FFF3E6" stroke="#E6C9A8" stroke-width="1"/>
+  <text x="32" y="702" fill="#7C5A3A" font-size="11" font-family="Arial" letter-spacing="1">MONETE</text>
+  <text x="32" y="728" fill="#8D6A45" font-size="28" font-family="Arial" font-weight="bold">🪙 340</text>
+
+  <!-- Center: pet display area -->
+  <rect x="220" y="100" width="700" height="656" fill="#FFF9F2"/>
+
+  <!-- Scene background (isometric ground) -->
+  <ellipse cx="570" cy="620" rx="240" ry="50" fill="#E6D4B8" opacity="0.5"/>
+  <!-- Grass patches -->
+  <circle cx="380" cy="590" r="24" fill="#B8D4A0" opacity="0.6"/>
+  <circle cx="780" cy="600" r="20" fill="#B8D4A0" opacity="0.5"/>
+  <circle cx="680" cy="570" r="14" fill="#B8D4A0" opacity="0.4"/>
+  <!-- Small tree -->
+  <rect x="374" y="554" width="8" height="36" fill="#A0714E"/>
+  <circle cx="378" cy="548" r="22" fill="#7BB36A"/>
+  <circle cx="362" cy="556" r="16" fill="#8DC474"/>
+  <circle cx="394" cy="556" r="14" fill="#8DC474"/>
+
+  <!-- Main kawaii character -->
+  <!-- Body glow -->
+  <ellipse cx="570" cy="460" rx="130" ry="120" fill="url(#petGlow)"/>
+  <!-- Ears -->
+  <circle cx="506" cy="334" r="28" fill="#E8C4B8"/>
+  <circle cx="506" cy="334" r="16" fill="#F4D4CA"/>
+  <circle cx="634" cy="334" r="28" fill="#E8C4B8"/>
+  <circle cx="634" cy="334" r="16" fill="#F4D4CA"/>
+  <!-- Head -->
+  <circle cx="570" cy="390" r="110" fill="#F6D8CC"/>
+  <!-- Eyes -->
+  <ellipse cx="530" cy="368" rx="22" ry="24" fill="#FFFFFF"/>
+  <ellipse cx="610" cy="368" rx="22" ry="24" fill="#FFFFFF"/>
+  <circle cx="530" cy="374" r="14" fill="#3D2A1E"/>
+  <circle cx="610" cy="374" r="14" fill="#3D2A1E"/>
+  <circle cx="535" cy="368" r="5" fill="#FFFFFF"/>
+  <circle cx="615" cy="368" r="5" fill="#FFFFFF"/>
+  <!-- Blush -->
+  <ellipse cx="500" cy="400" rx="22" ry="14" fill="#F0A8A8" opacity="0.55"/>
+  <ellipse cx="640" cy="400" rx="22" ry="14" fill="#F0A8A8" opacity="0.55"/>
+  <!-- Happy smile -->
+  <path d="M538 418 Q570 446 602 418" stroke="#8D5D57" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <!-- Cheek bow / accessory -->
+  <circle cx="456" cy="380" r="10" fill="#F4A0B0"/>
+  <!-- Body -->
+  <ellipse cx="570" cy="530" rx="90" ry="70" fill="#F6D8CC"/>
+  <!-- Arms -->
+  <ellipse cx="468" cy="498" rx="30" ry="18" fill="#F6D8CC" transform="rotate(-30 468 498)"/>
+  <ellipse cx="672" cy="498" rx="30" ry="18" fill="#F6D8CC" transform="rotate(30 672 498)"/>
+  <!-- Outfit detail -->
+  <ellipse cx="570" cy="540" rx="60" ry="44" fill="#E8C4B8" opacity="0.4"/>
+  <!-- Little star -->
+  <text x="545" y="556" font-size="18" fill="#F4B8C8">✦</text>
+
+  <!-- Mood state label -->
+  <rect x="480" y="638" width="180" height="36" rx="18" fill="#FFF3E6" stroke="#E6C9A8" stroke-width="1.5"/>
+  <text x="516" y="661" fill="#8D6A45" font-size="14" font-family="Arial">🌸 serena</text>
+
+  <!-- Care action buttons -->
+  <text x="284" y="712" fill="#B8956A" font-size="11" font-family="Arial" letter-spacing="2">CURA IL TUO PET</text>
+  <rect x="284" y="720" width="100" height="26" rx="13" fill="#D6B47E"/>
+  <text x="312" y="737" fill="white" font-size="11" font-family="Arial">nutrire</text>
+  <rect x="396" y="720" width="100" height="26" rx="13" fill="#D6B47E"/>
+  <text x="422" y="737" fill="white" font-size="11" font-family="Arial">giocare</text>
+  <rect x="508" y="720" width="100" height="26" rx="13" fill="#D6B47E"/>
+  <text x="530" y="737" fill="white" font-size="11" font-family="Arial">coccolare</text>
+  <rect x="620" y="720" width="100" height="26" rx="13" fill="#D6B47E"/>
+  <text x="644" y="737" fill="white" font-size="11" font-family="Arial">dormire</text>
+  <rect x="732" y="720" width="100" height="26" rx="13" fill="#F8F1E7" stroke="#E6C9A8" stroke-width="1"/>
+  <text x="755" y="737" fill="#8D6A45" font-size="11" font-family="Arial">specchio</text>
+
+  <!-- Right panel: mood HUD -->
+  <rect x="920" y="100" width="280" height="656" fill="#F0E6D4"/>
+  <rect x="920" y="100" width="1" height="656" fill="#DEC8A8"/>
+
+  <text x="940" y="136" fill="#7C5A3A" font-size="11" font-family="Arial" letter-spacing="2">MOOD HUD</text>
+
+  <!-- Mood bar -->
+  <rect x="940" y="150" width="240" height="88" rx="14" fill="#FFFFFF" stroke="#E6C9A8" stroke-width="1"/>
+  <text x="956" y="172" fill="#7C5A3A" font-size="13" font-family="Arial" font-weight="bold">Umore</text>
+  <rect x="956" y="182" width="208" height="10" rx="5" fill="#F5E8D5"/>
+  <rect x="956" y="182" width="166" height="10" rx="5" fill="#F4A8B8"/>
+  <text x="956" y="210" fill="#9B7B57" font-size="11" font-family="Arial">🌸 serena  ·  80%</text>
+  <text x="956" y="228" fill="#B8956A" font-size="10" font-family="Arial">↑ migliorato oggi</text>
+
+  <!-- Energy bar -->
+  <rect x="940" y="250" width="240" height="88" rx="14" fill="#FFFFFF" stroke="#E6C9A8" stroke-width="1"/>
+  <text x="956" y="272" fill="#7C5A3A" font-size="13" font-family="Arial" font-weight="bold">Energia</text>
+  <rect x="956" y="282" width="208" height="10" rx="5" fill="#F5E8D5"/>
+  <rect x="956" y="282" width="162" height="10" rx="5" fill="#86C98C"/>
+  <text x="956" y="310" fill="#9B7B57" font-size="11" font-family="Arial">⚡ buona  ·  78%</text>
+  <text x="956" y="328" fill="#B8956A" font-size="10" font-family="Arial">stabile</text>
+
+  <!-- Focus bar -->
+  <rect x="940" y="350" width="240" height="88" rx="14" fill="#FFFFFF" stroke="#E6C9A8" stroke-width="1"/>
+  <text x="956" y="372" fill="#7C5A3A" font-size="13" font-family="Arial" font-weight="bold">Focus</text>
+  <rect x="956" y="382" width="208" height="10" rx="5" fill="#F5E8D5"/>
+  <rect x="956" y="382" width="104" height="10" rx="5" fill="#93C5FD"/>
+  <text x="956" y="410" fill="#9B7B57" font-size="11" font-family="Arial">🧠 medio  ·  50%</text>
+  <text x="956" y="428" fill="#B8956A" font-size="10" font-family="Arial">suggerimento: pausa 5min</text>
+
+  <!-- Quick feed button -->
+  <rect x="940" y="452" width="240" height="72" rx="14" fill="#D6B47E"/>
+  <text x="1000" y="484" fill="#FFFFFF" font-size="18" font-family="Arial" font-weight="bold">Dai da mangiare</text>
+  <text x="1024" y="508" fill="#FFF3E6" font-size="12" font-family="Arial">🍎 -1 mela  ·  🪙 +5</text>
+
+  <!-- Recent activity -->
+  <text x="940" y="548" fill="#7C5A3A" font-size="11" font-family="Arial" letter-spacing="2">ATTIVITÀ RECENTE</text>
+  <rect x="940" y="558" width="240" height="40" rx="10" fill="#FFF9F2"/>
+  <text x="956" y="582" fill="#8D6A45" font-size="11" font-family="Arial">10:22 · hai giocato 8min</text>
+  <rect x="940" y="606" width="240" height="40" rx="10" fill="#FFF9F2"/>
+  <text x="956" y="630" fill="#8D6A45" font-size="11" font-family="Arial">09:50 · snack mattutino</text>
+  <rect x="940" y="654" width="240" height="40" rx="10" fill="#FFF9F2"/>
+  <text x="956" y="678" fill="#8D6A45" font-size="11" font-family="Arial">08:30 · buongiorno 🌅</text>
+
+  <!-- iOS tab bar -->
+  <rect x="0" y="756" width="1200" height="44" fill="#EFE0C8" stroke="#DEC8A8" stroke-width="1"/>
+  <text x="210" y="782" fill="#D6B47E" font-size="11" font-family="Arial" text-anchor="middle">🏠 home</text>
+  <text x="420" y="782" fill="#B8956A" font-size="11" font-family="Arial" text-anchor="middle">🌿 garden</text>
+  <text x="600" y="782" fill="#B8956A" font-size="11" font-family="Arial" text-anchor="middle">🎮 games</text>
+  <text x="780" y="782" fill="#B8956A" font-size="11" font-family="Arial" text-anchor="middle">📓 diario</text>
+  <text x="990" y="782" fill="#B8956A" font-size="11" font-family="Arial" text-anchor="middle">🛍️ store</text>
+  <rect x="140" y="756" width="140" height="3" fill="#D6B47E" rx="1"/>
 </svg>
