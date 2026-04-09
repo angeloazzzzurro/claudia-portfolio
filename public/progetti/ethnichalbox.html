@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EthnicalBox — Claudia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1C1017; --bg:#F8F8F8; --blue:#3B82F6; --light:#EFF6FF; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Syne',sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
+
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:0 40px; height:52px;
+    background:rgba(248,248,248,.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(28,16,23,.06);
+  }
+  .back {
+    font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
+    letter-spacing:.07em; text-transform:uppercase;
+    color:var(--blue); text-decoration:none;
+    display:flex; align-items:center; gap:6px;
+    padding:7px 16px; border-radius:100px;
+    border:2px solid #93C5FD; background:#EFF6FF;
+    transition:all .2s; cursor:pointer;
+  }
+  .back:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:15px; letter-spacing:-.02em; }
+
+  .hero { padding:120px 40px 64px; max-width:900px; margin:0 auto; }
+  .badge {
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
+    letter-spacing:.1em; text-transform:uppercase;
+    color:var(--blue); margin-bottom:20px;
+  }
+  .badge::before { content:''; width:24px; height:2px; background:var(--blue); border-radius:1px; }
+  h1 {
+    font-family:'DM Serif Display',serif; font-style:italic;
+    font-size:clamp(48px,7vw,88px); letter-spacing:-.02em; line-height:1.0;
+    margin-bottom:24px; color:var(--ink);
+  }
+  .desc { font-size:17px; color:rgba(28,16,23,.7); line-height:1.75; max-width:560px; margin-bottom:36px; }
+  .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
+  .chip {
+    font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
+    letter-spacing:.07em; text-transform:uppercase;
+    padding:6px 14px; border-radius:100px;
+    background:#DBEAFE; color:#1D4ED8; border:1.5px solid #93C5FD;
+  }
+  .cta-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn-primary {
+    font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
+    letter-spacing:.07em; text-transform:uppercase;
+    padding:12px 28px; border-radius:100px;
+    background:var(--blue); color:#fff; border:none;
+    cursor:pointer; transition:background .2s; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover { background:#1D4ED8; }
+  .btn-secondary {
+    font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
+    letter-spacing:.07em; text-transform:uppercase;
+    padding:12px 28px; border-radius:100px;
+    background:transparent; color:var(--ink);
+    border:2px solid rgba(28,16,23,.15);
+    cursor:pointer; transition:all .2s; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+  .divider { max-width:900px; margin:0 auto 64px; padding:0 40px; }
+  .divider hr { border:none; border-top:1px solid rgba(28,16,23,.08); }
+  .section { max-width:900px; margin:0 auto 80px; padding:0 40px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:28px; margin-bottom:20px; color:var(--ink); }
+  .preview-card {
+    border-radius:20px; background:#fff;
+    border:1.5px solid rgba(28,16,23,.07);
+    box-shadow:0 4px 20px rgba(59,130,246,.08);
+    overflow:hidden; min-height:280px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .preview-card img { width:100%; display:block; }
+  footer {
+    border-top:1px solid rgba(28,16,23,.07);
+    padding:24px 40px; display:flex; align-items:center; justify-content:space-between;
+    font-family:'DM Mono',monospace; font-size:10px; color:rgba(28,16,23,.3); letter-spacing:.06em;
+  }
+  .fds { display:flex; gap:5px; }
+  .fdot { width:8px; height:8px; border-radius:50%; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="back" href="../index.html">← back</a>
+  <span class="logo">claudia ✦</span>
+</nav>
+
+<div class="hero">
+  <div class="badge">Web App</div>
+  <h1>EthnicalBox</h1>
+  <p class="desc">App editoriale React+Vite per la scoperta di cucine etniche. Landing screen, navigazione per categoria, lista ristoranti e dettaglio piatti con UX pulita e componentizzata.</p>
+  <div class="chips">
+    <span class="chip">React</span>
+    <span class="chip">Vite</span>
+    <span class="chip">CSS</span>
+  </div>
+  <div class="cta-row">
+    <a class="btn-primary" href="https://ethnichalbox-deploy.vercel.app" target="_blank" rel="noopener">↗ Demo live</a>
+    <a class="btn-primary" href="https://github.com/angeloazzzzurro/ethnichalbox" target="_blank" rel="noopener" style="background:rgba(28,16,23,.08);color:var(--ink);">GitHub</a>
+    <a class="btn-secondary" href="../index.html">← tutti i progetti</a>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<div class="section">
+  <h2>Preview</h2>
+  <div class="preview-card">
+    <img src="../mockups/ethnichalbox-home.svg" alt="EthnicalBox preview">
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 Claudia ✦</span>
+  <div class="fds">
+    <div class="fdot" style="background:#3B82F6"></div>
+    <div class="fdot" style="background:#BAE6FD"></div>
+    <div class="fdot" style="background:#38BDF8"></div>
+    <div class="fdot" style="background:#7DD3FC"></div>
+    <div class="fdot" style="background:#93C5FD"></div>
+  </div>
+</footer>
+
+</body>
+</html>
