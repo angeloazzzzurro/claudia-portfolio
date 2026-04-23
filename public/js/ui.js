@@ -75,41 +75,65 @@ export function initUI({ onExploreSection, setFilter }) {
     setFilter(next);
   }));
 
-  // ── Analysis modal close ──────────────────────────────────────────────────
-  document.getElementById('am-close').addEventListener('click', () =>
-    document.getElementById('analysis-overlay').classList.remove('on'));
-  document.getElementById('analysis-overlay').addEventListener('click', e => {
-    if (e.target.id === 'analysis-overlay') document.getElementById('analysis-overlay').classList.remove('on');
+  // ── Analysis modal — focus trap + close ──────────────────────────────────
+  const overlay = document.getElementById('analysis-overlay');
+  const modal   = document.getElementById('analysis-modal');
+
+  function getFocusable() {
+    return [...modal.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    )].filter(el => !el.disabled && el.offsetParent !== null);
+  }
+
+  function closeAnalysisModal() {
+    overlay.classList.remove('on');
+    overlay._returnFocus?.focus();
+  }
+
+  document.getElementById('am-close').addEventListener('click', closeAnalysisModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeAnalysisModal(); });
+
+  // Chiudi con Escape
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('on')) closeAnalysisModal();
+  });
+
+  // Tab trap: mantiene il focus dentro la modale
+  modal.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
   // ── Contact form ──────────────────────────────────────────────────────────
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const cfName  = document.getElementById('cf-name');
+  const cfEmail = document.getElementById('cf-email');
+  const cfErr   = document.getElementById('cf-error');
 
-  function showFormError(msg) {
-    let err = document.getElementById('cf-error');
-    if (!err) {
-      err = document.createElement('div');
-      err.id = 'cf-error';
-      err.style.cssText = "color:#EF4444;font-family:'DM Mono',monospace;font-size:11px;margin-bottom:8px;";
-      document.querySelector('.c-submit').before(err);
-    }
-    err.textContent = msg;
+  function showFormError(msg, field) {
+    cfErr.textContent = msg;
+    if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
   }
 
   function clearFormError() {
-    const err = document.getElementById('cf-error');
-    if (err) err.textContent = '';
+    cfErr.textContent = '';
+    cfName.removeAttribute('aria-invalid');
+    cfEmail.removeAttribute('aria-invalid');
   }
 
   document.getElementById('contact-form')?.addEventListener('submit', e => {
     e.preventDefault();
-    const name  = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
+    const name  = cfName.value.trim();
+    const email = cfEmail.value.trim();
     const type  = document.getElementById('cf-type').value;
     const msg   = document.getElementById('cf-msg').value.trim();
 
-    if (!name) { showFormError('Inserisci il tuo nome.'); return; }
-    if (!email || !EMAIL_RE.test(email)) { showFormError("Inserisci un'email valida."); return; }
+    if (!name)  { showFormError('Inserisci il tuo nome.', cfName); return; }
+    if (!email || !EMAIL_RE.test(email)) { showFormError("Inserisci un'email valida.", cfEmail); return; }
     clearFormError();
 
     const subject = encodeURIComponent(`Contatto dal portfolio${type ? ' — ' + type : ''}`);

@@ -86,7 +86,7 @@
     </div>
     <div id="flbl">hover per connessioni · drag per ruotare · click per dettagli</div>
     <div id="scene">
-      <canvas id="cnv" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
+      <canvas id="cnv" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;"></canvas>
       <div id="sph" style="position:absolute;inset:0;transform-style:preserve-3d;"></div>
       <div id="sh">hover per connessioni · click per dettagli</div>
       <div id="spop">
@@ -147,14 +147,14 @@
       <div class="c-form-card">
         <div class="c-form-title">Scrivimi direttamente ✦</div>
         <p class="c-form-sub">Raccontami il tuo progetto — rispondo entro 24h.</p>
-        <form id="contact-form" class="c-form">
+        <form id="contact-form" class="c-form" novalidate>
           <div class="c-field">
-            <label class="c-label" for="cf-name">Nome</label>
-            <input class="c-input" id="cf-name" type="text" placeholder="Il tuo nome" autocomplete="name">
+            <label class="c-label" for="cf-name">Nome <span aria-hidden="true">*</span></label>
+            <input class="c-input" id="cf-name" type="text" placeholder="Il tuo nome" autocomplete="name" required aria-required="true" aria-describedby="cf-error">
           </div>
           <div class="c-field">
-            <label class="c-label" for="cf-email">Email</label>
-            <input class="c-input" id="cf-email" type="email" placeholder="tua@email.com" autocomplete="email">
+            <label class="c-label" for="cf-email">Email <span aria-hidden="true">*</span></label>
+            <input class="c-input" id="cf-email" type="email" placeholder="tua@email.com" autocomplete="email" required aria-required="true" aria-describedby="cf-error">
           </div>
           <div class="c-field">
             <label class="c-label" for="cf-type">Tipo di progetto</label>
@@ -172,6 +172,7 @@
             <label class="c-label" for="cf-msg">Messaggio</label>
             <textarea class="c-input c-textarea" id="cf-msg" placeholder="Raccontami il progetto..." rows="4"></textarea>
           </div>
+          <div id="cf-error" role="alert" aria-live="assertive" style="color:#EF4444;font-family:'DM Mono',monospace;font-size:11px;min-height:1em;"></div>
           <button type="submit" class="c-submit">Invia messaggio →</button>
         </form>
         <div class="c-form-sent" id="c-form-sent" style="display:none">
@@ -201,9 +202,9 @@
 </div>
 
 <!-- ══ ANALYSIS MODAL ══ -->
-<div id="analysis-overlay">
-  <div id="analysis-modal">
-    <button class="am-close" id="am-close">×</button>
+<div id="analysis-overlay" role="presentation">
+  <div id="analysis-modal" role="dialog" aria-modal="true" aria-labelledby="am-title">
+    <button class="am-close" id="am-close" aria-label="Chiudi analisi">×</button>
     <span class="am-tag" id="am-tag"></span>
     <div class="am-title" id="am-title"></div>
     <div class="am-desc" id="am-desc"></div>

@@ -74,9 +74,12 @@ export function openAnalysisModal(p) {
     (p.github ? `<button class="am-btn-secondary" onclick="window.open('${p.github}','_blank')">GitHub →</button>` : '');
 
   const overlay = document.getElementById('analysis-overlay');
+  overlay._returnFocus = document.activeElement;
   overlay.classList.add('on');
   overlay.scrollTop = 0;
   document.getElementById('analysis-modal').scrollTop = 0;
+  // Sposta il focus sul pulsante chiudi appena la modale è visibile
+  requestAnimationFrame(() => document.getElementById('am-close').focus());
 }
 
 // ── Explore grid ────────────────────────────────────────────────────────────

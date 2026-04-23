@@ -1,3 +1,51 @@
+/* ===== ACCESSIBILITÀ — FOCUS ===== */
+/* Focus ring universale per navigazione da tastiera */
+:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Elementi con stile focus custom — rimuoviamo outline e usiamo il loro stile */
+.c-input:focus-visible,
+.c-select:focus-visible {
+  outline: none; /* rimpiazzato da border+shadow già definiti su .c-input:focus */
+}
+/* Bottoni pill/rotondi — offset aumentato per non tagliare il border-radius */
+.nb:focus-visible,
+.fb:focus-visible,
+.chip:focus-visible,
+.icon-btn:focus-visible,
+.cta-btn:focus-visible,
+.c-submit:focus-visible,
+.am-close:focus-visible,
+.spclose:focus-visible,
+.spb:focus-visible,
+.exp-analysis-btn:focus-visible,
+.exp-open-btn:focus-visible,
+.am-btn-primary:focus-visible,
+.am-btn-secondary:focus-visible,
+.c-sent-reset:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 3px;
+}
+html.dark :focus-visible,
+html.dark .nb:focus-visible,
+html.dark .fb:focus-visible,
+html.dark .chip:focus-visible,
+html.dark .icon-btn:focus-visible,
+html.dark .cta-btn:focus-visible,
+html.dark .c-submit:focus-visible,
+html.dark .am-close:focus-visible,
+html.dark .spclose:focus-visible,
+html.dark .spb:focus-visible,
+html.dark .exp-analysis-btn:focus-visible,
+html.dark .exp-open-btn:focus-visible,
+html.dark .am-btn-primary:focus-visible,
+html.dark .am-btn-secondary:focus-visible,
+html.dark .c-sent-reset:focus-visible {
+  outline-color: #60A5FA;
+}
+
 /* ===== DARK MODE ===== */
 html.dark {
   --bg:#0F1E3C;
