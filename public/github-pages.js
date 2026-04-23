@@ -1,5 +1,9 @@
 const LANG_COLORS = ['#1d4ed8', '#2563eb', '#0ea5e9', '#38bdf8', '#7c3aed', '#0f766e', '#60a5fa'];
 
+function _esc(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 let _dataCache = null;
 
 async function _loadData() {
@@ -84,10 +88,10 @@ async function initAboutPage() {
       row.className = 'repo-item';
       row.innerHTML = `
         <div class="repo-head">
-          <a class="repo-name" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
+          <a class="repo-name" href="${_esc(repo.html_url)}" target="_blank" rel="noopener">${_esc(repo.name)}</a>
           <div class="repo-meta">${repo.stargazers_count || 0} stars</div>
         </div>
-        <p class="repo-desc">${repo.description || 'Nessuna descrizione.'}</p>
+        <p class="repo-desc">${_esc(repo.description || 'Nessuna descrizione.')}</p>
       `;
       highlightsRoot.appendChild(row);
     });
@@ -134,7 +138,7 @@ async function initSkillsPage() {
 
       const item = document.createElement('div');
       item.className = 'legend-item';
-      item.innerHTML = `<span><span class="dot" style="background:${color}"></span> ${lang}</span><strong>${pct.toFixed(1)}%</strong>`;
+      item.innerHTML = `<span><span class="dot" style="background:${color}"></span> ${_esc(lang)}</span><strong>${pct.toFixed(1)}%</strong>`;
       legend.appendChild(item);
     });
 
@@ -155,10 +159,10 @@ async function initSkillsPage() {
       row.className = 'repo-item';
       row.innerHTML = `
         <div class="repo-head">
-          <a class="repo-name" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
-          <div class="repo-meta">${repo.language || 'n/a'}</div>
+          <a class="repo-name" href="${_esc(repo.html_url)}" target="_blank" rel="noopener">${_esc(repo.name)}</a>
+          <div class="repo-meta">${_esc(repo.language || 'n/a')}</div>
         </div>
-        <p class="repo-desc">Aggiornato il ${formatDate(repo.pushed_at)}.</p>
+        <p class="repo-desc">Aggiornato il ${_esc(formatDate(repo.pushed_at))}.</p>
       `;
       sample.appendChild(row);
     });
@@ -189,11 +193,11 @@ async function initExplorePage() {
       row.className = 'repo-item';
       row.innerHTML = `
         <div class="repo-head">
-          <a class="repo-name" href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>
-          <div class="repo-meta">${repo.language || 'n/a'}</div>
+          <a class="repo-name" href="${_esc(repo.html_url)}" target="_blank" rel="noopener">${_esc(repo.name)}</a>
+          <div class="repo-meta">${_esc(repo.language || 'n/a')}</div>
         </div>
-        <p class="repo-desc">${repo.description || 'Nessuna descrizione.'}</p>
-        <div class="repo-meta">${repo.stargazers_count || 0} stars · ${repo.forks_count || 0} forks · update ${formatDate(repo.pushed_at)}</div>
+        <p class="repo-desc">${_esc(repo.description || 'Nessuna descrizione.')}</p>
+        <div class="repo-meta">${repo.stargazers_count || 0} stars · ${repo.forks_count || 0} forks · aggiornato il ${_esc(formatDate(repo.pushed_at))}</div>
       `;
       root.appendChild(row);
     });

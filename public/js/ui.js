@@ -83,17 +83,40 @@ export function initUI({ onExploreSection, setFilter }) {
   });
 
   // ── Contact form ──────────────────────────────────────────────────────────
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function showFormError(msg) {
+    let err = document.getElementById('cf-error');
+    if (!err) {
+      err = document.createElement('div');
+      err.id = 'cf-error';
+      err.style.cssText = "color:#EF4444;font-family:'DM Mono',monospace;font-size:11px;margin-bottom:8px;";
+      document.querySelector('.c-submit').before(err);
+    }
+    err.textContent = msg;
+  }
+
+  function clearFormError() {
+    const err = document.getElementById('cf-error');
+    if (err) err.textContent = '';
+  }
+
   document.getElementById('contact-form')?.addEventListener('submit', e => {
     e.preventDefault();
-    const name    = document.getElementById('cf-name').value.trim();
-    const email   = document.getElementById('cf-email').value.trim();
-    const type    = document.getElementById('cf-type').value;
-    const msg     = document.getElementById('cf-msg').value.trim();
+    const name  = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const type  = document.getElementById('cf-type').value;
+    const msg   = document.getElementById('cf-msg').value.trim();
+
+    if (!name) { showFormError('Inserisci il tuo nome.'); return; }
+    if (!email || !EMAIL_RE.test(email)) { showFormError("Inserisci un'email valida."); return; }
+    clearFormError();
+
     const subject = encodeURIComponent(`Contatto dal portfolio${type ? ' — ' + type : ''}`);
-    const body    = encodeURIComponent(`Ciao Claudia,\n\nSono ${name || '...'} (${email || '...'}).\n\n${type ? 'Tipo di progetto: ' + type + '\n\n' : ''}${msg || ''}\n\nA presto!`);
+    const body    = encodeURIComponent(`Ciao Claudia,\n\nSono ${name} (${email}).\n\n${type ? 'Tipo di progetto: ' + type + '\n\n' : ''}${msg || ''}\n\nA presto!`);
     window.location.href = `mailto:xjiexin97@gmail.com?subject=${subject}&body=${body}`;
-    document.getElementById('contact-form').style.display  = 'none';
-    document.getElementById('c-form-sent').style.display   = 'block';
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('c-form-sent').style.display  = 'block';
   });
   document.getElementById('c-sent-reset')?.addEventListener('click', () => {
     document.getElementById('contact-form').reset();
