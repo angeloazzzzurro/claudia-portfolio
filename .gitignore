@@ -13,6 +13,9 @@ pnpm-debug.log*
 .env
 .env.*
 
+# build artifacts — generati da npm run build
+public/github-data.json
+
 # macOS / editor temp
 .DS_Store
 *.swp
