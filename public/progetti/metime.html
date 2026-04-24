@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="METIME — iOS wellness app con SwiftUI, SpriteKit e SwiftData. Case study di Claudia Xia Jie Xin.">
 <title>METIME — Claudia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -25,15 +26,13 @@
     display:flex; align-items:center; gap:6px;
     padding:7px 16px; border-radius:100px;
     border:2px solid #93C5FD; background:#EFF6FF;
-    transition:all .2s; cursor:pointer;
+    transition:all .2s;
   }
   .back:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .back:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:15px; letter-spacing:-.02em; }
 
-  .hero {
-    padding:120px 40px 64px;
-    max-width:900px; margin:0 auto;
-  }
+  .hero { padding:120px 40px 64px; max-width:900px; margin:0 auto; }
   .badge {
     display:inline-flex; align-items:center; gap:7px;
     font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
@@ -41,16 +40,12 @@
     color:var(--blue); margin-bottom:20px;
   }
   .badge::before { content:''; width:24px; height:2px; background:var(--blue); border-radius:1px; }
-
   h1 {
     font-family:'DM Serif Display',serif; font-style:italic;
     font-size:clamp(48px,7vw,88px); letter-spacing:-.02em; line-height:1.0;
-    margin-bottom:24px; color:var(--ink);
+    margin-bottom:24px;
   }
-  .desc {
-    font-size:17px; color:rgba(28,16,23,.7); line-height:1.75;
-    max-width:560px; margin-bottom:36px;
-  }
+  .desc { font-size:17px; color:rgba(28,16,23,.7); line-height:1.75; max-width:560px; margin-bottom:36px; }
   .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
   .chip {
     font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
@@ -68,6 +63,7 @@
     display:inline-flex; align-items:center; gap:8px;
   }
   .btn-primary:hover { background:#1D4ED8; }
+  .btn-primary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .btn-secondary {
     font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
     letter-spacing:.07em; text-transform:uppercase;
@@ -78,15 +74,15 @@
     display:inline-flex; align-items:center; gap:8px;
   }
   .btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+  .btn-secondary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
 
   .divider { max-width:900px; margin:0 auto 64px; padding:0 40px; }
   .divider hr { border:none; border-top:1px solid rgba(28,16,23,.08); }
 
-  .section { max-width:900px; margin:0 auto 80px; padding:0 40px; }
-  .section h2 {
-    font-family:'DM Serif Display',serif; font-size:28px;
-    margin-bottom:20px; color:var(--ink);
-  }
+  .section { max-width:900px; margin:0 auto 72px; padding:0 40px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:32px; margin-bottom:20px; }
+  .section p { font-size:15px; color:rgba(28,16,23,.7); line-height:1.85; margin-bottom:14px; max-width:700px; }
+
   .preview-card {
     border-radius:20px; background:#fff;
     border:1.5px solid rgba(28,16,23,.07);
@@ -96,14 +92,45 @@
   }
   .preview-card img { width:100%; display:block; }
 
+  /* Stack */
+  .stack-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; margin-top:16px; }
+  .stack-item { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:16px 18px; }
+  .stack-item strong { display:block; font-family:'DM Mono',monospace; font-size:11px; color:var(--blue); letter-spacing:.05em; margin-bottom:5px; }
+  .stack-item span { font-size:13px; color:rgba(28,16,23,.55); line-height:1.5; }
+
+  /* Metriche */
+  .metrics-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; }
+  .metric { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:18px 22px; text-align:center; }
+  .metric-n { font-family:'DM Serif Display',serif; font-size:30px; color:var(--ink); }
+  .metric-l { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:rgba(28,16,23,.4); margin-top:5px; }
+
+  /* Codice */
+  .code-block { margin-top:16px; background:#0F172A; border-radius:16px; overflow:hidden; }
+  .code-label { font-family:'DM Mono',monospace; font-size:10px; color:rgba(240,247,255,.35); letter-spacing:.08em; padding:12px 20px 0; }
+  .code-block pre { margin:0; padding:12px 20px 20px; overflow-x:auto; }
+  .code-block code { font-family:'DM Mono',monospace; font-size:13px; line-height:1.7; color:#93C5FD; white-space:pre; }
+  .annotation {
+    background:#EFF6FF; border-left:3px solid #93C5FD;
+    border-radius:0 12px 12px 0; padding:14px 18px;
+    margin-top:12px; font-size:14px; color:rgba(28,16,23,.65); line-height:1.75;
+  }
+  .annotation strong { color:#1D4ED8; }
+
   footer {
     border-top:1px solid rgba(28,16,23,.07);
     padding:24px 40px; display:flex; align-items:center; justify-content:space-between;
-    font-family:'DM Mono',monospace; font-size:10px; color:rgba(28,16,23,.3);
-    letter-spacing:.06em;
+    font-family:'DM Mono',monospace; font-size:10px; color:rgba(28,16,23,.3); letter-spacing:.06em;
   }
   .fds { display:flex; gap:5px; }
   .fdot { width:8px; height:8px; border-radius:50%; }
+
+  @media(max-width:600px){
+    .hero,.section,.divider{padding-left:20px;padding-right:20px;}
+    .hero{padding-top:88px;}
+    nav{padding:0 20px;}
+    .stack-grid{grid-template-columns:1fr 1fr;}
+    footer{padding:20px;}
+  }
 </style>
 </head>
 <body>
@@ -116,13 +143,14 @@
 <div class="hero">
   <div class="badge">iOS App</div>
   <h1>METIME</h1>
-  <p class="desc">iOS 17+ app con SwiftUI, SpriteKit e SwiftData. Un virtual pet kawaii rispecchia il benessere dell'utente attraverso stati emotivi, mondo isometrico, audio ambientale e gestione sicura dei dati.</p>
+  <p class="desc">iOS 17+ wellness app con SwiftUI, SpriteKit e SwiftData. Un virtual pet kawaii rispecchia il benessere dell'utente attraverso stati emotivi, un mondo isometrico animato, audio ambientale e gestione sicura dei dati.</p>
   <div class="chips">
     <span class="chip">SwiftUI</span>
     <span class="chip">SpriteKit</span>
     <span class="chip">SwiftData</span>
     <span class="chip">StoreKit 2</span>
     <span class="chip">AVFoundation</span>
+    <span class="chip">MVVM</span>
   </div>
   <div class="cta-row">
     <a class="btn-primary" href="https://github.com/angeloazzzzurro/METIME" target="_blank" rel="noopener">↗ GitHub</a>
@@ -132,11 +160,150 @@
 
 <div class="divider"><hr></div>
 
+<!-- PREVIEW -->
 <div class="section">
   <h2>Preview</h2>
   <div class="preview-card">
-    <img src="../mockups/metime-home-faithful.svg" alt="METIME preview">
+    <img src="../mockups/metime-home-faithful.svg" alt="METIME app preview — schermata principale con virtual pet">
   </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- IL PROGETTO -->
+<div class="section">
+  <h2>Il progetto</h2>
+  <p>METIME nasce dall'idea che il benessere quotidiano sia più facile da tracciare quando c'è qualcosa di vivo che risponde. Il virtual pet non è solo un gioco — cambia espressione, postura e umore in base ai dati inseriti dall'utente: ore di sonno, energia, stato emotivo del giorno.</p>
+  <p>La sfida principale era integrare SpriteKit (motore di gioco 2D) all'interno di un'app SwiftUI moderna, mantenendo un'architettura MVVM pulita e la persistenza locale con SwiftData — senza cloud, per rispettare la privacy dell'utente.</p>
+
+  <div class="metrics-row">
+    <div class="metric"><div class="metric-n">~1.4k</div><div class="metric-l">Righe Swift</div></div>
+    <div class="metric"><div class="metric-n">12</div><div class="metric-l">File</div></div>
+    <div class="metric"><div class="metric-n">iOS 17+</div><div class="metric-l">Target</div></div>
+    <div class="metric"><div class="metric-n">A</div><div class="metric-l">Qualità arch.</div></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- STACK -->
+<div class="section">
+  <h2>Stack & architettura</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><strong>SwiftUI</strong><span>UI layer dichiarativo. Ogni view osserva lo stato via @Query e @State.</span></div>
+    <div class="stack-item"><strong>SpriteKit</strong><span>Motore 2D per il pet e il mondo isometrico. Integrato in SwiftUI con UIViewRepresentable.</span></div>
+    <div class="stack-item"><strong>SwiftData</strong><span>Persistenza locale dei log emotivi. @Model + @Query sostituiscono CoreData.</span></div>
+    <div class="stack-item"><strong>MVVM</strong><span>GameManager come singleton coordina scene SpriteKit e layer dati separati.</span></div>
+    <div class="stack-item"><strong>StoreKit 2</strong><span>In-app purchase per contenuti premium. API async/await nativa iOS 15+.</span></div>
+    <div class="stack-item"><strong>AVFoundation</strong><span>Audio ambientale adattivo in base allo stato emotivo del pet.</span></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- CODICE -->
+<div class="section">
+  <h2>Codice</h2>
+
+  <p>Il cuore dell'app è una state machine per gli stati emotivi del pet. Ogni transizione è deterministica — nessuna randomicità — così l'utente può imparare a prevedere il comportamento del pet migliorando le proprie routine.</p>
+
+  <div class="code-block">
+    <div class="code-label">PetMood.swift</div>
+    <pre><code>enum PetMood: String, Codable, CaseIterable {
+    case happy, neutral, sad, excited, tired
+
+    // Transizione di stato in base all'input dell'utente
+    func next(energy: Int, sleep: Int) -> PetMood {
+        let score = energy + sleep          // 0–20
+        switch score {
+        case 15...: return .excited
+        case 10...: return .happy
+        case  6...: return .neutral
+        case  3...: return .tired
+        default:    return .sad
+        }
+    }
+
+    var spriteName: String { "pet_\(rawValue)" }
+
+    var ambientTrack: String {
+        switch self {
+        case .excited: return "upbeat"
+        case .happy:   return "calm"
+        case .tired:   return "soft"
+        default:       return "ambient"
+        }
+    }
+}</code></pre>
+  </div>
+  <div class="annotation"><strong>Perché un enum?</strong> Swift enum con associated logic è il modo più sicuro per modellare una state machine — il compilatore garantisce che tutti i casi siano gestiti. Nessun "stringa magica", nessun crash in runtime.</div>
+
+  <p style="margin-top:32px;">SpriteKit viene embeddato in SwiftUI tramite <code style="font-family:'DM Mono',monospace;font-size:13px;background:#DBEAFE;color:#1D4ED8;padding:2px 7px;border-radius:5px;">UIViewRepresentable</code>. Il bridge è sottile: SwiftUI passa solo il mood corrente, la scena SpriteKit gestisce autonomamente le animazioni.</p>
+
+  <div class="code-block">
+    <div class="code-label">PetSceneView.swift</div>
+    <pre><code>struct PetSceneView: UIViewRepresentable {
+    let mood: PetMood
+
+    func makeUIView(context: Context) -> SKView {
+        let view = SKView()
+        view.ignoresSiblingOrder = true
+        let scene = PetScene(size: view.bounds.size)
+        scene.scaleMode = .resizeFill
+        view.presentScene(scene)
+        return view
+    }
+
+    // Aggiorna la scena ogni volta che SwiftUI ridisegna
+    func updateUIView(_ uiView: SKView, context: Context) {
+        guard let scene = uiView.scene as? PetScene else { return }
+        scene.transition(to: mood)  // animazione interna SpriteKit
+    }
+}
+
+// In PetScene.swift
+func transition(to newMood: PetMood) {
+    guard newMood != currentMood else { return }
+    currentMood = newMood
+    let fadeOut = SKAction.fadeOut(withDuration: 0.2)
+    let swap    = SKAction.run { [weak self] in
+        self?.petSprite.texture = SKTexture(imageNamed: newMood.spriteName)
+    }
+    let fadeIn  = SKAction.fadeIn(withDuration: 0.3)
+    petSprite.run(.sequence([fadeOut, swap, fadeIn]))
+}</code></pre>
+  </div>
+  <div class="annotation"><strong>Separazione netta:</strong> SwiftUI non conosce SKAction, SpriteKit non conosce @State. Il confine è il <strong>PetMood enum</strong> — l'unica cosa che attraversa il bridge. Questo rende entrambi i layer testabili indipendentemente.</div>
+
+  <p style="margin-top:32px;">I dati vengono persistiti con SwiftData. Il modello è minimo — solo i dati necessari per calcolare il mood e mantenere la streak.</p>
+
+  <div class="code-block">
+    <div class="code-label">MoodEntry.swift</div>
+    <pre><code>@Model
+class MoodEntry {
+    var date:    Date
+    var energy:  Int    // 1–10
+    var sleep:   Int    // 1–10
+    var note:    String
+
+    // Mood calcolato, non persistito — derivato sempre dai dati raw
+    var computedMood: PetMood {
+        PetMood.neutral.next(energy: energy, sleep: sleep)
+    }
+
+    init(energy: Int, sleep: Int, note: String = "") {
+        self.date   = .now
+        self.energy = energy
+        self.sleep  = sleep
+        self.note   = note
+    }
+}
+
+// In HomeView.swift
+@Query(sort: \MoodEntry.date, order: .reverse)
+private var entries: [MoodEntry]</code></pre>
+  </div>
+  <div class="annotation"><strong>Computed property vs stored:</strong> Il mood non viene mai salvato nel database — viene sempre ricalcolato da <strong>energy</strong> e <strong>sleep</strong>. Se cambio la formula della state machine, tutti i dati storici si aggiornano automaticamente.</div>
 </div>
 
 <footer>

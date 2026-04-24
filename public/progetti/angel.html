@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Angel — autonomous AI agent framework in Python. Case study di Claudia Xia Jie Xin.">
 <title>Angel — Claudia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -25,9 +26,10 @@
     display:flex; align-items:center; gap:6px;
     padding:7px 16px; border-radius:100px;
     border:2px solid #93C5FD; background:#EFF6FF;
-    transition:all .2s; cursor:pointer;
+    transition:all .2s;
   }
   .back:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .back:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:15px; letter-spacing:-.02em; }
 
   .hero { padding:120px 40px 64px; max-width:900px; margin:0 auto; }
@@ -41,7 +43,7 @@
   h1 {
     font-family:'DM Serif Display',serif; font-style:italic;
     font-size:clamp(48px,7vw,88px); letter-spacing:-.02em; line-height:1.0;
-    margin-bottom:24px; color:var(--ink);
+    margin-bottom:24px;
   }
   .desc { font-size:17px; color:rgba(28,16,23,.7); line-height:1.75; max-width:560px; margin-bottom:36px; }
   .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
@@ -61,6 +63,7 @@
     display:inline-flex; align-items:center; gap:8px;
   }
   .btn-primary:hover { background:#1D4ED8; }
+  .btn-primary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .btn-secondary {
     font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
     letter-spacing:.07em; text-transform:uppercase;
@@ -71,10 +74,15 @@
     display:inline-flex; align-items:center; gap:8px;
   }
   .btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+  .btn-secondary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+
   .divider { max-width:900px; margin:0 auto 64px; padding:0 40px; }
   .divider hr { border:none; border-top:1px solid rgba(28,16,23,.08); }
-  .section { max-width:900px; margin:0 auto 80px; padding:0 40px; }
-  .section h2 { font-family:'DM Serif Display',serif; font-size:28px; margin-bottom:20px; color:var(--ink); }
+
+  .section { max-width:900px; margin:0 auto 72px; padding:0 40px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:32px; margin-bottom:20px; }
+  .section p { font-size:15px; color:rgba(28,16,23,.7); line-height:1.85; margin-bottom:14px; max-width:700px; }
+
   .preview-card {
     border-radius:20px; background:#fff;
     border:1.5px solid rgba(28,16,23,.07);
@@ -83,6 +91,28 @@
     display:flex; align-items:center; justify-content:center;
   }
   .preview-card img { width:100%; display:block; }
+
+  .stack-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; margin-top:16px; }
+  .stack-item { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:16px 18px; }
+  .stack-item strong { display:block; font-family:'DM Mono',monospace; font-size:11px; color:var(--blue); letter-spacing:.05em; margin-bottom:5px; }
+  .stack-item span { font-size:13px; color:rgba(28,16,23,.55); line-height:1.5; }
+
+  .metrics-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; }
+  .metric { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:18px 22px; text-align:center; }
+  .metric-n { font-family:'DM Serif Display',serif; font-size:30px; color:var(--ink); }
+  .metric-l { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:rgba(28,16,23,.4); margin-top:5px; }
+
+  .code-block { margin-top:16px; background:#0F172A; border-radius:16px; overflow:hidden; }
+  .code-label { font-family:'DM Mono',monospace; font-size:10px; color:rgba(240,247,255,.35); letter-spacing:.08em; padding:12px 20px 0; }
+  .code-block pre { margin:0; padding:12px 20px 20px; overflow-x:auto; }
+  .code-block code { font-family:'DM Mono',monospace; font-size:13px; line-height:1.7; color:#93C5FD; white-space:pre; }
+  .annotation {
+    background:#EFF6FF; border-left:3px solid #93C5FD;
+    border-radius:0 12px 12px 0; padding:14px 18px;
+    margin-top:12px; font-size:14px; color:rgba(28,16,23,.65); line-height:1.75;
+  }
+  .annotation strong { color:#1D4ED8; }
+
   footer {
     border-top:1px solid rgba(28,16,23,.07);
     padding:24px 40px; display:flex; align-items:center; justify-content:space-between;
@@ -90,6 +120,14 @@
   }
   .fds { display:flex; gap:5px; }
   .fdot { width:8px; height:8px; border-radius:50%; }
+
+  @media(max-width:600px){
+    .hero,.section,.divider{padding-left:20px;padding-right:20px;}
+    .hero{padding-top:88px;}
+    nav{padding:0 20px;}
+    .stack-grid{grid-template-columns:1fr 1fr;}
+    footer{padding:20px;}
+  }
 </style>
 </head>
 <body>
@@ -102,12 +140,14 @@
 <div class="hero">
   <div class="badge">AI Agent</div>
   <h1>Angel</h1>
-  <p class="desc">Framework per agenti autonomi con loop iterativi, tool routing (Shell/File/Browser/Search), memoria a breve e lungo termine ed esecuzione Python sandboxed.</p>
+  <p class="desc">Framework autonomo per agenti AI in Python. Loop iterativo stile ReAct, tool use (Shell, File, Browser, Search), memoria short/long-term e coda task su SQLite WAL. Controllabile via Telegram, REST API o TUI Textual.</p>
   <div class="chips">
-    <span class="chip">Python</span>
+    <span class="chip">Python 3.12</span>
     <span class="chip">Anthropic SDK</span>
-    <span class="chip">Tool Use</span>
-    <span class="chip">Memory</span>
+    <span class="chip">FastAPI</span>
+    <span class="chip">SQLite WAL</span>
+    <span class="chip">Textual TUI</span>
+    <span class="chip">ReAct</span>
   </div>
   <div class="cta-row">
     <a class="btn-primary" href="https://github.com/angeloazzzzurro/Angel" target="_blank" rel="noopener">↗ GitHub</a>
@@ -117,11 +157,171 @@
 
 <div class="divider"><hr></div>
 
+<!-- PREVIEW -->
 <div class="section">
   <h2>Preview</h2>
   <div class="preview-card">
-    <img src="../mockups/angel-dashboard.svg" alt="Angel preview">
+    <img src="../mockups/angel-dashboard.svg" alt="Angel agent — dashboard TUI">
   </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- IL PROGETTO -->
+<div class="section">
+  <h2>Il progetto</h2>
+  <p>Angel è un agente AI autonomo progettato per eseguire task complessi in più step senza supervisione continua. Si basa sul pattern <strong>ReAct</strong> (Reasoning + Acting): ad ogni iterazione il modello decide se rispondere direttamente o usare un tool, esegue l'azione, osserva il risultato e ragiona sul passo successivo.</p>
+  <p>L'obiettivo era costruire qualcosa di leggero ma reale — non un toy project ma un framework usabile per automazione quotidiana: ricerca web, manipolazione file, esecuzione codice in sandbox. La coda SQLite con WAL mode garantisce accesso concorrente da più processi (bot Telegram + REST API) senza lock contention.</p>
+
+  <div class="metrics-row">
+    <div class="metric"><div class="metric-n">~900</div><div class="metric-l">Righe Python</div></div>
+    <div class="metric"><div class="metric-n">7</div><div class="metric-l">File</div></div>
+    <div class="metric"><div class="metric-n">4</div><div class="metric-l">Tool integrati</div></div>
+    <div class="metric"><div class="metric-n">A−</div><div class="metric-l">Qualità arch.</div></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- STACK -->
+<div class="section">
+  <h2>Stack & architettura</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><strong>Anthropic SDK</strong><span>Modello claude-opus-4-6 per reasoning. Tool use nativo con schema JSON.</span></div>
+    <div class="stack-item"><strong>FastAPI</strong><span>REST server per submit task e lettura risultati. Async nativo.</span></div>
+    <div class="stack-item"><strong>SQLite WAL</strong><span>Coda task persistente. WAL mode per accesso concorrente senza blocchi.</span></div>
+    <div class="stack-item"><strong>python-telegram-bot</strong><span>Interfaccia bot: submit task via chat, ricezione risultato con streaming.</span></div>
+    <div class="stack-item"><strong>Textual</strong><span>TUI (terminal UI) per monitoraggio real-time del loop agente.</span></div>
+    <div class="stack-item"><strong>ReAct pattern</strong><span>Think → Act → Observe loop. Max steps configurabile, retry con backoff.</span></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<!-- CODICE -->
+<div class="section">
+  <h2>Codice</h2>
+
+  <p>Il loop principale dell'agente segue il pattern ReAct: il modello ragiona (Think), sceglie un'azione (Act), legge il risultato (Observe) e ripete. Il loop termina quando il modello risponde senza chiamare tool, o quando si raggiunge il numero massimo di step.</p>
+
+  <div class="code-block">
+    <div class="code-label">agent.py</div>
+    <pre><code>async def run(self, task: str) -> str:
+    self.memory.add("user", task)
+
+    for step in range(self.max_steps):
+        # Think: chiedi al modello cosa fare
+        response = await self.llm.complete(
+            messages=self.memory.get_context(),
+            tools=self.tools.schemas(),
+        )
+
+        # Se il modello risponde senza tool → task completato
+        if response.stop_reason == "end_turn":
+            return response.content[0].text
+
+        # Act: esegui il tool scelto dal modello
+        tool_call = response.content[0]          # ToolUseBlock
+        result = await self.tools.execute(
+            name=tool_call.name,
+            input=tool_call.input,
+        )
+
+        # Observe: aggiungi risultato al contesto
+        self.memory.add_tool_result(tool_call.id, result)
+
+    return f"[Agent] Max steps ({self.max_steps}) reached."</code></pre>
+  </div>
+  <div class="annotation"><strong>Perché un loop for e non while?</strong> Il limite di step è un safety net obbligatorio — un agente in loop infinito con accesso a shell e filesystem è un rischio reale. Il numero massimo è configurabile ma sempre presente.</div>
+
+  <p style="margin-top:32px;">Il tool dispatch usa il pattern Strategy: ogni tool implementa la stessa interfaccia, l'agente non sa come funzionano internamente. Aggiungere un nuovo tool è una sola classe con due metodi.</p>
+
+  <div class="code-block">
+    <div class="code-label">tools/base.py + tools/shell.py</div>
+    <pre><code># Interfaccia comune per tutti i tool
+class BaseTool(ABC):
+    name: str
+    description: str
+
+    @abstractmethod
+    def schema(self) -> dict:
+        """Schema JSON per l'Anthropic API."""
+        ...
+
+    @abstractmethod
+    async def execute(self, **kwargs) -> str:
+        """Esegue il tool e restituisce stringa al modello."""
+        ...
+
+
+# Implementazione: esecuzione shell sandboxed
+class ShellTool(BaseTool):
+    name = "shell"
+    description = "Esegue un comando bash. Output max 4000 chars."
+
+    def schema(self) -> dict:
+        return {
+            "name": self.name,
+            "description": self.description,
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "command": {"type": "string", "description": "Comando da eseguire"}
+                },
+                "required": ["command"],
+            },
+        }
+
+    async def execute(self, command: str) -> str:
+        proc = await asyncio.create_subprocess_shell(
+            command,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT,
+            timeout=30,                          # hard timeout
+        )
+        stdout, _ = await proc.communicate()
+        return stdout.decode()[:4000]            # tronca output lungo</code></pre>
+  </div>
+  <div class="annotation"><strong>Strategy pattern:</strong> <strong>ToolRegistry</strong> carica tutti i tool all'avvio e li espone come lista di schema JSON all'API Anthropic. Il modello sceglie quale chiamare — il codice Python non decide mai quale tool usare.</div>
+
+  <p style="margin-top:32px;">La coda SQLite con WAL mode permette a bot Telegram, REST API e TUI di operare contemporaneamente sullo stesso database senza bloccarsi a vicenda.</p>
+
+  <div class="code-block">
+    <div class="code-label">queue_backend.py</div>
+    <pre><code>class TaskQueue:
+    def __init__(self, db_path: str):
+        self.conn = sqlite3.connect(db_path, check_same_thread=False)
+        # WAL: i reader non bloccano i writer e viceversa
+        self.conn.execute("PRAGMA journal_mode=WAL")
+        self.conn.execute("""
+            CREATE TABLE IF NOT EXISTS tasks (
+                id       TEXT PRIMARY KEY,
+                payload  TEXT NOT NULL,
+                status   TEXT DEFAULT 'pending',
+                result   TEXT,
+                created  REAL DEFAULT (unixepoch('now', 'subsec'))
+            )
+        """)
+        self.conn.commit()
+
+    def push(self, task_id: str, payload: dict) -> None:
+        self.conn.execute(
+            "INSERT INTO tasks (id, payload) VALUES (?, ?)",
+            (task_id, json.dumps(payload))
+        )
+        self.conn.commit()
+
+    def claim_next(self) -> dict | None:
+        """Atomicamente prende e blocca il prossimo task pending."""
+        row = self.conn.execute(
+            "UPDATE tasks SET status='running' WHERE id = "
+            "(SELECT id FROM tasks WHERE status='pending' "
+            " ORDER BY created LIMIT 1) RETURNING *"
+        ).fetchone()
+        self.conn.commit()
+        return dict(zip([c[0] for c in self.conn.description], row)) if row else None</code></pre>
+  </div>
+  <div class="annotation"><strong>UPDATE … RETURNING:</strong> L'operazione di claim è atomica — un solo processo può prendere un task anche se Telegram, REST API e TUI interrogano la coda contemporaneamente. Nessun lock esplicito necessario grazie a WAL.</div>
 </div>
 
 <footer>

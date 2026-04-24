@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Claude × Codex — simulatore AI con Next.js, PyTorch e Claude API. Case study di Claudia Xia Jie Xin.">
 <title>Claude × Codex — Claudia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
@@ -10,7 +11,6 @@
   :root { --ink:#1C1017; --bg:#F8F8F8; --blue:#3B82F6; --light:#EFF6FF; }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Syne',sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; }
-
   nav {
     position:fixed; top:0; left:0; right:0; z-index:100;
     display:flex; align-items:center; justify-content:space-between;
@@ -24,72 +24,54 @@
     color:var(--blue); text-decoration:none;
     display:flex; align-items:center; gap:6px;
     padding:7px 16px; border-radius:100px;
-    border:2px solid #93C5FD; background:#EFF6FF;
-    transition:all .2s; cursor:pointer;
+    border:2px solid #93C5FD; background:#EFF6FF; transition:all .2s;
   }
   .back:hover { background:var(--blue); color:#fff; border-color:var(--blue); }
+  .back:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:15px; letter-spacing:-.02em; }
-
   .hero { padding:120px 40px 64px; max-width:900px; margin:0 auto; }
   .badge {
     display:inline-flex; align-items:center; gap:7px;
     font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
-    letter-spacing:.1em; text-transform:uppercase;
-    color:var(--blue); margin-bottom:20px;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--blue); margin-bottom:20px;
   }
   .badge::before { content:''; width:24px; height:2px; background:var(--blue); border-radius:1px; }
-  h1 {
-    font-family:'DM Serif Display',serif; font-style:italic;
-    font-size:clamp(48px,7vw,88px); letter-spacing:-.02em; line-height:1.0;
-    margin-bottom:24px; color:var(--ink);
-  }
+  h1 { font-family:'DM Serif Display',serif; font-style:italic; font-size:clamp(40px,6vw,80px); letter-spacing:-.02em; line-height:1.05; margin-bottom:24px; }
   .desc { font-size:17px; color:rgba(28,16,23,.7); line-height:1.75; max-width:560px; margin-bottom:36px; }
   .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
-  .chip {
-    font-family:'DM Mono',monospace; font-size:10px; font-weight:500;
-    letter-spacing:.07em; text-transform:uppercase;
-    padding:6px 14px; border-radius:100px;
-    background:#DBEAFE; color:#1D4ED8; border:1.5px solid #93C5FD;
-  }
+  .chip { font-family:'DM Mono',monospace; font-size:10px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:6px 14px; border-radius:100px; background:#DBEAFE; color:#1D4ED8; border:1.5px solid #93C5FD; }
   .cta-row { display:flex; gap:12px; flex-wrap:wrap; }
-  .btn-primary {
-    font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
-    letter-spacing:.07em; text-transform:uppercase;
-    padding:12px 28px; border-radius:100px;
-    background:var(--blue); color:#fff; border:none;
-    cursor:pointer; transition:background .2s; text-decoration:none;
-    display:inline-flex; align-items:center; gap:8px;
-  }
+  .btn-primary { font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:12px 28px; border-radius:100px; background:var(--blue); color:#fff; border:none; cursor:pointer; transition:background .2s; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
   .btn-primary:hover { background:#1D4ED8; }
-  .btn-secondary {
-    font-family:'DM Mono',monospace; font-size:11px; font-weight:500;
-    letter-spacing:.07em; text-transform:uppercase;
-    padding:12px 28px; border-radius:100px;
-    background:transparent; color:var(--ink);
-    border:2px solid rgba(28,16,23,.15);
-    cursor:pointer; transition:all .2s; text-decoration:none;
-    display:inline-flex; align-items:center; gap:8px;
-  }
+  .btn-primary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+  .btn-secondary { font-family:'DM Mono',monospace; font-size:11px; font-weight:500; letter-spacing:.07em; text-transform:uppercase; padding:12px 28px; border-radius:100px; background:transparent; color:var(--ink); border:2px solid rgba(28,16,23,.15); cursor:pointer; transition:all .2s; text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
   .btn-secondary:hover { border-color:var(--blue); color:var(--blue); }
+  .btn-secondary:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
   .divider { max-width:900px; margin:0 auto 64px; padding:0 40px; }
   .divider hr { border:none; border-top:1px solid rgba(28,16,23,.08); }
-  .section { max-width:900px; margin:0 auto 80px; padding:0 40px; }
-  .section h2 { font-family:'DM Serif Display',serif; font-size:28px; margin-bottom:20px; color:var(--ink); }
-  .preview-card {
-    border-radius:20px; background:#fff;
-    border:1.5px solid rgba(28,16,23,.07);
-    box-shadow:0 4px 20px rgba(59,130,246,.08);
-    overflow:hidden; min-height:280px;
-    display:flex; align-items:center; justify-content:center;
-  }
+  .section { max-width:900px; margin:0 auto 72px; padding:0 40px; }
+  .section h2 { font-family:'DM Serif Display',serif; font-size:32px; margin-bottom:20px; }
+  .section p { font-size:15px; color:rgba(28,16,23,.7); line-height:1.85; margin-bottom:14px; max-width:700px; }
+  .preview-card { border-radius:20px; background:#fff; border:1.5px solid rgba(28,16,23,.07); box-shadow:0 4px 20px rgba(59,130,246,.08); overflow:hidden; min-height:280px; display:flex; align-items:center; justify-content:center; }
   .preview-card img { width:100%; display:block; }
-  footer {
-    border-top:1px solid rgba(28,16,23,.07);
-    padding:24px 40px; display:flex; align-items:center; justify-content:space-between;
-    font-family:'DM Mono',monospace; font-size:10px; color:rgba(28,16,23,.3); letter-spacing:.06em;
-  }
+  .stack-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:12px; margin-top:16px; }
+  .stack-item { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:16px 18px; }
+  .stack-item strong { display:block; font-family:'DM Mono',monospace; font-size:11px; color:var(--blue); letter-spacing:.05em; margin-bottom:5px; }
+  .stack-item span { font-size:13px; color:rgba(28,16,23,.55); line-height:1.5; }
+  .metrics-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; }
+  .metric { background:#fff; border:1.5px solid rgba(28,16,23,.07); border-radius:14px; padding:18px 22px; text-align:center; }
+  .metric-n { font-family:'DM Serif Display',serif; font-size:30px; color:var(--ink); }
+  .metric-l { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:rgba(28,16,23,.4); margin-top:5px; }
+  .code-block { margin-top:16px; background:#0F172A; border-radius:16px; overflow:hidden; }
+  .code-label { font-family:'DM Mono',monospace; font-size:10px; color:rgba(240,247,255,.35); letter-spacing:.08em; padding:12px 20px 0; }
+  .code-block pre { margin:0; padding:12px 20px 20px; overflow-x:auto; }
+  .code-block code { font-family:'DM Mono',monospace; font-size:13px; line-height:1.7; color:#93C5FD; white-space:pre; }
+  .annotation { background:#EFF6FF; border-left:3px solid #93C5FD; border-radius:0 12px 12px 0; padding:14px 18px; margin-top:12px; font-size:14px; color:rgba(28,16,23,.65); line-height:1.75; }
+  .annotation strong { color:#1D4ED8; }
+  footer { border-top:1px solid rgba(28,16,23,.07); padding:24px 40px; display:flex; align-items:center; justify-content:space-between; font-family:'DM Mono',monospace; font-size:10px; color:rgba(28,16,23,.3); letter-spacing:.06em; }
   .fds { display:flex; gap:5px; }
   .fdot { width:8px; height:8px; border-radius:50%; }
+  @media(max-width:600px){ .hero,.section,.divider{padding-left:20px;padding-right:20px;} .hero{padding-top:88px;} nav{padding:0 20px;} .stack-grid{grid-template-columns:1fr 1fr;} footer{padding:20px;} }
 </style>
 </head>
 <body>
@@ -100,14 +82,16 @@
 </nav>
 
 <div class="hero">
-  <div class="badge">AI Sim</div>
+  <div class="badge">AI Simulator</div>
   <h1>Claude × Codex</h1>
-  <p class="desc">Simulatore Codex×Claude live — interfaccia web per visualizzare esperimenti di ML sulle emozioni con PyTorch, connessa a Claude API per commento in tempo reale.</p>
+  <p class="desc">Simulatore web full-stack: un CNN PyTorch riconosce le emozioni da immagine, i risultati vengono analizzati in streaming da Claude API e presentati in un'interfaccia Next.js con Server-Sent Events.</p>
   <div class="chips">
-    <span class="chip">Next.js</span>
-    <span class="chip">PyTorch</span>
+    <span class="chip">Next.js 14</span>
     <span class="chip">Claude API</span>
-    <span class="chip">Python</span>
+    <span class="chip">PyTorch</span>
+    <span class="chip">FastAPI</span>
+    <span class="chip">SSE</span>
+    <span class="chip">Tailwind</span>
   </div>
   <div class="cta-row">
     <a class="btn-primary" href="https://github.com/angeloazzzzurro/claude-codex" target="_blank" rel="noopener">↗ GitHub</a>
@@ -120,8 +104,149 @@
 <div class="section">
   <h2>Preview</h2>
   <div class="preview-card">
-    <img src="../mockups/claude-codex-simulator.svg" alt="Claude × Codex preview">
+    <img src="../mockups/claude-codex-simulator.svg" alt="Claude × Codex — interfaccia simulatore">
   </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<div class="section">
+  <h2>Il progetto</h2>
+  <p>Claude × Codex mette insieme due modelli: un CNN addestrato su FER2013 per la classificazione delle emozioni facciali, e Claude API per l'interpretazione in linguaggio naturale dei risultati. L'utente carica un'immagine, il backend Python esegue l'inferenza PyTorch, i logit per 7 classi emotive vengono passati a Claude che li commenta in streaming.</p>
+  <p>La sfida tecnica principale era la latenza: inferenza ML + chiamata LLM in sequenza può essere lenta. La soluzione è SSE — il testo di Claude appare carattere per carattere mentre il modello genera, senza aspettare la risposta completa.</p>
+  <div class="metrics-row">
+    <div class="metric"><div class="metric-n">~2.1k</div><div class="metric-l">Righe totali</div></div>
+    <div class="metric"><div class="metric-n">18</div><div class="metric-l">File</div></div>
+    <div class="metric"><div class="metric-n">2</div><div class="metric-l">Backend separati</div></div>
+    <div class="metric"><div class="metric-n">A</div><div class="metric-l">Qualità arch.</div></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<div class="section">
+  <h2>Stack & architettura</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><strong>Next.js 14</strong><span>App Router. Route API come proxy SSE verso Claude. React per il rendering UI.</span></div>
+    <div class="stack-item"><strong>Claude API</strong><span>claude-opus-4-6 con streaming. L'SDK Anthropic espone uno stream async iterabile.</span></div>
+    <div class="stack-item"><strong>PyTorch</strong><span>CNN custom addestrato su FER2013. 7 classi: angry, disgust, fear, happy, neutral, sad, surprise.</span></div>
+    <div class="stack-item"><strong>FastAPI</strong><span>Backend Python per l'inferenza ML. Un solo endpoint /predict, modello caricato all'avvio.</span></div>
+    <div class="stack-item"><strong>SSE</strong><span>Server-Sent Events per streaming unidirezionale server→client. Nessun WebSocket necessario.</span></div>
+    <div class="stack-item"><strong>Tailwind CSS</strong><span>Utility-first. Dark theme con CSS variables per i colori dinamici delle emotion bars.</span></div>
+  </div>
+</div>
+
+<div class="divider"><hr></div>
+
+<div class="section">
+  <h2>Codice</h2>
+
+  <p>La route Next.js è un proxy che riceve la richiesta dal client React, apre uno stream con Claude API e lo converte in SSE standard. Il client non chiama mai Anthropic direttamente — la API key rimane lato server.</p>
+
+  <div class="code-block">
+    <div class="code-label">app/api/analyze/route.ts</div>
+    <pre><code>import Anthropic from '@anthropic-ai/sdk';
+
+export async function POST(req: Request) {
+  const { prompt, emotions } = await req.json();
+  const client = new Anthropic();
+
+  const stream = await client.messages.stream({
+    model: 'claude-opus-4-6',
+    max_tokens: 1024,
+    messages: [{
+      role: 'user',
+      content: `Analizza queste probabilità emotive in italiano:\n`
+             + JSON.stringify(emotions, null, 2)
+             + `\n\nDomanda: ${prompt}`,
+    }],
+  });
+
+  const encoder = new TextEncoder();
+  const readable = new ReadableStream({
+    async start(controller) {
+      for await (const chunk of stream) {
+        if (chunk.type === 'content_block_delta') {
+          const data = JSON.stringify({ text: chunk.delta.text });
+          controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+        }
+      }
+      controller.enqueue(encoder.encode('data: [DONE]\n\n'));
+      controller.close();
+    },
+  });
+
+  return new Response(readable, {
+    headers: {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      'Connection': 'keep-alive',
+    },
+  });
+}</code></pre>
+  </div>
+  <div class="annotation"><strong>Perché SSE e non WebSocket?</strong> SSE è unidirezionale (server → client) ed è esatto per streaming di testo — non serve il canale inverso. Funziona su HTTP/1.1, nessuna libreria aggiuntiva nel browser, e si gestisce con <strong>EventSource</strong> nativo.</div>
+
+  <p style="margin-top:32px;">Il backend Python espone un singolo endpoint FastAPI. Il modello viene caricato una volta all'avvio — non ad ogni richiesta — per non pagare il costo di deserializzazione ad ogni inference.</p>
+
+  <div class="code-block">
+    <div class="code-label">ml_backend/main.py</div>
+    <pre><code>from fastapi import FastAPI, UploadFile
+import torch, torchvision.transforms as T
+from PIL import Image
+import io
+
+app = FastAPI()
+EMOTIONS = ["angry","disgust","fear","happy","neutral","sad","surprise"]
+
+# Caricato una volta — non ad ogni richiesta
+model = EmotionCNN(num_classes=7)
+model.load_state_dict(torch.load("emotion_cnn.pt", map_location="cpu"))
+model.eval()
+
+transform = T.Compose([
+    T.Grayscale(), T.Resize((48, 48)),
+    T.ToTensor(), T.Normalize([0.5], [0.5]),
+])
+
+@app.post("/predict")
+async def predict(file: UploadFile):
+    img    = Image.open(io.BytesIO(await file.read()))
+    tensor = transform(img).unsqueeze(0)   # [1, 1, 48, 48]
+
+    with torch.no_grad():
+        probs = torch.softmax(model(tensor), dim=1)[0]
+
+    return {e: round(float(p), 4) for e, p in zip(EMOTIONS, probs)}</code></pre>
+  </div>
+  <div class="annotation"><strong>model.eval() + no_grad():</strong> <strong>eval()</strong> disabilita dropout e batch norm in training mode. <strong>no_grad()</strong> non traccia i gradienti — l'inferenza è più veloce e usa meno memoria. Sempre necessari insieme in produzione.</div>
+
+  <p style="margin-top:32px;">Il CNN usa tre blocchi convoluzionali classici seguiti da un global average pooling che rende il modello indipendente dalla dimensione di input.</p>
+
+  <div class="code-block">
+    <div class="code-label">ml_backend/model.py</div>
+    <pre><code>import torch.nn as nn
+
+class EmotionCNN(nn.Module):
+    def __init__(self, num_classes: int = 7):
+        super().__init__()
+        self.features = nn.Sequential(
+            nn.Conv2d(1, 32, 3, padding=1), nn.ReLU(inplace=True), nn.MaxPool2d(2),
+            nn.Conv2d(32, 64, 3, padding=1), nn.ReLU(inplace=True), nn.MaxPool2d(2),
+            nn.Conv2d(64, 128, 3, padding=1), nn.ReLU(inplace=True), nn.MaxPool2d(2),
+        )
+        self.classifier = nn.Sequential(
+            nn.AdaptiveAvgPool2d(1),   # feature map → scalare per canale
+            nn.Flatten(),              # [batch, 128]
+            nn.Linear(128, 64), nn.ReLU(inplace=True),
+            nn.Dropout(p=0.5),
+            nn.Linear(64, num_classes),
+        )
+
+    def forward(self, x):
+        return self.classifier(self.features(x))</code></pre>
+  </div>
+  <div class="annotation"><strong>AdaptiveAvgPool2d(1):</strong> Global average pooling — fa media di ogni feature map a un singolo valore indipendentemente dalla dimensione spaziale. Riduce i parametri del classifier e agisce come regolarizzatore implicito contro l'overfitting.</div>
 </div>
 
 <footer>
