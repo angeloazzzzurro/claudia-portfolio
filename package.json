@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "node scripts/fetch-github-data.js",
+    "build": "node scripts/fetch-github-data.js && node scripts/fetch-instagram.js",
     "test": "node tests/smoke.test.js",
     "test:smoke": "node tests/smoke.test.js"
   },

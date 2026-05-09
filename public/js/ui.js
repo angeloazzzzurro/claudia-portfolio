@@ -1,6 +1,10 @@
 // ══ UI INTERACTIONS ══
 // dark mode, nav, cursor, contact form, scroll reveal, mappa CV
 
+// ── Formspree endpoint ──────────────────────────────────────────────────────
+// Crea un account su https://formspree.io e sostituisci l'ID qui sotto
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xlgzbvey';
+
 export function copyCode(btn) {
   const code = btn.previousElementSibling.textContent;
   navigator.clipboard.writeText(code).then(() => {
@@ -9,7 +13,7 @@ export function copyCode(btn) {
   }).catch(() => { btn.textContent = 'errore'; setTimeout(() => { btn.textContent = 'copy'; }, 1500); });
 }
 
-export function initUI({ onExploreSection, setFilter }) {
+export function initUI({ onExploreSection, onAiSection, setFilter }) {
 
   // ── Dark mode ─────────────────────────────────────────────────────────────
   const darkToggle = document.getElementById('darkmode-toggle');
@@ -55,6 +59,7 @@ export function initUI({ onExploreSection, setFilter }) {
           next.classList.add('on');
           window.scrollTo({ top: 0, behavior: 'instant' });
           if (b.dataset.s === 'explore') onExploreSection();
+          if (b.dataset.s === 'ai')      onAiSection();
           if (b.dataset.s === 'home')    scheduleFlblFade();
         }, 150);
       } else {
@@ -125,7 +130,9 @@ export function initUI({ onExploreSection, setFilter }) {
     cfEmail.removeAttribute('aria-invalid');
   }
 
-  document.getElementById('contact-form')?.addEventListener('submit', e => {
+  const submitBtn = document.querySelector('.c-submit');
+
+  document.getElementById('contact-form')?.addEventListener('submit', async e => {
     e.preventDefault();
     const name  = cfName.value.trim();
     const email = cfEmail.value.trim();
@@ -136,12 +143,33 @@ export function initUI({ onExploreSection, setFilter }) {
     if (!email || !EMAIL_RE.test(email)) { showFormError("Inserisci un'email valida.", cfEmail); return; }
     clearFormError();
 
-    const subject = encodeURIComponent(`Contatto dal portfolio${type ? ' — ' + type : ''}`);
-    const body    = encodeURIComponent(`Ciao Claudia,\n\nSono ${name} (${email}).\n\n${type ? 'Tipo di progetto: ' + type + '\n\n' : ''}${msg || ''}\n\nA presto!`);
-    window.location.href = `mailto:xjiexin97@gmail.com?subject=${subject}&body=${body}`;
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('c-form-sent').style.display  = 'block';
+    // Loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Invio in corso…';
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome: name, email, tipo_progetto: type, messaggio: msg }),
+      });
+
+      if (res.ok) {
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('c-form-sent').style.display  = 'block';
+      } else {
+        const data = await res.json().catch(() => ({}));
+        const detail = data?.errors?.map(err => err.message).join(', ') || 'Riprova tra poco.';
+        showFormError('Errore nell\'invio: ' + detail);
+      }
+    } catch {
+      showFormError('Errore di rete. Controlla la connessione e riprova.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Invia messaggio →';
+    }
   });
+
   document.getElementById('c-sent-reset')?.addEventListener('click', () => {
     document.getElementById('contact-form').reset();
     document.getElementById('contact-form').style.display = 'flex';
