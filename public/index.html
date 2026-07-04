@@ -188,7 +188,7 @@
         </div>
       </div>
       <a class="c-row" href="https://github.com/angeloazzzzurro" target="_blank" rel="noopener"><div class="clft"><div class="cico ci1">⌥</div><div><div class="c-name">GitHub</div><div class="c-val">angeloazzzzurro</div></div></div><span class="c-arr">→</span></a>
-      <a class="c-row" href="mailto:xjiexin97@gmail.com" ><div class="clft"><div class="cico ci2">✉</div><div><div class="c-name">Email</div><div class="c-val">xjiexin97@gmail.com</div></div></div><span class="c-arr">→</span></a>
+      <a class="c-row obf-email" href="#" data-u="xjiexin97" data-d="gmail.com"><div class="clft"><div class="cico ci2">✉</div><div><div class="c-name">Email</div><div class="c-val obf-email-val"></div></div></div><span class="c-arr">→</span></a>
       <a class="c-row" href="https://www.linkedin.com/in/jie-xin-xia-096232179" target="_blank" rel="noopener"><div class="clft"><div class="cico ci4">◎</div><div><div class="c-name">LinkedIn</div><div class="c-val">jie-xin-xia</div></div></div><span class="c-arr">→</span></a>
       <a class="c-row" href="https://www.behance.net/claudiajiexinxia" target="_blank" rel="noopener"><div class="clft"><div class="cico ci5">◑</div><div><div class="c-name">Behance</div><div class="c-val">claudiajiexinxia</div></div></div><span class="c-arr">→</span></a>
       <div class="c-row c-row-loc"><div class="clft"><div class="cico ci3">◈</div><div><div class="c-name">Milano</div><div class="c-val">disponibile in presenza</div></div></div></div>
@@ -273,7 +273,7 @@
         <div class="sec-badge">curriculum vitae</div>
         <div class="cv-name">Xia Jie Xin<br><em>Claudia</em> ✦</div>
         <div class="cv-contacts">
-          <a class="cv-contact-link" href="mailto:xjiexin97@gmail.com">xjiexin97@gmail.com</a>
+          <a class="cv-contact-link obf-email" href="#" data-u="xjiexin97" data-d="gmail.com"><span class="obf-email-val"></span></a>
           <span class="cv-contact-sep">·</span>
           <a class="cv-contact-link" href="https://linkedin.com/in/jie-xin-xia-096232179" target="_blank" rel="noopener">LinkedIn</a>
           <span class="cv-contact-sep">·</span>
@@ -614,5 +614,15 @@
 
 <script type="module" src="js/main.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.obf-email').forEach(function(el){
+    var e = el.dataset.u + '\u0040' + el.dataset.d;
+    el.href = 'mai' + 'lto:' + e;
+    var v = el.querySelector('.obf-email-val');
+    if (v) v.textContent = e;
+  });
+})();
+</script>
 </body>
 </html>

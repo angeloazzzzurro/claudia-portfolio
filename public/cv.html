@@ -326,7 +326,7 @@
     <div>
       <div class="cv-name">Xia Jie Xin<br><em>Claudia</em> ✦</div>
       <p class="cv-contact">
-        Via Tavazzano 2, Milan &nbsp;·&nbsp; +39 3924004756 &nbsp;·&nbsp; <a href="mailto:xjiexin97@gmail.com">xjiexin97@gmail.com</a><br>
+        Via Tavazzano 2, Milan &nbsp;·&nbsp; +39 3924004756 &nbsp;·&nbsp; <a class="obf-email" href="#" data-u="xjiexin97" data-d="gmail.com"><span class="obf-email-val"></span></a><br>
         <a href="https://www.linkedin.com/in/jie-xin-xia-096232179" target="_blank" rel="noopener">linkedin.com/in/jie-xin-xia-096232179</a>
         &nbsp;·&nbsp;
         <a href="https://www.behance.net/claudiajiexinxia" target="_blank" rel="noopener">behance.net/claudiajiexinxia</a>
@@ -493,7 +493,7 @@
 
   <!-- Footer -->
   <div class="cv-footer no-print">
-    <span class="cv-footer-copy">© 2026 Claudia · xjiexin97@gmail.com ✦</span>
+    <span class="cv-footer-copy">© 2026 Claudia ✦</span>
     <div class="cv-footer-dots">
       <div class="fdot"></div>
       <div class="fdot"></div>
@@ -510,6 +510,16 @@
   window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
 </script>
 <script defer src="/_vercel/speed-insights/script.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.obf-email').forEach(function(el){
+    var e = el.dataset.u + '\u0040' + el.dataset.d;
+    el.href = 'mai' + 'lto:' + e;
+    var v = el.querySelector('.obf-email-val');
+    if (v) v.textContent = e;
+  });
+})();
+</script>
 
 </body>
 </html>
